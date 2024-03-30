@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import ComponenteUno from './components/ComponenteUno.jsx';
-import ComponenteDos from './components/ComponenteDos.jsx';
+import Componente01 from './components/Componente01.jsx';
+import Componente02 from './components/Componente02.jsx';
+import Componente03 from './components/Componente03.jsx';
 
 
 import './App.css'
@@ -11,9 +12,10 @@ function App() {
 
   return (
     <>
-      <h3>EEOO 9</h3>
-      <ComponenteUno></ComponenteUno>
-      <ComponenteDos></ComponenteDos>
+      <h3>App.jsx</h3>
+      {/* <Componente01></Componente01> */}
+      {/* <Componente02></Componente02> */}
+      <Componente03></Componente03>
     </>
   )
 }
