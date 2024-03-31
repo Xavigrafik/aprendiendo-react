@@ -12,6 +12,10 @@ export default function Componente03() {
     const [age, setAge] = useState(null);
     const [increment, setIncrement] = useState(5);
 
+    const ComponenteDefinido = ({onClick, children}) => {
+        return <button onClick = {onClick}>{children}</button>
+    }
+
     useEffect(()=>{
         console.log('useEffect cada vez');
        // console.log('--name: ', name);
@@ -82,7 +86,11 @@ export default function Componente03() {
 
             <button onClick={()=>setAge(333)}>333</button>
             <button onClick={()=>resetAge()}>reset Age</button>
-            <br />
+            <hr />
+
+            <ComponenteDefinido onClick={()=>{setAge(6666)}}>{age} ComponenteDefinido</ComponenteDefinido>
+            <hr />
+            
             <input className='incrementInput' type="text" onChange={(e) => setIncrement(e.target.value)} placeholder={increment}/>
             <button onClick={()=>incrementAge(increment)}>Age + {increment}</button>
             <button onClick={()=>cleanInput('incrementInput')}>x</button>
@@ -91,8 +99,6 @@ export default function Componente03() {
 
             <button onClick={()=>setName('**Xavi**')}>Set name</button>
             <button onClick={()=>handleToggleName()}>{toggleName == false ? "Set" : "Clean"} Name</button>
-
-            <hr />
 
         </div>
     );
