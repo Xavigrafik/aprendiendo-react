@@ -5,8 +5,10 @@ export default function ComponenteUno() {
 
     return (
       <div className="componente componente01">
-        <h3>ComponenteUno</h3>
+        <h4>ComponenteUno</h4>
+        <hr />
         <p>{age}</p>
+        <hr />
         <button onClick={()=>setAge(333)}>Change Age to 333</button>
         <button onClick={()=>setAge(0)}>Change Age to 0</button>
       </div>

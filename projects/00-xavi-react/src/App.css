@@ -6,12 +6,21 @@
 }
 
 
+
 .componente {
   background-color: rgb(211, 239, 248);
   margin-bottom: 10px;
   border-radius: 3px;
   padding: 10px;
 }
+.componente  hr {
+  margin: 5px 0px;
+  border-color: rgba(4, 161, 204, 0.3);
+}
+.componente  p {
+  margin: 5px 0px;
+}
+
 .componente h4 {
   margin-top: 0;
   margin-bottom:15px;

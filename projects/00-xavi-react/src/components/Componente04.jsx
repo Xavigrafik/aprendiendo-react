@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function Componente04() {
     
-    
+
     // useEffect(()=>{}, [])
     // useEffectz(()=>{}, [])
 
@@ -14,8 +14,8 @@ export default function Componente04() {
 
             <hr />
 
-            <button onClick={()=>setName('**Xavi**')}>Set name</button>
-            <button onClick={()=>handleToggleName()}>{toggleName == false ? "Set" : "Clean"} Name</button>
+            {/* <button onClick={()=>setName('**Xavi**')}>Set name</button> */}
+            {/* <button onClick={()=>handleToggleName()}>{toggleName == false ? "Set" : "Clean"} Name</button> */}
 
         </div>
     );

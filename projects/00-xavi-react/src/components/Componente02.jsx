@@ -20,8 +20,11 @@ export default function ComponenteDos() {
     // useEffect(()=>{}, [])
 
     return (
-        <div className="componente componente03">
-            <h4>Componente tres: <span className="age">{age}</span></h4>
+        <div className="componente componente02">
+            <h4>Componente dos:</h4>
+            <hr />
+            <span className="age">{age}</span>
+            <hr />
             <button onClick={()=>setAge(333)}>Change Age to 333</button>
             <button onClick={()=>setAge(444)}>Change Age to 444</button>
         </div>
