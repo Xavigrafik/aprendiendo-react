@@ -14,9 +14,9 @@ function App() {
   return (
     <>
       <h3>App.jsx</h3>
-      <Componente01></Componente01>
-      <Componente02></Componente02>
-      <Componente03></Componente03>
+      {/* <Componente01></Componente01> */}
+      {/* <Componente02></Componente02> */}
+      {/* <Componente03></Componente03> */}
       <Componente04></Componente04>
     </>
   )
