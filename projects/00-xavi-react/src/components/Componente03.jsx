@@ -88,7 +88,7 @@ export default function Componente03() {
             <button onClick={()=>resetAge()}>reset Age</button>
             <hr />
 
-            <ComponenteDefinido onClick={()=>{setAge(6666)}}>{age} ComponenteDefinido</ComponenteDefinido>
+            <ComponenteDefinido onClick={()=>{setAge(222)}}>{age} ComponenteDefinido</ComponenteDefinido>
             <hr />
             
             <input className='incrementInput' type="text" onChange={(e) => setIncrement(e.target.value)} placeholder={increment}/>

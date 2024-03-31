@@ -8,6 +8,7 @@ export default function ComponenteUno() {
         <h3>ComponenteUno</h3>
         <p>{age}</p>
         <button onClick={()=>setAge(333)}>Change Age to 333</button>
+        <button onClick={()=>setAge(0)}>Change Age to 0</button>
       </div>
     )
   }
