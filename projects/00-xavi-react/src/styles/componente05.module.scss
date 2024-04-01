@@ -1,0 +1,25 @@
+
+$bg-item:#90ee90;
+$border-item:#19a319;
+
+*[class*="_item"] {
+    margin-bottom: 1em;
+    padding: 0.5rem;
+    width: 200px;
+}
+
+.componente05{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .item {
+        border:5px solid $border-item;
+    }
+    
+    /* camelCase */
+    .itemDos {
+        background-color: $bg-item;
+    }
+}

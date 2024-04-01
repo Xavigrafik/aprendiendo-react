@@ -1,15 +1,20 @@
+:root {
+    --bg-component: rgb(240, 251, 255);
+    --border-component:rgba(4, 161, 204, 0.3)
+}
+
 .componente {
-    background-color: rgb(211, 239, 248);
-    margin-bottom: 20px;
+    background-color: var(--bg-component);
+    margin-bottom: 25px;
     border-radius: 5px;
     padding: 10px;
     min-width: 400px;
-    border: 2px solid rgba(4, 161, 204, 0.3);
-    border-bottom-width: 4px;
+    border: 3px solid var(--border-component);
+    box-shadow: 5px 5px 0px 0px var(--border-component);
 }
 .componente hr {
     margin: 5px 0px;
-    border-color: rgba(4, 161, 204, 0.3);
+    border-color: var(--border-component);
 }
 .componente p {
     margin: 5px 0px;
