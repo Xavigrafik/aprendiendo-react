@@ -1,0 +1,42 @@
+.componente {
+    background-color: rgb(211, 239, 248);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 400px;
+    border: 2px solid rgba(4, 161, 204, 0.3);
+    border-bottom-width: 4px;
+}
+.componente hr {
+    margin: 5px 0px;
+    border-color: rgba(4, 161, 204, 0.3);
+}
+.componente p {
+    margin: 5px 0px;
+}
+
+.componente h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.componente button {
+    margin: 5px;
+    height: 40px;
+    border: 2px solid #bbb;
+}
+
+.label {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.incrementInput {
+    border: 2px solid #bbb;
+    max-width: 100px;
+    padding: 1em;
+    border-radius: 5px;
+    height: 40px;
+}

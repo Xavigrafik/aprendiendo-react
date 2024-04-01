@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import '../styles/componente04.css' // se importa un CSS 
 // LIMPIAR USE EFFECT
-// 
-
 
 const ClicksCounter = ()=> {
 
@@ -34,14 +32,26 @@ const ClicksCounter = ()=> {
     )
 };
 
+const Spinner = ({rotate})=> {
+    const [isSpinning, setIsSpinning] = useState(false);
+    useEffect(() => {
+        setIsSpinning(rotate);
+      }, [rotate]); // Ejecutar este efecto cada vez que rotate/play cambie
+
+    return (
+        <span className={isSpinning ? 'spinner spin' : 'spinner'}></span>
+    )
+}
 const IntervalCount = ()=> {
     const [count, setCount] = useState(0);
     const [play, setPlay] = useState(false);
     
     useEffect(() => {
-        console.log(play ? 'played' : 'paused' );
-        if (!play) return
         
+        if (!play) {
+            return
+        }
+
         const intervalId = setInterval(() => {
             // !! Llamar a la función setCount no cambia el estado actual en el código que ya se está ejecutando
             // (por eso el prevCount)
@@ -55,7 +65,7 @@ const IntervalCount = ()=> {
 
     return (
         <div>
-            <h4>Interval: {count}</h4>
+            <h4>Interval: {count} <Spinner rotate={play}/></h4>
             <button onClick={()=>{setPlay(!play)}}>{play ? "Pause" : "Play"} Interval</button>
         </div>
     )

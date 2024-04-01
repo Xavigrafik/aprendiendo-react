@@ -1,0 +1,31 @@
+
+
+.containerApp{
+  padding: 2rem;
+  margin: 0 auto;
+
+  border-radius: 5px;
+  min-width: 500px;
+}
+
+
+.label {
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.incrementInput {
+  border:2px solid #bbb;
+  max-width: 100px;
+  padding: 1em; 
+  border-radius: 5px;
+  height: 40px;
+}
+
+.componente {
+  background-color: rgba(172, 245, 255, 0.3);
+  border:2px solid rgb(73, 152, 255);
+}
