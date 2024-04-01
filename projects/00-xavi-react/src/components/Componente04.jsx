@@ -32,14 +32,18 @@ const ClicksCounter = ()=> {
     )
 };
 
-const Spinner = ({rotate})=> {
+const Spinner = ({rotate , size})=> {
     const [isSpinning, setIsSpinning] = useState(false);
+    const spinnerStyle = {
+        width: size,
+        height: size
+      };
     useEffect(() => {
         setIsSpinning(rotate);
       }, [rotate]); // Ejecutar este efecto cada vez que rotate/play cambie
 
     return (
-        <span className={isSpinning ? 'spinner spin' : 'spinner'}></span>
+        <span className={isSpinning ? 'spinner spin' : 'spinner'} style={spinnerStyle}></span>
     )
 }
 const IntervalCount = ()=> {
@@ -65,7 +69,7 @@ const IntervalCount = ()=> {
 
     return (
         <div>
-            <h4>Interval: {count} <Spinner rotate={play}/></h4>
+            <h4>Interval: {count} <Spinner rotate={play} size={'15px'}/></h4>
             <button onClick={()=>{setPlay(!play)}}>{play ? "Pause" : "Play"} Interval</button>
         </div>
     )
