@@ -19,8 +19,14 @@ export default function Componente06() {
             .then(data => {
                     const { fact } = data;
                     setFact(fact);
-                    const threeFirstWords = fact.split(' ', 3).join(' ')
-                    const firstWord = 'putoPERRO';
+                    
+                    var randomNumber = Math.floor(Math.random() * 2);
+                    if (randomNumber === 1) {
+                        var threeFirstWords = fact.split(' ', 3).join(' ')
+                        } else {
+                        var threeFirstWords = "PUTO PERRO!"
+                    }
+                    
                     const url = `https://cataas.com/cat/says/${threeFirstWords}?fontSize=70&fontColor=red`;
                     setImageUrl(url);
                 })
