@@ -1,0 +1,67 @@
+.cardItem {
+    background-color: #f2f3f4;
+    box-shadow: 5px 5px 10px #ccc;
+    line-height: 1.1;
+
+    .imgWrapper {
+        width: 100%;
+        background-color: #000;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .textWrapper {
+
+        padding: 0.5em;
+
+        p {
+            margin: 0;
+        }
+
+        .titulo {
+            font-weight: bolder;
+            margin-bottom: 1em;
+        }
+
+
+
+        .categoria {
+            font-size: 0.6em;
+            background-color: black;
+            color: #fff;
+            display: inline-block;
+            border-radius: 3px;
+            padding: 0 1em;
+
+            &_medias {
+                background-color: red;
+            }
+            &_pantalones {
+                background-color: green;
+            }
+            &_remeras {
+                background-color: blue;
+            }
+            &_buzos {
+                background-color: orange;
+            }
+        }
+
+        .precio {
+            font-weight: 900;
+        }
+
+        .stock {
+            font-size: 80%;
+        }
+
+        .addToCart {
+            margin: 1em 0 0 0;
+            font-size: 0.85em;
+            border: 1px solid red;
+        }
+
+    }
+
+}
