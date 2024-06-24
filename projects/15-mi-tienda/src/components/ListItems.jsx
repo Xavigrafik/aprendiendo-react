@@ -22,7 +22,7 @@ const ListItems = () => {
 
     return (
       <>
-      <h4>ITEMS:</h4>
+      <h4 className='mb-5'>ITEMS:</h4>
       <div className='listItems row'>
         {items.length > 0 && 
           items.map((item)=>{

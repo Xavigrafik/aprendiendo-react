@@ -16,6 +16,7 @@ const CardItem = ({ item }) => {
                     
                     <p className="precio">{item.precio}€</p>
                     <p className="stock">{item.stock} uds.</p>
+                    
                     <button className="addToCart">Add to cart</button>
                 </div>
             </div>
