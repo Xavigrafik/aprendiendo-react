@@ -1,12 +1,11 @@
+import { Link } from 'react-router-dom';
 import '../styles/navBar.scss';
 
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                    Navbar
-                </a>
+                <Link className="navbar-brand" to="/">Navbar</Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -22,15 +21,9 @@ const NavBar = () => {
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/" > Home </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/item"> Item </a>
-                        </li>
-                        
+                    <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <Link className="nav-link" to="/" > Home </Link>
+                        <Link className="nav-link" to="/item"> Item </Link>
                     </ul>
                 </div>
             </div>

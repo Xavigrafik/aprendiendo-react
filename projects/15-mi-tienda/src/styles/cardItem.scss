@@ -19,9 +19,15 @@
             margin: 0;
         }
 
-        .titulo {
+        a.titulo {
             font-weight: bolder;
             margin-bottom: 1em;
+            display: block;
+            color: #111;
+            &:hover {
+                text-decoration:underline;
+                
+            }
         }
 
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/cardItem.scss';
 
 const CardItem = ({ item }) => {
@@ -9,15 +10,19 @@ const CardItem = ({ item }) => {
                     style={{ backgroundImage: 'url(' + item.imagen + ')' }}
                 ></div>
                 <div className="textWrapper">
-                    <p className="titulo">
-                        {item.id} - {item.titulo}
-                    </p>
+                    
+                    <Link className="titulo" to="/item/888">{item.id} - {item.titulo}</Link>
+
                     <p className={`badge categoria_${item.categoria}`}>{item.categoria}</p>
                     
                     <p className="precio">{item.precio}€</p>
                     <p className="stock">{item.stock} uds.</p>
                     
-                    <button className="addToCart">Add to cart</button>
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                        <button className="addToCart btn">+</button>
+                        <div className="addToCart btn">Add to cart {"w"}</div>
+                        <button className="addToCart btn">-</button>
+                    </div>
                 </div>
             </div>
         </div>
