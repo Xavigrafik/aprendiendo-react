@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import './App.scss';
@@ -13,17 +13,20 @@ import ItemDetail from './components/ItemDetail';
 function App() {
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
         <NavBar></NavBar>
 
           <div className='container'>
             <Routes>
-              <Route path="/" element={ <ListItems/> }/>
-              <Route path="/item" element={<ItemDetail/>}/>
-              <Route path="/item/:id" element={<ItemDetail/>}/>
-              
+                <Route path="/" element={ <ListItems/> }/>
+                <Route path="/home" element={<ListItems />} />
+                <Route path="/item" element={<ListItems/>}/>
+          
+                <Route path="/item/:id" element={<ItemDetail/>}/>
             </Routes>
-          </div >
+      </div>
+      <hr />
+
         
        
       </BrowserRouter>

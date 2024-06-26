@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/cardItem.scss';
 
-const CardItem = ({ item }) => {
+const CardItem = ( {item} ) => {
     return (
         <div className="col-3">
             <div className="cardItem">
@@ -11,7 +11,7 @@ const CardItem = ({ item }) => {
                 ></div>
                 <div className="textWrapper">
                     
-                    <Link className="titulo" to="/item/888">{item.id} - {item.titulo}</Link>
+                    <Link className="titulo" to={`/item/${item.id}`} >{item.id} - {item.titulo}</Link>
 
                     <p className={`badge categoria_${item.categoria}`}>{item.categoria}</p>
                     
