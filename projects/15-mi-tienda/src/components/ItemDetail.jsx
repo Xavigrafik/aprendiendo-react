@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { getItemById } from "../helpers/getItemById";
+import { getItemById } from "../helpers/getData";
 import { useEffect, useState  } from "react";
 
 const ItemDetail = () => {
@@ -14,11 +14,11 @@ const ItemDetail = () => {
             });
     }, [id]);
 
-    
+
     
     if (item) {
         
-        console.log("itemOK:", item);
+        //console.log("itemOK:", item);
         
         return (
             <div className="col-3">

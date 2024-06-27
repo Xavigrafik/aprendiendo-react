@@ -20,9 +20,13 @@ function App() {
             <Routes>
                 <Route path="/" element={ <ListItems/> }/>
                 <Route path="/home" element={<ListItems />} />
-                <Route path="/item" element={<ListItems/>}/>
+                <Route path="/item" element={<ListItems />} />
           
-                <Route path="/item/:id" element={<ItemDetail/>}/>
+                <Route path="/categoria/all" element={<ListItems/>}/>
+                <Route path="/categoria/:cat" element={<ListItems />} />
+          
+                <Route path="/item/:id" element={<ItemDetail />} />
+          
             </Routes>
       </div>
       <hr />
