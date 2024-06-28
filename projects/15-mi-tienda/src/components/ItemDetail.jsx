@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams,  } from "react-router-dom";
 import { getItemById } from "../helpers/getData";
 import { useEffect, useState  } from "react";
 
@@ -6,20 +6,21 @@ const ItemDetail = () => {
 
     const id = useParams().id
     const [item, setItem] = useState(null);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         getItemById(id)
             .then((res) => {
                 setItem(res);
+            }).catch(error => {
+                //console.error(error);
+                navigate('/404');
             });
     }, [id]);
 
-
     
     if (item) {
-        
-        //console.log("itemOK:", item);
-        
         return (
             <div className="col-3">
                 <h2>Item detail:</h2>

@@ -22,25 +22,21 @@ export const getAllCategories = () => {
 
 // ITEM BY ID
 export const getItemById = (id) => {
-
-
-    return new Promise((resolve, reject) => {
-        
-      const itemFind = data.find((el) => el.id == parseInt(id));
+  return new Promise((resolve, reject) => {
+      const itemFind = data.find((el) => el.id === parseInt(id, 10));
+      //console.log("Buscando ID:", id);
+      //console.log("itemFind:", itemFind);
       
-       //console.log("Buscando ID:", id);
-       //console.log("itemFind:", itemFind);
-  
-        if (itemFind) {
-            resolve(itemFind);
+      if (itemFind) {
+          resolve(itemFind);
       } else {
-        reject({
-            error: "No se encontró el producto"
-        });
+          reject({
+              error: "No se encontró el id"
+          });
       }
-    });
+  });
 }
-  
+    
 
 // ITEM BY CATEGORIA
 export const getItemByCategoria = (cat) => {
@@ -49,14 +45,14 @@ export const getItemByCategoria = (cat) => {
     const itemsFind = data.filter((el) => el.categoria === cat);
     
     // Descomentar para depuración
-     console.log("Buscando categoría:", cat);
-    console.log("itemsFind:", itemsFind);
+     //console.log("Buscando categoría:", cat);
+    //console.log("itemsFind:", itemsFind);
 
     if (itemsFind.length > 0) {
       resolve(itemsFind);
     } else {
       reject({
-        error: "No se encontró ningún producto en esa categoría"
+        error: "No se encontró esa categoría"
       });
     }
   });

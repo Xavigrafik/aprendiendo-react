@@ -1,74 +1,74 @@
+import '../styles/listItems.scss';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-
-import '../styles/listItems.scss'
-
 import CardItem from '../components/CardItem';
-import { getAllItems, getAllCategories, getItemByCategoria } from '../helpers/getData';
+import { getAllItems, getAllCategories, getItemByCategoria, getItemById } from '../helpers/getData';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { CategoryNavBar } from './CategoryNavBar';
 
 const ListItems = () => {
+    const { cat, id } = useParams();
+    const navigate = useNavigate();
 
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState([]);
 
-    const cat = useParams().cat;
-    
     useEffect(() => {
         getAllCategories().then((res) => {
-          setCategories(res);
+            setCategories(res);
         });
-      }, []);
-      
+    }, []);
+
     useEffect(() => {
-          
-        if (!cat || cat === "all") {
-
-            getAllItems().then((res) => {
-                    setItems(res);
-            });
-            
-        } else {
-
-            getItemByCategoria(cat).then((res) => {
-                    setItems(res);
-            }).catch(error => {
+        if (id) {
+            getItemById(id)
+                .then((res) => {
+                    if (!res) {
+                        navigate('/404');
+                    } else {
+                        setItems([res]); // Wrap single item in array
+                    }
+                })
+                .catch(error => {
                     console.error(error);
-            });
+                    navigate('/404');
+                });
+        } else if (cat) {
+            getItemByCategoria(cat)
+                .then((res) => {
+                    setItems(res);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        } else {
+            // If no cat or id, fetch all items
+            getAllItems()
+                .then((res) => {
+                    setItems(res);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
-      }, [cat]);
+    }, [cat, id, navigate]);
 
     return (
       <>
-            <h4 className='mb-5'>ITEMS:</h4>
-            
-            <div className="row">
-                <div className='categoriesBar' >
-                    <Link className='catLink btn btn-sm' to={`/categoria/all`}>All</Link>
-
-                    {categories.length > 0 && 
-                        categories.map((cat, index)=>{
-                            return (
-                                <Link className='catLink btn btn-sm' key={index} to={`/categoria/${cat}`}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</Link>
-                            )
-                        })
-                    }
-                </div>
-            </div>
+        <h4 className='mb-5'>ITEMS:</h4>
+        
+        <CategoryNavBar categories = {categories}></CategoryNavBar>
 
         <div className='listItems row'>
-
-          
-        {items.length > 0 && 
-          items.map((item)=>{
-            return (
-                <CardItem item={item} key={item.id}></CardItem>
-            )
-          })
-          }
-      </div>
+          {items.length > 0 ? (
+            items.map((item) => (
+              <CardItem item={item} key={item.id} />
+            ))
+          ) : (
+            <p>No items found.</p>
+          )}
+        </div>
       </>
-    )
+    );
 };
 
 export default ListItems;
-

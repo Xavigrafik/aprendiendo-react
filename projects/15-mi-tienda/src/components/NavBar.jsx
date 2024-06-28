@@ -22,8 +22,10 @@ const NavBar = () => {
                     id="navbarSupportedContent"
                 >
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <Link className="nav-link" to="/" > Home </Link>
-                        <Link className="nav-link" to="/item"> Item </Link>
+                        <Link className="nav-link" to="/" >Home</Link>
+                        <Link className="nav-link" to="/404" >404</Link>
+                        <Link className="nav-link" to="/item/1">Item 1</Link>
+                        <Link className="nav-link" to="/item/555">Item 555</Link>
                     </ul>
                 </div>
             </div>
