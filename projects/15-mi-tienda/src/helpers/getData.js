@@ -2,8 +2,7 @@ import data from "../data/items.json";
 
 export const getAllItems = () => {
   return new Promise((resolve) => {
-      console.log('damelo todo');
-           resolve(data);
+        resolve(data);
     })
 }
 
@@ -39,7 +38,7 @@ export const getItemById = (id) => {
     
 
 // ITEM BY CATEGORIA
-export const getItemByCategoria = (cat) => {
+export const getItemsByCategoria = (cat) => {
 
   return new Promise((resolve, reject) => {
     const itemsFind = data.filter((el) => el.categoria === cat);

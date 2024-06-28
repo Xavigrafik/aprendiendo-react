@@ -1,7 +1,7 @@
 import '../styles/listItems.scss';
 import { useState, useEffect } from 'react';
 import CardItem from '../components/CardItem';
-import { getAllItems, getAllCategories, getItemByCategoria, getItemById } from '../helpers/getData';
+import { getAllItems, getAllCategories, getItemsByCategoria, getItemById } from '../helpers/getData';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { CategoryNavBar } from './CategoryNavBar';
 
@@ -33,7 +33,7 @@ const ListItems = () => {
                     navigate('/404');
                 });
         } else if (cat) {
-            getItemByCategoria(cat)
+            getItemsByCategoria(cat)
                 .then((res) => {
                     setItems(res);
                 })
