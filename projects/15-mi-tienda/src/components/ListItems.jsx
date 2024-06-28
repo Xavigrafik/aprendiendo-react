@@ -1,35 +1,41 @@
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
 import '../styles/listItems.scss'
 
-import { useState, useEffect } from 'react';
 import CardItem from '../components/CardItem';
 import { getAllItems, getAllCategories, getItemByCategoria } from '../helpers/getData';
-import { Link, useParams } from 'react-router-dom';
-//import data from '../data/items.json';
 
 const ListItems = () => {
 
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState([]);
-    const cat = useParams().cat
 
+    const cat = useParams().cat;
+    
     useEffect(() => {
-      getAllItems().then((res) => {
-            setItems(res);
+        getAllCategories().then((res) => {
+          setCategories(res);
         });
-    }, [cat]);
-  
+      }, []);
+      
     useEffect(() => {
-      getAllCategories().then((res) => {
-            setCategories(res)
-        });
-    }, []);
+          
+        if (!cat || cat === "all") {
 
-    useEffect(() => {
-        getItemByCategoria(cat)
-            .then((res) => {
-                setItems(res);
+            getAllItems().then((res) => {
+                    setItems(res);
             });
-    }, [cat]);
+            
+        } else {
+
+            getItemByCategoria(cat).then((res) => {
+                    setItems(res);
+            }).catch(error => {
+                    console.error(error);
+            });
+        }
+      }, [cat]);
 
     return (
       <>

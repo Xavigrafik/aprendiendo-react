@@ -1,7 +1,8 @@
 import data from "../data/items.json";
 
 export const getAllItems = () => {
-    return new Promise((resolve) => {
+  return new Promise((resolve) => {
+      console.log('damelo todo');
            resolve(data);
     })
 }
@@ -43,18 +44,20 @@ export const getItemById = (id) => {
 
 // ITEM BY CATEGORIA
 export const getItemByCategoria = (cat) => {
-    return new Promise((resolve, reject) => {
-      const itemsFind = data.filter((el) => el.categoria === cat);
-      
-      console.log("Buscando categoría:", cat);
-      console.log("itemsFind:", itemsFind);
-  
-      if (itemsFind.length > 0) {
-        resolve(itemsFind);
-      } else {
-        reject({
-          error: "No se encontró ningún producto en esa categoría"
-        });
-      }
-    });
-  }
+
+  return new Promise((resolve, reject) => {
+    const itemsFind = data.filter((el) => el.categoria === cat);
+    
+    // Descomentar para depuración
+     console.log("Buscando categoría:", cat);
+    console.log("itemsFind:", itemsFind);
+
+    if (itemsFind.length > 0) {
+      resolve(itemsFind);
+    } else {
+      reject({
+        error: "No se encontró ningún producto en esa categoría"
+      });
+    }
+  });
+}
