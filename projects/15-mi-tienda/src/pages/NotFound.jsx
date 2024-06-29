@@ -1,6 +1,5 @@
-import React from 'react';
 
-const NotFound = () => {
+export const NotFound = () => {
     return (
         <div>
             <h2>404 - Página no encontrada</h2>
@@ -8,5 +7,3 @@ const NotFound = () => {
         </div>
     );
 };
-
-export default NotFound;

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { CarritoWidget } from '../components/CarritoWidget'; 
 
 
-import { getAllCategories, getItemsByCategoria } from '../helpers/getData';
+import { getAllCategories } from '../helpers/getData';
 import '../styles/navBar.scss';
 
-const NavBar = () => {
+export const NavBar = () => {
 
     const [categories, setCategories] = useState([]);
 
@@ -36,10 +36,11 @@ const NavBar = () => {
                     id="navbarSupportedContent"
                 >
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <Link className="nav-link" to="/" >Home</Link>
-                        <Link className="nav-link" to="/404" >404</Link>
-                        <Link className="nav-link" to="/item/1">Item 1</Link>
-                        <Link className="nav-link" to="/item/555">Item 555</Link>
+                        {/* <Link className="nav-link" to="/" >Home</Link> */}
+                        <Link className="nav-link" to="/about">About</Link>
+                        <Link className="nav-link" to="/404">404</Link>
+                        {/* <Link className="nav-link" to="/item/1">Item 1</Link> */}
+                        {/* <Link className="nav-link" to="/item/555">Item 555</Link> */}
 
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,13 +62,12 @@ const NavBar = () => {
                     </li>
 
                     </ul>
-                    <div className='nav-link ml-auto' >
+                    <div className='nav-link ml-auto'>
                         <CarritoWidget></CarritoWidget>
                     </div>
                 </div>
-            </div>
+            </div>  
         </nav>
     );
 };
 
-export default NavBar;
