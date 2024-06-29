@@ -37,7 +37,7 @@ function App() {
 
           <NavBar></NavBar>
 
-            <div className='container h-75' >
+            <div className='container min-vh-100' >
               <Routes>
                   <Route path="/" element={ <ListItems/> }/>
                   <Route path="/home" element={<ListItems />} />
@@ -55,8 +55,8 @@ function App() {
             
               </Routes>
         </div>
-
           <Footer></Footer>
+
         </BrowserRouter>
       </CarritoContext.Provider>
   )
