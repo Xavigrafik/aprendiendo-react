@@ -1,0 +1,32 @@
+.carritoWidget {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #fff;
+    position: relative;
+    padding: 3px;
+    .icon {
+        width: 24px;
+        height: 24px;
+        opacity: 0.8;
+    }
+    .num {
+        position: absolute;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: -8px;
+        right: -8px;
+        &:empty {
+            display: none;
+        }
+
+        &.full {
+            background-color: red;
+        }
+    }
+}

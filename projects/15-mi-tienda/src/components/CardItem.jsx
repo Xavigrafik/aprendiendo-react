@@ -20,7 +20,7 @@ const CardItem = ( {item} ) => {
                     
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button className="addToCart btn">+</button>
-                        <div className="addToCart btn">Add to cart {"w"}</div>
+                        <div className="addToCart btn" >Add to cart {"w"}</div>
                         <button className="addToCart btn">-</button>
                     </div>
                 </div>
