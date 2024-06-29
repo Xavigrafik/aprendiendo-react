@@ -4,6 +4,7 @@
 
 
 ### IMPORTAR COMO UN MÓDULO PREDETERMINADO (DEFAULT):
+https://stackoverflow.com/questions/36795819/when-should-i-use-curly-braces-for-es6-import
 
 components/NombreComponente.jsx :
 ```javascript
