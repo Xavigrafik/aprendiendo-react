@@ -10,6 +10,7 @@ import {BrowserRouter , Route, Routes} from "react-router-dom";
 import ListItems from './components/ListItems'
 import ItemDetail from './components/ItemDetail';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 // PAGES
 import  {NotFound}  from "./pages/NotFound";
@@ -36,7 +37,7 @@ function App() {
 
           <NavBar></NavBar>
 
-            <div className='container'>
+            <div className='container h-75' >
               <Routes>
                   <Route path="/" element={ <ListItems/> }/>
                   <Route path="/home" element={<ListItems />} />
@@ -54,10 +55,8 @@ function App() {
             
               </Routes>
         </div>
-        <hr />
 
-          
-        
+          <Footer></Footer>
         </BrowserRouter>
       </CarritoContext.Provider>
   )

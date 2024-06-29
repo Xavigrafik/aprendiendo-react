@@ -22,11 +22,13 @@ const ItemDetail = () => {
     
     if (item) {
         return (
-            <div className="col-3">
-                <h2>Item detail:</h2>
+            <div className="col-6">
                 <img src={item.imagen} className="img-fluid" />
-                <strong className="border border-bottom-0 p-2 d-block">id: {item.id}</strong>
-                <div className="border p-2 mb-3">titulo: {item.titulo}</div>
+                <strong className="p-1 d-block">{item.id} {item.titulo}</strong>
+                <div className="p-1 mb-3">{item.descripcion}</div>
+                <div className="p-1 mb-3">{item.categoria}</div>
+                <div className="p-1 mb-3">Quedan {item.stock}uds.</div>
+                <div className="p-1 mb-3">{item.precio}€</div>
 
                 <Link className="btn btn-primary btn-lg" to="/">Home</Link>
             </div>

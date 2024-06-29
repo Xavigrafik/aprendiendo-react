@@ -1,6 +1,6 @@
 import { useEffect, useState,  } from 'react';
 import { Link } from 'react-router-dom';
-import { CarritoWidget } from '../components/CarritoWidget'; 
+import { CarritoWidget } from './CarritoWidget'; 
 
 
 import { getAllCategories } from '../helpers/getData';
@@ -17,9 +17,9 @@ import '../styles/navBar.scss';
     }, []);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
             <div className="container-xxl">
-                <Link className="navbar-brand" to="/">Navbar</Link>
+                <Link className="navbar-brand" to="/">FOOTER</Link>
                 <button
                     className="navbar-toggler"
                     type="button"

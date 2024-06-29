@@ -1,9 +1,12 @@
-import '../styles/listItems.scss';
 import { useState, useEffect } from 'react';
+
 import CardItem from '../components/CardItem';
+import { CategoryNavBar } from '../components/CategoryNavBar';
+
 import { getAllItems, getAllCategories, getItemsByCategoria, getItemById } from '../helpers/getData';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { CategoryNavBar } from './CategoryNavBar';
+
+import '../styles/listItems.scss';
 
 const ListItems = () => {
     const { cat, id } = useParams();
@@ -58,7 +61,7 @@ const ListItems = () => {
         
         <CategoryNavBar categories = {categories}></CategoryNavBar>
 
-        <div className='listItems row'>
+        <div className='listItems row pb-5'>
           {items.length > 0 ? (
             items.map((item) => (
               <CardItem item={item} key={item.id} />
