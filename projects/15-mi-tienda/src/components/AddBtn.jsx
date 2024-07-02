@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/addToCart.scss"
+import useCarrito from '../hooks/useCarrito';
+export  const AddBtn = ({item}) => {
 
 
-export const AddBtn = ({ cantidad, handleAddToCart,handleSumar,handleRestar }) => {
+    const { cantidad, sumarCantidad, restarCantidad, addToCart } = useCarrito(item);
+
   return (
     <div className='addToCart'>
         <div className="counter btn-group" role="group" aria-label="Basic example">
-            <button className="restar btn btn-info text-white" onClick={handleRestar}>-</button>
+            <button className="restar btn btn-info text-white" onClick={restarCantidad}>-</button>
             <div className='cantidad'>{cantidad}</div>
-            <button className="sumar btn btn-info text-white" onClick={handleSumar}>+</button>
+            <button className="sumar btn btn-info text-white" onClick={sumarCantidad}>+</button>
         </div>
-        <div className="add btn btn-info" onClick={handleAddToCart}>Add: {cantidad}</div>
+        <div className="add btn btn-info" onClick={() => addToCart(item.id, cantidad)}>Add: {cantidad}</div>
     </div>
   )
 }

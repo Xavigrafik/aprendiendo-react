@@ -2,9 +2,9 @@ import data from "../data/items.json";
 
 
 
-export const handleAddToCart = (id, cantidad)=> {
-    console.log(`Añadiendo item con ID: ${id} y cantidad: ${cantidad}`);
-}
+// export const handleAddToCart = (id, cantidad)=> {
+//     console.log(`Añadiendo item con ID: ${id} y cantidad: ${cantidad}`);
+// }
 // export const handleSumar = (id, cantidad)=> {
 //     setCantidad(cantidad + 1)
     
