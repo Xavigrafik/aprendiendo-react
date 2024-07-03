@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import  {NotFound}  from "./pages/NotFound";
 import  {About}  from "./pages/About";
 import  {Carrito}  from "./pages/Carrito";
+import  {LayoutEffect}  from "./pages/LayoutEffect";
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -52,6 +53,9 @@ function App() {
 
                   <Route path="/404" element={<NotFound />} />
                   <Route path="*" element={<NotFound />} />
+
+
+                  <Route path="/layoutEffect" element={<LayoutEffect />} />
             
               </Routes>
         </div>

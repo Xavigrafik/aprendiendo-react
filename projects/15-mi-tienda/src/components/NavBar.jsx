@@ -41,6 +41,7 @@ import '../styles/navBar.scss';
                         <Link className="nav-link" to="/404">404</Link>
                         {/* <Link className="nav-link" to="/item/1">Item 1</Link> */}
                         {/* <Link className="nav-link" to="/item/555">Item 555</Link> */}
+                        <Link className="nav-link" to="/layoutEffect">useLayoutEffect</Link>
 
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
