@@ -1,6 +1,7 @@
 import { useEffect, useState,  } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link  } from 'react-router-dom';
 import { CarritoWidget } from '../components/CarritoWidget'; 
+import { CustomNavLink } from '../components/CustomNavLink'; 
 
 
 import { getAllCategories } from '../helpers/getData';
@@ -36,28 +37,59 @@ import '../styles/navBar.scss';
                     id="navbarSupportedContent"
                 >
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-                        {/* <Link className="nav-link" to="/" >Home</Link> */}
-                        <Link className="nav-link" to="/about">About</Link>
-                        <Link className="nav-link" to="/404">404</Link>
-                        {/* <Link className="nav-link" to="/item/1">Item 1</Link> */}
-                        {/* <Link className="nav-link" to="/item/555">Item 555</Link> */}
-                        <Link className="nav-link" to="/layoutEffect">useLayoutEffect</Link>
 
-                    <li className="nav-item dropdown">
+                    <CustomNavLink to="/">Home</CustomNavLink>
+
+                    {/* <CustomNavLink to="/about">About</CustomNavLink> */}
+                    {/* <CustomNavLink to="/404">404</CustomNavLink> */}
+                    {/* <CustomNavLink to="/item/1">Item 1</CustomNavLink> */}
+                    {/* <CustomNavLink to="/item/555">Item 555</CustomNavLink> */}
+                        
+
+                    <li className="nav-item dropdown ">
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
                         </a>
-                        <ul className="dropdown-menu">
-                            <li><Link className='dropdown-item' to={`/categoria/`}>All</Link></li>
+                        <ul className="dropdown-menu dropdown-menu-dark">
+                            <li><CustomNavLink to={`/categoria/all`}>All</CustomNavLink></li>
                             {categories.length > 0 && 
                                 categories.map((category, index) => (
                                     <li key={index} data-id={index}>
-                                        <Link className='dropdown-item'  to={`/categoria/${category}`}>
-                                        {category.charAt(0).toUpperCase() + category.slice(1)}
-                                        </Link>
+                                        <CustomNavLink className='dropdown-item'  to={`/categoria/${category}`} >
+                                            {category.charAt(0).toUpperCase() + category.slice(1)}
+                                        </CustomNavLink>
                                     </li>
                                 ))
                                 }
+                        </ul>
+
+                    </li>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hooks
+                        </a>
+                        <ul className="dropdown-menu dropdown-menu-dark">
+                            <li className='dropdown-item'>
+                                <CustomNavLink to="/hookPages/layoutEffect">useLayoutEffect</CustomNavLink></li>
+                            <li className='dropdown-item'><CustomNavLink to="/hookPages/hookReducer">useReducer</CustomNavLink></li>
+
+                            <li><hr className="dropdown-divider"/></li>
+
+                            <li className='dropdown-item'>useState ✅</li>
+                            <li className='dropdown-item'>useReducer</li>
+                            <li className='dropdown-item'>useSyncExternalStore</li>
+                            <li className='dropdown-item'>useEffect</li>
+                            <li className='dropdown-item'>useLayoutEffect</li>
+                            <li className='dropdown-item'>useInsertionEffect</li>
+                            <li className='dropdown-item'>useRef</li>
+                            <li className='dropdown-item'>useImperativeHandle</li>
+                            <li className='dropdown-item'>useMemo</li>
+                            <li className='dropdown-item'>useCallback</li>
+                            <li className='dropdown-item'>useContext</li>
+                            <li className='dropdown-item'>useTransition</li>
+                            <li className='dropdown-item'>useDeferredValue</li>
+                            <li className='dropdown-item'>useDebugValue</li>
+                            <li className='dropdown-item'>useId</li>
                         </ul>
 
                     </li>

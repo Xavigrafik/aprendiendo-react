@@ -1,0 +1,17 @@
+
+.categoryNavBar{
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2em;
+
+    .nav-link{
+        background-color: #333;
+        padding: 0.1em 0.8em;
+        border-radius: 4px;
+        font-size: 0.8em;
+        &.active {
+            background-color: rgb(13, 202, 240);
+            color: #333 !important;;
+        }
+    }
+}

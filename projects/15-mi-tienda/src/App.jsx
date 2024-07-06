@@ -16,12 +16,13 @@ import Footer from './components/Footer';
 import  {NotFound}  from "./pages/NotFound";
 import  {About}  from "./pages/About";
 import  {Carrito}  from "./pages/Carrito";
-import  {LayoutEffect}  from "./pages/LayoutEffect";
+import  {LayoutEffect}  from "./pages/hookPages/LayoutEffect";
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import './App.scss';
+import { HookReducer } from "./pages/hookPages/HookReducer";
 
 
 
@@ -45,7 +46,7 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/carrito" element={<Carrito />} />
             
-                  <Route path="/categoria/*" element={<ListItems/>}/>
+                  <Route path="/categoria/all" exact  element={<ListItems/>}/>
                   <Route path="/categoria/:cat" element={<ListItems />} />
             
                   <Route path="/item/*" element={<ItemDetail />} />
@@ -54,10 +55,12 @@ function App() {
                   <Route path="/404" element={<NotFound />} />
                   <Route path="*" element={<NotFound />} />
 
+                  {/* HOOK PAGES */}
+                  <Route path="/hookPages/layoutEffect" element={<LayoutEffect />} />
+                  <Route path="/hookPages/hookReducer" element={<HookReducer />} />
 
-                  <Route path="/layoutEffect" element={<LayoutEffect />} />
-            
               </Routes>
+
         </div>
           <Footer></Footer>
 
