@@ -30,14 +30,13 @@
         align-items: center;
         justify-content: center;
         bottom: -9px;
-        right: -14px;
+        right: -13px;
         text-decoration: none!important;
+        background-color: red;
+
         &:empty {
             display: none;
         }
 
-        &.full {
-            background-color: red;
-        }
     }
 }

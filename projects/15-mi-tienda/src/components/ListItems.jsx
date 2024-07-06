@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import CardItem from '../components/CardItem';
 import { CategoryNavBar } from '../components/CategoryNavBar';
 
 import { getAllItems, getAllCategories, getItemsByCategoria, getItemById } from '../helpers/getData';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../styles/listItems.scss';
+
+
+import { CarritoContext } from '../context/CarritoContext';
+
+
 
 const ListItems = () => {
     const { cat, id } = useParams();
@@ -14,6 +19,8 @@ const ListItems = () => {
 
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState([]);
+
+    const {carrito, setCarrito} = useContext(CarritoContext);
 
     useEffect(() => {
         getAllCategories().then((res) => {
@@ -54,10 +61,10 @@ const ListItems = () => {
                 });
         }
     }, [cat, id, navigate]);
-
     return (
-      <>
+        <>
         <h4 className='mb-5'>ITEMS:</h4>
+        
         
         <CategoryNavBar categories = {categories}></CategoryNavBar>
 

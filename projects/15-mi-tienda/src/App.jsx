@@ -29,12 +29,10 @@ import { HookReducer } from "./pages/hookPages/HookReducer";
 
 function App() {
   
-   const [carrito, setCarrito] = useState();
-  
-  const num = 8;
+   const [carrito, setCarrito] = useState([]);
 
   return (
-    <CarritoContext.Provider value={ {num ,carrito, setCarrito}}>
+    <CarritoContext.Provider value={ {carrito, setCarrito}}>
       <BrowserRouter>
 
           <NavBar></NavBar>

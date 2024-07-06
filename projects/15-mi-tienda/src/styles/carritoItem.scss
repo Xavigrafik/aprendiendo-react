@@ -1,0 +1,71 @@
+.carritoItem {
+    border: 1px solid #ccc;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #f2f3f4;
+    transition: all ease-in-out 400ms;
+    
+    &:hover {
+        border: 1px solid darken(#ccc, 6%);
+        background-color: darken(#f2f3f4, 6%);
+    }
+
+
+    .imgWrapper {
+        height: 50px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-right: 1.5em;
+    }
+
+    .unitiesWrapper, .pricewrapper {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .btnWrapper {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .titulo {
+        display: block;
+        font-weight: bold;
+    }
+
+    .categoria {
+
+
+        &_medias {
+            background-color: red;
+        }
+
+        &_pantalones {
+            background-color: green;
+        }
+
+        &_remeras {
+            background-color: blue;
+        }
+
+        &_buzos {
+            background-color: orange;
+        }
+    }
+
+    .precio {
+        font-weight: 900;
+    }
+
+    .stock {
+        font-size: 80%;
+    }
+
+}
