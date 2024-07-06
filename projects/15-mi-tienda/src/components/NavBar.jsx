@@ -51,11 +51,11 @@ import '../styles/navBar.scss';
                             Categorías
                         </a>
                         <ul className="dropdown-menu dropdown-menu-dark">
-                            <li><CustomNavLink to={`/categoria/all`}>All</CustomNavLink></li>
+                            <li className='dropdown-item'><CustomNavLink to={`/categoria/all`}>All</CustomNavLink></li>
                             {categories.length > 0 && 
                                 categories.map((category, index) => (
-                                    <li key={index} data-id={index}>
-                                        <CustomNavLink className='dropdown-item'  to={`/categoria/${category}`} >
+                                    <li className='dropdown-item' key={index} data-id={index}>
+                                        <CustomNavLink  to={`/categoria/${category}`} >
                                             {category.charAt(0).toUpperCase() + category.slice(1)}
                                         </CustomNavLink>
                                     </li>

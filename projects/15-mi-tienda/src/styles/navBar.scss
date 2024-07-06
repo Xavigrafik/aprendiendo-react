@@ -1,9 +1,33 @@
 .navbar {
-    color: #fff;
     padding-block: 1em;
-    .nav-link {
-        &.active {
-            border-bottom:3px solid;
+
+    .navbar-nav {
+        gap: 2em;
+
+
+        .dropdown-item {
+
+            $borderWidth : 8px;
+
+            &:has(.nav-link.active) {
+                background-color: var(--bs-dark);
+                border-left: $borderWidth solid var(--bs-cyan);
+                padding-left: calc(var(--bs-dropdown-item-padding-x) - $borderWidth );
+                //padding-left: calc(var(--bs-dropdown-item-padding-x)  ) ;
+            }
+
+            .nav-link {
+                &.active {
+                    border-bottom: 0px solid;
+                }
+            }
+        }
+
+        .nav-link {
+            &.active {
+                color: var(--bs-cyan) !important;
+                border-bottom: 2px solid;
+            }
         }
     }
 }

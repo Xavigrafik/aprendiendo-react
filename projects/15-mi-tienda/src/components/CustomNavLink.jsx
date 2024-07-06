@@ -5,12 +5,7 @@ export const CustomNavLink = ({ to, children, exact }) => (
         to={to}
         exact={exact}
         className={({ isActive, isPending }) =>
-            `nav-link text-info
-            ${isPending 
-                ? 'pending' 
-                : isActive
-                    ? 'active' : ''
-            }`
+            `nav-link ${isPending ? 'pending' : isActive ? 'active' : ''}`
         }
     >
         {children}
