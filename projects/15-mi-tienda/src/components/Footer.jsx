@@ -42,11 +42,11 @@ import '../styles/navBar.scss';
                         {/* <Link className="nav-link" to="/item/1">Item 1</Link> */}
                         {/* <Link className="nav-link" to="/item/555">Item 555</Link> */}
 
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown dropup">
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
                         </a>
-                        <ul className="dropdown-menu">
+                        <ul className="dropdown-menu dropdown-menu-dark">
                             <li><Link className='dropdown-item' to={`/categoria/`}>All</Link></li>
                             {categories.length > 0 && 
                                 categories.map((category, index) => (

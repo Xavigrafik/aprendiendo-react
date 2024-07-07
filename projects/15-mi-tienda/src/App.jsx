@@ -5,6 +5,7 @@ import {CarritoContext} from './context/CarritoContext';
 
 // ROUTES
 import {BrowserRouter , Route, Routes} from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 // COMPONENTS
 import ListItems from './components/ListItems'
@@ -25,10 +26,8 @@ import './App.scss';
 import { HookReducer } from "./pages/hookPages/HookReducer";
 
 
-
-
 function App() {
-  
+
     const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
 
     const [carrito, setCarrito] = useState(carritoInicial);
