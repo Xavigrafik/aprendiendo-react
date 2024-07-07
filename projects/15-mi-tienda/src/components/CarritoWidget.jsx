@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 export const CarritoWidget = () => {
+
     const { carrito } = useContext(CarritoContext);
 
     const [num, setNum] = useState(0);
@@ -20,7 +21,10 @@ export const CarritoWidget = () => {
     return (
         <Link to="/carrito" className="carritoWidget">
             <img src={cardIcon} className="icon" alt="Cart Icon" />
-            {num > 0 && <div className="num">{num}</div>} {/* Muestra el número solo si es mayor que 0 */}
+
+            {/* Muestra el número solo si es mayor que 0 */}
+            {num > 0 && <div className="num">{num}</div>} 
+            
         </Link>
     );
 };

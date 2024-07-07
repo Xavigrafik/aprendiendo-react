@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // CONTEXT
 import {CarritoContext} from './context/CarritoContext';
@@ -29,7 +29,15 @@ import { HookReducer } from "./pages/hookPages/HookReducer";
 
 function App() {
   
-   const [carrito, setCarrito] = useState([]);
+    const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const [carrito, setCarrito] = useState(carritoInicial);
+
+    useEffect(() => {
+        console.log('carrito modificado');
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }, [carrito])
 
   return (
     <CarritoContext.Provider value={ {carrito, setCarrito}}>
