@@ -40,4 +40,7 @@ import { NombreComponente } from './components/NombreComponente.jsx';
 https://www.youtube.com/watch?v=K4vCTeKKCkU
 https://www.youtube.com/watch?v=xutmKvLsbKM
 
+# CONTEXT:
+https://www.youtube.com/watch?v=dmxVjrSdOAY
+
 
