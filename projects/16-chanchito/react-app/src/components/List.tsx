@@ -9,19 +9,16 @@ function List({ data, onSelect }: Props) {
 
     const [active, setActive]= useState(0)
 
-    const handleClick = (i:number, el:string, e:MouseEvent) => {
+    const handleClick = (i: number, el: string, e: MouseEvent) => {
+        // i es el "indice activo"
         onSelect?.(el);
-        setActive(i);
-
-        console.log(e.target);
-        console.log(el);
-        
+        setActive(i)
     };
 
     return (
         <ul className="list-group">
             {data.map((el, i) => (
-                <li onClick={(e) => handleClick(1, el, e)} key={el} className={`list-group-item  ${active == i ? "active" : ""}`}>
+                <li onClick={(e) => handleClick(i, el, e)} key={i} className={`list-group-item  ${active == i ? "active" : ""}`}>
                     {el}
                 </li>
             ))}
