@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import styles from "./Button.module.scss";
+
 type Props = {
     children: ReactNode;
     isLoading: boolean;
@@ -7,7 +9,8 @@ type Props = {
     classProps?: string;
 };
 
-function Button({ children, isLoading, onClick, classProps = ''  }: Props) {
+function Button({ children, isLoading, onClick, classProps = '' }: Props) {
+    
     return (
         <button
             disabled={isLoading}
@@ -16,6 +19,8 @@ function Button({ children, isLoading, onClick, classProps = ''  }: Props) {
             className={`
                 btn btn-${isLoading ? 'secondary' : 'primary'}
                 ${classProps}
+                ${styles.button}
+                ${styles.claseDesdeModule}
             `}
         >
             {isLoading ? "Cargando..." : children }
