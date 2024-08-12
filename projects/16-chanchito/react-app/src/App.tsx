@@ -4,8 +4,9 @@ import Spacer from './components/Spacer';
 import { CardBody } from './components/Card';
 import List from './components/List';
 import Button from './components/Button';
-import { useEffect, useState } from 'react';
+import Alert from './components/Alert';
 
+import { useEffect, useState } from 'react';
 
 function App() {
     const initialList = ['Goku', 'Gohan', 'Radix'];
@@ -36,6 +37,10 @@ function App() {
         
     // }, [list])
     
+    const [status, setStatus] = useState(true);
+    const toggleStatus = () => {
+        setStatus(!status)
+    }
 
     return (
         <div className="container">
@@ -58,6 +63,18 @@ function App() {
                 <div className="col-12">
                     <List data={list}></List>
                 </div>
+
+                <div className="col-12">
+                    <Alert status={status} onClick={toggleStatus}>
+                        Alertaa!
+                    </Alert>
+                    
+                    <Alert status={status} onClick={toggleStatus}>
+                        Alertaa!
+                    </Alert>
+                </div>
+
+
             </div>
         </div>
     );
