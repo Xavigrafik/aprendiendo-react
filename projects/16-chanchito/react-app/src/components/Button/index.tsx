@@ -4,13 +4,24 @@ import styles from "./Button.module.scss";
 
 type Props = {
     children: ReactNode;
-    isLoading: boolean;
-    onClick: () => void;
+    isLoading?: boolean;
+    onClick?: () => void;
     classProps?: string;
+    sent?: boolean;
 };
 
-function Button({ children, isLoading, onClick, classProps = '' }: Props) {
+function Button({ children, isLoading, onClick, classProps = '', sent }: Props) {
     
+    let content;
+    
+    if (isLoading) {
+        content = "Cargando...";
+    } else if (sent) {
+        content = "Enviado!";
+    } else {
+        content = children;
+    }
+
     return (
         <button
             disabled={isLoading}
@@ -23,7 +34,7 @@ function Button({ children, isLoading, onClick, classProps = '' }: Props) {
                 ${styles.claseDesdeModule}
             `}
         >
-            {isLoading ? "Cargando..." : children }
+           {content}
         </button>
     );
 }

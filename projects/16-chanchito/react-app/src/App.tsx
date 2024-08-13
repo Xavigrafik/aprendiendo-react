@@ -1,7 +1,7 @@
 import './App.css';
 import Card from './components/Card';
-import Spacer from './components/Spacer';
 import { CardBody } from './components/Card';
+import Spacer from './components/Spacer';
 import List from './components/List';
 import Button from './components/Button';
 import Alert from './components/Alert';
@@ -9,71 +9,96 @@ import Alert from './components/Alert';
 import { useEffect, useState } from 'react';
 
 function App() {
-    const initialList = ['Goku', 'Gohan', 'Radix'];
-
-    // const handleSelect = (el:string) => {
-    //     console.log('mostrando desde 1', el);
-        
-    // };
-    const handleSelect2 = (el:string) => {
-       // console.log('imprimiendo desde 2', el);
-        
-    };
-
-    const [isLoading, setIsLoading] = useState(false);
+    
+    const initialList = ['Goku', 'Gohan'];
 
     const [list, setList] = useState(initialList);
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState(true);
+    const [sent, setSent] = useState(false);
 
+
+    const handleSelect = (el:string) => {
+        console.log('mostrando desde 1', el);
+    };
+    const handleSelect2 = (el:string) => {
+       console.log('imprimiendo desde 2', el);
+    };
     const handleAdd = () => {
         setList([...list, "Minion"]  )
-        setIsLoading(false);
+        setIsLoading(true);
     }
     const handleRemove = () => {
+        setIsLoading(true);
         setList(list.slice(0, -1))
     }
-
-    // useEffect(() => {
-    //     console.log('useEffect List');
-        
-    // }, [list])
+    const handleSend = () => {
+       setSent(true)
+    };
     
-    const [status, setStatus] = useState(true);
-    const toggleStatus = () => {
+    const toggleAlerStatus = () => {
         setStatus(!status)
     }
+
+    const handleReset = () => {
+        setList(initialList)
+        setIsLoading(false);
+        setSent(false)
+    }
+
 
     return (
         <div className="container">
             <div className="row">
-                <div className="col-12">
+                
+                <div className="col-12 my-3 a">
+                    
                     {/* <Card><CardBody title="Hola" text="Text" /></Card> */}
+                    <div className="row">
+                        <div className="col-6">
+                            <h3>List 1</h3>
+                            <List data={list} onSelect={handleSelect}></List>
+                        </div>
+                        <div className="col-6">
+                        <h3>List 2</h3>
+                        <List data={list} onSelect={handleSelect2}></List>
+                        </div>
+                    </div>
+                    
+                    <Spacer space={'30px'} />
+
+                    <Button classProps="me-3" onClick={handleAdd}>+</Button>
+                    <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
+                    <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
+                    <Button classProps="me-3" onClick={handleRemove}>-</Button>
+
+                    <Spacer space={'30px'} />
+                   
+                    <Button classProps="me-3" sent={sent} onClick={handleAdd}>+ send</Button>
+                    <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
+                    <Button classProps="me-3" sent={sent} onClick={handleRemove}>- send</Button>
+
+                    <Spacer space={'30px'} />
+
+                    <Button classProps="me-3 btn-danger" onClick={handleReset}>Reset</Button>
+
+                    <Spacer space={'30px'} />
+                    <div>
+                        Todos los botones son el mismo componente: <code>&lt;Button&gt;XXX&lt;/Button&gt;</code>
+                        <br />
+                        La prop <code>isLoading</code> y la prop <code>sent</code> junto con las funciones  <code>handleAdd</code>, <code>handleRemove</code>, <code>handleSend</code> ejecutan las distintas funcionalidades
+                    </div>
                 </div>
-                <div className="col-12 my-3">
-                    {/* <Spacer space={30} />
-                    <List data={list}></List>
-                    <Spacer space={30} />
-                    <List data={list} onSelect={handleSelect}></List>
-                    <Spacer space={'30px'} /> */}
 
-
-                    <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>Add Minion</Button>
-                    <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>Remove Minion</Button>
-
-                </div>
                 <div className="col-12">
-                    <List data={list}></List>
-                </div>
-
-                <div className="col-12">
-                    <Alert status={status} onClick={toggleStatus}>
+                    <Alert status={status} onClick={toggleAlerStatus}>
                         Alertaa!
                     </Alert>
                     
-                    <Alert status={status} onClick={toggleStatus}>
+                    <Alert status={status} onClick={toggleAlerStatus}>
                         Alertaa!
                     </Alert>
                 </div>
-
 
             </div>
         </div>
