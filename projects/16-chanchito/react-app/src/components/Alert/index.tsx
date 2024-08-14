@@ -3,14 +3,12 @@ import styles from "./Alert.module.scss";
 
 type Props = {
     children: ReactNode;
-    status: boolean;
-    onClick: () => void;
 }
 
-function Alert({children, status, onClick}: Props) {
+function Alert({children}: Props) {
   return (
-    <div  className={`my-3 alert ${styles.alertCustom} ${status ? 'alert-primary' : 'alert-danger'} `} onClick={onClick}>
-        {children}
+    <div className={`my-3 alert ${styles.alertCustom} `}>
+      {children}
     </div>
   )
 }

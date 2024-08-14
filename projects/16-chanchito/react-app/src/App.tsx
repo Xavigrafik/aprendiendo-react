@@ -1,10 +1,12 @@
 import './App.css';
+
 import Card from './components/Card';
 import { CardBody } from './components/Card';
 import Spacer from './components/Spacer';
 import List from './components/List';
 import Button from './components/Button';
 import Alert from './components/Alert';
+import DestructuringArrays from './components/DestructuringArrays';
 
 import { useEffect, useState } from 'react';
 
@@ -36,9 +38,7 @@ function App() {
        setSent(true)
     };
     
-    const toggleAlerStatus = () => {
-        setStatus(!status)
-    }
+    
 
     const handleReset = () => {
         setList(initialList)
@@ -50,21 +50,27 @@ function App() {
     return (
         <div className="container">
             <div className="row">
-                
-                <div className="col-12 my-3 a">
-                    
+                <div className="col-12 my-3">
+
                     {/* <Card><CardBody title="Hola" text="Text" /></Card> */}
+
                     <div className="row">
-                        <div className="col-6">
-                            <h3>List 1</h3>
+                        <div className="col-4">
+                            <h5>List 1</h5>
                             <List data={list} onSelect={handleSelect}></List>
                         </div>
-                        <div className="col-6">
-                        <h3>List 2</h3>
-                        <List data={list} onSelect={handleSelect2}></List>
+                        <div className="col-4">
+                            <h5>List 2</h5>
+                            <List data={list} onSelect={handleSelect2}></List>
+                        </div>
+                        <div className="col-4">
+                            <Alert>
+                                <p>Este párrafo es "children" de Alert y recibe los estilos de ./Alert.module.scss</p>
+                            </Alert>
                         </div>
                     </div>
                     
+
                     <Spacer space={'30px'} />
 
                     <Button classProps="me-3" onClick={handleAdd}>+</Button>
@@ -88,17 +94,14 @@ function App() {
                         <br />
                         La prop <code>isLoading</code> y la prop <code>sent</code> junto con las funciones  <code>handleAdd</code>, <code>handleRemove</code>, <code>handleSend</code> ejecutan las distintas funcionalidades
                     </div>
+
+                    <Spacer space={'30px'} />
+
+                    <div className="col-4">
+                        <DestructuringArrays>Modificar Objects</DestructuringArrays>
+                    </div>
                 </div>
 
-                <div className="col-12">
-                    <Alert status={status} onClick={toggleAlerStatus}>
-                        Alertaa!
-                    </Alert>
-                    
-                    <Alert status={status} onClick={toggleAlerStatus}>
-                        Alertaa!
-                    </Alert>
-                </div>
 
             </div>
         </div>

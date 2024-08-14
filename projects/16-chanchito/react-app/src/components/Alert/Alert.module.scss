@@ -1,6 +1,12 @@
 .alertCustom {
     border:1px solid purple!important;
-    padding: 2rem!important;
     background:rebeccapurple!important;
     color: white!important;
+
+    > p {
+        margin: 0;
+        margin-bottom: 0.1rem;
+        line-height: 1.25;
+        background-color: rgba(#fff, 0.3);
+    }
 }
