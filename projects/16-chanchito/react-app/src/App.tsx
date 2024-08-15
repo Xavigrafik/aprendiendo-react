@@ -9,6 +9,7 @@ import Alert from './components/Alert';
 import DestructuringArrays from './components/DestructuringArrays';
 
 import { useEffect, useState } from 'react';
+import Form from './components/Form';
 
 function App() {
     
@@ -50,6 +51,12 @@ function App() {
     return (
         <div className="container">
             <div className="row">
+
+                <div className="col-6 my-3 bg-light p-3 border">
+                    <Form></Form>
+                </div>
+
+
                 <div className="col-12 my-3">
 
                     {/* <Card><CardBody title="Hola" text="Text" /></Card> */}
