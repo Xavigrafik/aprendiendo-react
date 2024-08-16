@@ -1,14 +1,15 @@
 import './App.css';
 
-import Card from './components/Card';
-import { CardBody } from './components/Card';
+//import Card from './components/Card';
+//import { CardBody } from './components/Card';
 import Spacer from './components/Spacer';
 import List from './components/List';
 import Button from './components/Button';
+import Close from "./components/Alert/Close";
 import Alert from './components/Alert';
 import DestructuringArrays from './components/DestructuringArrays';
 
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Form from './components/Form';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
     const [list, setList] = useState(initialList);
     const [isLoading, setIsLoading] = useState(false);
-    const [status, setStatus] = useState(true);
+    //const [status, setStatus] = useState(true);
     const [sent, setSent] = useState(false);
 
 
@@ -71,9 +72,15 @@ function App() {
                             <List data={list} onSelect={handleSelect2}></List>
                         </div>
                         <div className="col-4">
-                            <Alert>
-                                <p>Este párrafo es "children" de Alert y recibe los estilos de ./Alert.module.scss</p>
-                            </Alert>
+                            <div className='bg-primary border p-3 text-white'>
+                                Close btn:
+                                <Close></Close>
+                                <Close white = {true}></Close>
+                            </div>
+                                
+                            <Alert>Este párrafo es "children" de Alert y recibe los estilos de ./Alert.module.scss</Alert>
+                            <Alert>"dismisable=false"</Alert>
+                            <Alert dismisable={true}>"dismisable=true"</Alert>
                         </div>
                     </div>
                     
