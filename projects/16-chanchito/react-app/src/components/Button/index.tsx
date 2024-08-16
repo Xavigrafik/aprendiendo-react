@@ -13,7 +13,10 @@ type Props = {
 function Button({ children, isLoading, onClick, classProps = '', sent }: Props) {
     
     let content;
-    
+
+    const isLoadingClass = `btn btn-${isLoading ? 'secondary LOADING' : 'primary'}`;
+    const className = ` ${isLoadingClass} ${classProps} ${styles.claseDesdeModule} `
+
     if (isLoading) {
         content = "Cargando...";
     } else if (sent) {
@@ -21,18 +24,14 @@ function Button({ children, isLoading, onClick, classProps = '', sent }: Props) 
     } else {
         content = children;
     }
+    
 
     return (
         <button
             disabled={isLoading}
             onClick={onClick}
             type="button"
-            className={`
-                btn btn-${isLoading ? 'secondary' : 'primary'}
-                ${classProps}
-                ${styles.button}
-                ${styles.claseDesdeModule}
-            `}
+            className={className}
         >
            {content}
         </button>

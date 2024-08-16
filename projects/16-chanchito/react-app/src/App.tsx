@@ -56,7 +56,7 @@ function App() {
                 <div className="col-6 my-3 bg-light p-3 border">
                     <Form></Form>
                 </div>
-
+                
 
                 <div className="col-12 my-3">
 
@@ -84,37 +84,42 @@ function App() {
                         </div>
                     </div>
                     
-
                     <Spacer space={'30px'} />
 
-                    <Button classProps="me-3" onClick={handleAdd}>+</Button>
-                    <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
-                    <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
-                    <Button classProps="me-3" onClick={handleRemove}>-</Button>
+                    
 
-                    <Spacer space={'30px'} />
-                   
-                    <Button classProps="me-3" sent={sent} onClick={handleAdd}>+ send</Button>
-                    <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
-                    <Button classProps="me-3" sent={sent} onClick={handleRemove}>- send</Button>
 
-                    <Spacer space={'30px'} />
+                    <div className="row">
+                        
+                        <div className="col-4">
+                            <Button classProps="me-3" onClick={handleAdd}>+</Button>
+                            <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
+                            <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
+                            <Button classProps="me-3" onClick={handleRemove}>-</Button>
+                            <div className="clearfix"></div>
+                            <Button classProps="me-3" sent={sent} onClick={handleAdd}>+ send</Button>
+                            <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
+                            <Button classProps="me-3" sent={sent} onClick={handleRemove}>- send</Button>
+                            <div className="clearfix"></div>
+                            <Button classProps="me-3 btn-danger" onClick={handleReset}>Reset</Button>
+                        </div>
 
-                    <Button classProps="me-3 btn-danger" onClick={handleReset}>Reset</Button>
+                        <div className="col-4">
+                            <div>Todos los botones son el mismo componente: <code>&lt;Button&gt;XXX&lt;/Button&gt;</code>
+                            <br />La prop <code>isLoading</code> y la prop <code>sent</code> junto con las funciones  <code>handleAdd</code>, <code>handleRemove</code>, <code>handleSend</code> ejecutan las distintas funcionalidades
+                            </div>
+                        </div>
 
-                    <Spacer space={'30px'} />
-                    <div>
-                        Todos los botones son el mismo componente: <code>&lt;Button&gt;XXX&lt;/Button&gt;</code>
-                        <br />
-                        La prop <code>isLoading</code> y la prop <code>sent</code> junto con las funciones  <code>handleAdd</code>, <code>handleRemove</code>, <code>handleSend</code> ejecutan las distintas funcionalidades
                     </div>
+                   
 
+                    
                     <Spacer space={'30px'} />
 
                     <div className="col-12">
                         <DestructuringArrays>Modificar Objects</DestructuringArrays>
-                        
                     </div>
+
                 </div>
 
 
