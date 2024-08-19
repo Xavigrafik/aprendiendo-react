@@ -16,13 +16,13 @@ function List({ data, onSelect }: Props) {
     };
 
     return (
-        <ul className="list-group">
+        <div className="list-group">
             {data.map((el, i) => (
-                <li onClick={(e) => handleClick(i, el, e)} key={i} className={`list-group-item  ${active == i ? "active" : ""}`}>
+                <a href="#!" onClick={(e) => handleClick(i, el, e)} key={i} className={`list-group-item list-group-item-action ${active == i ? "active" : ""}`}>
                     {el}
-                </li>
+                </a>
             ))}
-        </ul>
+        </div>
     );
 }
 

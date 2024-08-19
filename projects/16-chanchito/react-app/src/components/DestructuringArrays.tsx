@@ -1,18 +1,14 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState,useRef, useEffect } from 'react';
 import Spacer from './Spacer';
 import Button from './Button';
 import List2 from './List.2';
 
-interface Props {
-    children: ReactNode;
-}
 
 
-function DestructuringArrays(props: Props) {
-    
-    
-    const getRandomNum = () => { return Math.random().toString().substring(2,8) }
-    const getRandomString = () => { return Array(8).fill(undefined).map(_ => String.fromCharCode(48 + Math.random() * (127 - 48))).join('') }
+function DestructuringArrays() {
+
+    const getRandomNum = () => { return "R_NUM: " + Math.random().toString().substring(2,8) }
+    const getRandomString = () => { return "R_STRING: " + Array(8).fill(undefined).map(_ => String.fromCharCode(48 + Math.random() * (127 - 48))).join('') }
 
     const getNewObject = () => {
         return {
@@ -22,11 +18,15 @@ function DestructuringArrays(props: Props) {
     }
 
     const initialProducts = [
+        {id:1, name:"el primero", isInitial: true},
+        {id:2, name:"el segundo" , isInitial: true},
         getNewObject() ,
         getNewObject() ,
     ];
 
     const [products, setProducts] = useState(initialProducts);
+
+
 
     // añade obj al inicio
     const comienzo = () => {
@@ -55,16 +55,19 @@ function DestructuringArrays(props: Props) {
         }
     }
 
-    return <>
-            <h4>{products.length}</h4>
-            <Spacer space={30}></Spacer>
-            <Button onClick={comienzo}>+ comienzo</Button>
-            <Button onClick={final}>+ final</Button>
-            <Button onClick={eliminar}>Eliminar último</Button>
-            <Button onClick={limpiar}>Limpiar</Button>
-            <Spacer space={30}></Spacer>
-            { products && <List2 data={products} ></List2>}
-        </>
+    return <div className="row my-5">
+            <div className="col-6">
+                <h4>{products.length}</h4>
+                <Spacer space={30}></Spacer>
+                <Button onClick={comienzo}>+ comienzo</Button>
+                <Button onClick={final}>+ final</Button>
+                <Button onClick={eliminar}>Eliminar último</Button>
+                <Button onClick={limpiar}>Limpiar</Button>
+            </div>
+            <div className="col-6">
+                { products && <List2 data={products} ></List2>}
+            </div>
+            </div>
 }
 
 export default DestructuringArrays;

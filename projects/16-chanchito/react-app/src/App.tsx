@@ -115,7 +115,9 @@ function App() {
                     <Spacer space={'30px'} />
 
                     <div className="col-12">
-                        <DestructuringArrays>Modificar Objects</DestructuringArrays>
+                        <DestructuringArrays>
+                            <li>XXX</li>
+                        </DestructuringArrays>
                     </div>
 
                 </div>

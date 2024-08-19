@@ -5,19 +5,20 @@ type Props = {
 type DataItem = {
     id?: number;
     name?: string;
+    isInitial?: boolean;
 };
 
 function List2({ data }: Props) {
 
     return (
         
-        <ul className="list-group">
-            {data.map((el, i) => (
-                <li  key={i} className={`list-group-item`}>
+        <div className="list-group" id="list2">
+            {data.map((el) => (
+                <a href="#!" key={el.id} className={`list-group-item list-group-item-action ${ el.isInitial ? " bg-dark-subtle" : "bg-body-tertiary" }`}>
                     {el.id} - {el.name}
-                </li>
+                </a>
             ))}
-        </ul>
+        </div>
     );
 }
 
