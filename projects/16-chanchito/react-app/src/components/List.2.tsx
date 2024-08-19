@@ -8,18 +8,22 @@ type DataItem = {
     isInitial?: boolean;
 };
 
-function List2({ data }: Props) {
 
+function List2({ data }: Props) {
     return (
-        
-        <div className="list-group" id="list2">
+      <>
+        {data.length > 0 ? (
+          <div className="list-group" id="list2">
             {data.map((el) => (
-                <a href="#!" key={el.id} className={`list-group-item list-group-item-action ${ el.isInitial ? " bg-dark-subtle" : "bg-body-tertiary" }`}>
-                    {el.id} - {el.name}
-                </a>
+              <a href="#!" key={el.id} className={`list-group-item list-group-item-action ${el.isInitial ? "bg-dark-subtle" : "bg-body-tertiary"}`}>
+                {el.id} - {el.name}
+              </a>
             ))}
-        </div>
+          </div>
+        ) : (<p>No items found.</p>)
+        }
+      </>
     );
-}
+  }
 
 export default List2;

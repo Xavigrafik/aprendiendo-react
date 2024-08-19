@@ -90,15 +90,19 @@ function App() {
                     <div className="row">
                         
                         <div className="col-4">
+
                             <Button classProps="me-3" onClick={handleAdd}>+</Button>
-                            <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
-                            <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
                             <Button classProps="me-3" onClick={handleRemove}>-</Button>
                             <div className="clearfix"></div>
-                            <Button classProps="me-3" sent={sent} onClick={handleAdd}>+ send</Button>
-                            <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
-                            <Button classProps="me-3" sent={sent} onClick={handleRemove}>- send</Button>
+
+                            <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
+                            <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
                             <div className="clearfix"></div>
+
+                            <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
+
+                            <div className="clearfix"></div>
+
                             <Button classProps="me-3 btn-danger" onClick={handleReset}>Reset</Button>
                         </div>
 
@@ -115,9 +119,7 @@ function App() {
                     <Spacer space={'30px'} />
 
                     <div className="col-12">
-                        <DestructuringArrays>
-                            <li>XXX</li>
-                        </DestructuringArrays>
+                        <DestructuringArrays></DestructuringArrays>
                     </div>
 
                 </div>
