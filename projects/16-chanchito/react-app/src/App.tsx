@@ -11,6 +11,8 @@ import DestructuringArrays from './components/DestructuringArrays';
 
 import {  useState } from 'react';
 import Form from './components/Form';
+import Radio from './components/inputs/Radio';
+import CheckBox from './components/inputs/CheckBox';
 
 function App() {
     
@@ -51,6 +53,18 @@ function App() {
 
     return (
         <div className="container">
+            <div className="row py-5 border">
+                <div className="col-4">
+                    <CheckBox name="Checo"></CheckBox>
+                    <CheckBox name="Checa"></CheckBox>
+                    <CheckBox name="Checu"></CheckBox>
+                    <CheckBox name="Cheque"></CheckBox>
+                </div>
+                <div className="col-4">
+                    <Radio name="papa"></Radio>  
+                </div>
+                
+            </div>
             <div className="row py-5">
                 <Form></Form>
             </div>
