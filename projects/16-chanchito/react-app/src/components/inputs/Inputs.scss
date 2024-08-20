@@ -6,6 +6,7 @@ $white: #ffffff;
 $border-color: #d4d4d4;
 $offwhite: #f5f5f5;
 $check-color: #dddd;
+$size: 18px;
 
 
 
@@ -19,6 +20,11 @@ $check-color: #dddd;
 	}
 }	
 
+[class*="check_Block_"] {
+	margin-bottom: calc($size - 1em);
+}
+
+
 	.ab-checkbox,
 	.ab-radio {
 		position: absolute;
@@ -29,7 +35,7 @@ $check-color: #dddd;
 			cursor: pointer;
 			padding: 0;
 			user-select: none;
-			font-size: 0.875rem;
+			font-size: 1rem;
 			text-transform: capitalize;
 			font-weight: 600;
 
@@ -74,12 +80,12 @@ $check-color: #dddd;
 
 	.ab-checkbox {
 		& + label {
-			padding-left: 30px;
+			padding-left: calc($size + $size * 0.5);
 			
 			// checkbox
 			&::before {
-				width: 20px;
-				height: 20px;
+				width: $size;
+				height: $size;
 
 				-webkit-border-radius: 2px;
 				-moz-border-radius: 2px;
@@ -93,14 +99,14 @@ $check-color: #dddd;
 				top: 50%;
 				transform: translateY(-50%) scale(0);
 
-				width: 20px;
-				height: 20px;
+				width: $size;
+				height: $size;
 
 				// background-color: $black;
 				background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAvklEQVRIS+2U0Q3CMAwFzxuwCYwAEzECdAM2ghHoJmxgZJRIUWgTh9C/9Du9q59fKmz8yMZ8hqCa8IjoE5Gq7oCziEx5Zt0RBfgdOACTiFxTSZcgg8/AUURefxF44Cb6aQIvvChQVcvylo/cAl8VBPgFeAKnKGmFlwRWuwewj5KwuNiWxYUuXevVHYSvTSX2vlXRDa8uOZPY+SZ4VZDcUpvEnq+e1/52rpqGScgbVYO7JvBASmdcE/RIhqCa3ht9IVAZxGa2wAAAAABJRU5ErkJggg==");
 				background-position: center;
 				background-repeat: no-repeat;
-				background-size: 20px;
+				background-size: $size;
 
 				border-radius: 2px;
 

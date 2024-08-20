@@ -19,7 +19,7 @@ function CheckBox({ name, onChange }: Props): JSX.Element {
   };
 
   return (
-    <div className='checkboxBlock mb-1'>
+    <div className={`check_Block_${name}`}>
       <input
         type="checkbox"
         id={`checkbox_${name}`}
