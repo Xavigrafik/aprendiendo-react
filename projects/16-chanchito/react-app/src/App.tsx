@@ -11,8 +11,8 @@ import DestructuringArrays from './components/DestructuringArrays';
 
 import {  useState } from 'react';
 import Form from './components/Form';
-import Radio from './components/inputs/Radio';
-import CheckBox from './components/inputs/CheckBox';
+import RadioGroup from './components/inputs/RadioGroup';
+import CheckBox from './components/inputs/Checkbox';
 
 function App() {
     
@@ -50,18 +50,61 @@ function App() {
         setSent(false)
     }
 
+    /////////////  CHECKBOXES  /////////////
+
+    // Array con los nombres completos
+    const checkboxNames = ["Checkbox 1", "Checkbox 2", "333"];
+
+    // Generar el estado inicial dinámicamente
+    const initialCheckboxesState = checkboxNames.reduce((acc, name) => {
+        acc[name] = false;
+        if (name === "333") {
+          acc[name] = true; // Establece 333 como true al cargar la pag.
+        }
+    return acc;
+    }, {} as { [key: string]: boolean });
+
+    // Crear el estado en el componente
+    const [checkboxes, setCheckboxes] = useState<{ [key: string]: boolean }>(initialCheckboxesState);
+    
+
+    // Maneja los cambios de cada checkbox
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+
+    setCheckboxes({
+      ...checkboxes,
+      [name]: checked, // Actualiza el estado solo del checkbox que cambió
+    });
+  };
+    
+    /////////////  RADIOS  /////////////
+    
+    // Maneja los cambios de RadioGroup
+    const handleRadioChange = (selectedValue: string) => {
+        console.log('Radio seleccionado:', selectedValue);
+      };
 
     return (
         <div className="container">
             <div className="row py-5 border">
                 <div className="col-4">
-                    <CheckBox name="Checo"></CheckBox>
-                    <CheckBox name="Checa"></CheckBox>
-                    <CheckBox name="Checu"></CheckBox>
-                    <CheckBox name="Cheque"></CheckBox>
+                    
+                    {checkboxNames.map(name => (
+                        <CheckBox
+                            key={name}
+                            name={name}
+                            checked={checkboxes[name]}
+                            onChange={handleCheckboxChange}
+                        />
+                    ))}
                 </div>
                 <div className="col-4">
-                    <Radio name="papa"></Radio>  
+                    <RadioGroup
+                        name="group1"
+                        options={['Opción 1', 'Opción 2', 'Opción 3']}
+                        onChange={handleRadioChange}
+                    ></RadioGroup>
                 </div>
                 
             </div>

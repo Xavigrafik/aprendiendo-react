@@ -19,7 +19,7 @@ function Radio({ name }: Props): JSX.Element {
     <div className={"radio_"+name }>
       <input
         type="radio"
-        className="ab-radio"
+        className="radio"
         name={name}
         value={name}
         onChange={onChange}
