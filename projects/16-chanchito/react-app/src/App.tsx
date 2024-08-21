@@ -71,19 +71,23 @@ function App() {
     // Maneja los cambios de cada checkbox
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
-
-    setCheckboxes({
-      ...checkboxes,
-      [name]: checked, // Actualiza el estado solo del checkbox que cambió
-    });
+    setCheckboxes({...checkboxes,[name]: checked,});
   };
     
     /////////////  RADIOS  /////////////
     
-    // Maneja los cambios de RadioGroup
+    const radioOptions = [
+        { label: 'Opción 1', value: 'opcion1', disabled: false },
+        { label: 'Opción 2', value: 'opcion2', disabled: false },
+        { label: 'Opción 3', value: 'opcion3', disabled: false },
+        { label: 'Opción 4', value: 'opcion4', disabled: true },
+    ];
+    
     const handleRadioChange = (selectedValue: string) => {
-        console.log('Radio seleccionado:', selectedValue);
-      };
+        console.log('handleRadioChange: ', selectedValue);
+        
+    }
+      
 
     return (
         <div className="container">
@@ -102,7 +106,7 @@ function App() {
                 <div className="col-4">
                     <RadioGroup
                         name="group1"
-                        options={['Opción 1', 'Opción 2', 'Opción 3']}
+                        options={radioOptions} 
                         onChange={handleRadioChange}
                     ></RadioGroup>
                 </div>

@@ -1,38 +1,41 @@
 import React, { useState } from 'react';
 
-type RadioProps = {
-  name: string;
-  options: string[]; // Array con las opciones del radio
-  onChange?: (selectedValue: string) => void;
+type RadioOption = {
+  label: string;
+  value: string;
+  disabled?: boolean;
 };
 
-const RadioGroup = ({ name, options, onChange }: RadioProps): JSX.Element => {
+type RadioGroupProps = {
+  name: string;
+  options: RadioOption[];
+  onChange: (selectedValue: string) => void;
+};
+
+const RadioGroup = ({ name, options, onChange }: RadioGroupProps): JSX.Element => {
   
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSelectedValue(value);
-    
-    if (onChange) {
-      onChange(value); // Llama a la función onChange pasada por las props si existe
-    }
+    setSelectedValue(event.target.value);
+    onChange(event.target.value);
   };
 
   return (
     <div className={`radioBlock_${name}`}>
       {options.map((option, index) => (
-        <div className={`radioItem ${name}_item${index}`} key={index}>
+        <div className={`radioItem ${name}_item${index}`} key={option.value}>
           <input
             type="radio"
-            id={`radio_${option}`}
+            id={option.value}
             className="radio"
             name={name}
-            value={option}
-            checked={selectedValue === option}
+            value={option.value}
+            disabled={option.disabled} // Aplica el estado disabled si existe
+            checked={selectedValue === option.value} // Compara con el estado
             onChange={handleChange}
           />
-          <label htmlFor={`radio_${option}`}>{option}</label>
+          <label htmlFor={option.value}>{option.label}</label>
         </div>
       ))}
           

@@ -1,14 +1,13 @@
 // https://codepen.io/RoshitShrestha/pen/gOwojgw
 
 $size: 18px;
+$time: 0.12s;
 
 $brand-color: #58c4dc;
-$gray: #757575;
-$black: #212121;
+$black: #323334;
 $white: #ffffff;
-$border-color: #d4d4d4;
-$offwhite: #f5f5f5;
-$check-color: #dddd;
+$offwhite: #f2f3f4;
+$check-color: #d2d3d4;
 
 .checkbox,
 .radio {
@@ -26,33 +25,29 @@ $check-color: #dddd;
 
         color: $black;
 
-        transition: color 0.15s ease;
+        transition: color $time ease;
 
         // check
         &::before {
             content: '';
-
             position: absolute;
             left: 0;
             top: 50%;
-
-            transform: translateY(-50%);
-
+			
             background: $check-color;
-
-            transition: background 0.2s ease, box-shadow 0.2s ease,
-                border 0.1s ease-in;
+			
+            transform: translateY(-50%);
+            transition: background $time ease, box-shadow $time * 3 ease, border $time ease-in;
         }
     } /* label end */
 
     // hover
     &:hover + label::before {
-        // background: darken($check-color, 10);
-        background: $offwhite;
-        box-shadow: 0 0 0 3px rgba($brand-color, 0.4);
+		background: $offwhite;
+        box-shadow: 0 0 0 3px rgba($brand-color, 0.45);
     }
     &:hover + label {
-        color: darken($black, 20);
+        color: darken($black, 20%);
     }
 
     // checkbox disabled
@@ -102,7 +97,7 @@ $check-color: #dddd;
 
                 border-radius: 2px;
 
-                transition: transform 0.1s ease-in;
+                transition: transform 0.5s ease-in;
             }
         }
 
@@ -113,7 +108,7 @@ $check-color: #dddd;
         }
         &:checked + label::after {
             transform: translateY(-50%) scale(1);
-            transition: transform 0.2s ease-out;
+            transition: transform $time ease-out;
             opacity: 1;
         }
     }
@@ -147,7 +142,7 @@ $check-color: #dddd;
                 background: $white;
                 border-color: $brand-color;
                 border-width: calc($size / 3);
-                transition: background 0.2s ease, border 0.3s ease-out;
+                transition: background $time ease, border $time ease-out;
             }
         }
     }
