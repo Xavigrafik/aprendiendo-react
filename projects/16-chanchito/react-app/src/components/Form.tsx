@@ -1,6 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import List3 from "./List.3";
+import Select from "./inputs/Select";
 
 
 function Form() {
@@ -16,7 +17,7 @@ function Form() {
     type PeopleArray = {
         data: Person[];
     };
-    
+
     const { register, handleSubmit, formState: { errors }, formState } = useForm<PeopleArray>();
     
     const [data, setData] = useState<Person[]>([]);
@@ -79,6 +80,10 @@ function Form() {
                         <input
                             {...register('type') }
                             type="text" className="form-control" id="type" value="XX" />
+                        </div>
+
+                        <div className="col-6 mb-3">
+                            <Select></Select>
                         </div>
                 
                     </div>
