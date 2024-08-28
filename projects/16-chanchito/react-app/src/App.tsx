@@ -93,7 +93,7 @@ function App() {
         <div className="container">
             <div className="row py-5">
 
-                <div className="col-12 col-md-3 p-3 mb-3">
+                <div className="col-12 col-md-1 p-3 mb-3">
                     <div className="loco">loco</div>
                     <div className="opacity-100">100</div>
                     <div className="opacity-75">75</div>
@@ -102,14 +102,14 @@ function App() {
                     <div className="opacity-0">0</div>
                     <div className="opacity-100">100</div>
                 </div>
-                <div className="col-12 col-md-3 p-3 mb-3">
+                <div className="col-12 col-md-2 p-3 mb-3">
                     <div className="opacity-xxl-50">opacity-xxl-50</div>
                     <div className="opacity-xl-50">opacity-xl-50</div>
                     <div className="opacity-lg-50">opacity-lg-50</div>
                     <div className="opacity-md-25">opacity-md-25</div>
                     <div className="opacity-sm-25">opacity-md-25</div>
                 </div>
-                <div className="col-12 col-md-3 p-3 mb-3">
+                <div className="col-12 col-md p-3 mb-3">
                     Este div utiliza las clases creadas con utility API en:<br /><code>projects/16-chanchito/react-app/src/styles/utils/custom-utilities.scss</code>
                     <div
                         className=" bg-primary p-2
@@ -127,7 +127,9 @@ function App() {
                     </div>
                     <div className="opacity-100 opacity-sm-0">El div de arriba está oculto</div>
                 </div>
-                <div className="col-12 col-md-3 p-3 mb-3">
+
+                <div className="col-12 col-md-auto p-3 mb-3">
+
                 <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-warning-bg-subtle)' }}>bs-warning-bg-subtle</div>
                 <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-info-bg-subtle )' }}>bs-info-bg-subtle </div>
                 <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-light-rgb  )' }}>bs-light-rgb  </div>
