@@ -1,0 +1,21 @@
+// Define tus propias utilidades antes de importar el resto de Bootstrap
+
+$utilities: map-merge(
+  $utilities,
+  (
+    // Añade nuevas utilidades
+    "opacity": (
+      property: opacity,
+      //class: clase pesonalizable
+      responsive: true,
+      values: (
+        0: 0,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1,
+      )
+    ),
+    // Añade más utilidades personalizadas aquí
+  )
+);

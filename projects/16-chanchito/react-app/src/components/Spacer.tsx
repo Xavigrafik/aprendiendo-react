@@ -1,5 +1,5 @@
 interface SpacerProps {
-    space: string | number;
+    space?: string | number;
 }
   
 const Spacer: React.FC<SpacerProps> = ({ space }) => {

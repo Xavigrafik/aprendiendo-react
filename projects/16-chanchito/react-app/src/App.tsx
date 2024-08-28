@@ -91,7 +91,57 @@ function App() {
 
     return (
         <div className="container">
-            <div className="row py-5 border">
+            <div className="row py-5">
+
+                <div className="col-12 col-md-3 p-3 mb-3">
+                    <div className="loco">loco</div>
+                    <div className="opacity-100">100</div>
+                    <div className="opacity-75">75</div>
+                    <div className="opacity-50">50</div>
+                    <div className="opacity-25">25</div>
+                    <div className="opacity-0">0</div>
+                    <div className="opacity-100">100</div>
+                </div>
+                <div className="col-12 col-md-3 p-3 mb-3">
+                    <div className="opacity-xxl-50">opacity-xxl-50</div>
+                    <div className="opacity-xl-50">opacity-xl-50</div>
+                    <div className="opacity-lg-50">opacity-lg-50</div>
+                    <div className="opacity-md-25">opacity-md-25</div>
+                    <div className="opacity-sm-25">opacity-md-25</div>
+                </div>
+                <div className="col-12 col-md-3 p-3 mb-3">
+                    Este div utiliza las clases creadas con utility API en:<br /><code>projects/16-chanchito/react-app/src/styles/utils/custom-utilities.scss</code>
+                    <div
+                        className=" bg-primary p-2
+                        opacity-25
+                        opacity-md-50
+                        opacity-xl-75
+                        opacity-lg-75
+                        opacity-xxl-100
+                        ">
+                        opacity-25 |
+                        opacity-md-50 |
+                        opacity-xl-75 |
+                        opacity-lg-75 |
+                        opacity-xxl-100
+                    </div>
+                    <div className="opacity-100 opacity-sm-0">El div de arriba está oculto</div>
+                </div>
+                <div className="col-12 col-md-3 p-3 mb-3">
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-warning-bg-subtle)' }}>bs-warning-bg-subtle</div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-info-bg-subtle )' }}>bs-info-bg-subtle </div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-light-rgb  )' }}>bs-light-rgb  </div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-light-bg-subtle  )' }}>bs-light-bg-subtle  </div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-light-border-subtle  )' }}>bs-light-border-subtle  </div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-secondary-bg  )' }}>bs-secondary-bg  </div>
+                <div className="p-3 rounded-2 mb-2" style={{ backgroundColor: 'var(--bs-dark-bg-subtle  )' }}>bs-dark-bg-subtle  </div>
+
+                </div>
+
+            </div>
+            
+            <div className="row">
+
                 <div className="col-4">
                     
                     {checkboxNames.map(name => (
