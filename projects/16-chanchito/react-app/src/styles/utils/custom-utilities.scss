@@ -37,13 +37,13 @@ $utilities: map-merge(
 
         // AÑADE más utilidades PERSONALIZADAS aquí:
         "PEPE": (
-            class: PEPE, // class personalizada : [PEPE-a, PEPE-b, PEPE-md-b]
-            property: background-color,
+            class: PEPE, // genera: PEPE-a, PEPE-b, PEPE-md-b, PEPE-sm-a
+            property: background-color border-color,
             responsive: true,
             values: (
-                "a": Tan,
-                "b": Coral
-                )
+                "a": tan ,
+                "b": coral
+            )
         ),
             
     )
