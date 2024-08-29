@@ -1,21 +1,86 @@
 // Define tus propias utilidades antes de importar el resto de Bootstrap
-
 $utilities: map-merge(
-  $utilities,
-  (
-    // Añade nuevas utilidades
-    "opacity": (
-      property: opacity,
-      //class: clase pesonalizable
-      responsive: true,
-      values: (
-        0: 0,
-        25: .25,
-        50: .5,
-        75: .75,
-        100: 1,
-      )
-    ),
-    // Añade más utilidades personalizadas aquí
-  )
+
+    $utilities,
+        (
+        // Añade nuevas utilidades, REDEFINIENDO las antiguas
+        "opacity": (
+            property: opacity,
+            responsive: true,
+            values: (
+                0: 0,
+                25: .25,
+                33: .33333, // nueva utilidad  opacity-33
+                50: .5,
+                66: .66666, // nueva utilidad  opacity-66
+                75: .75,
+                100: 1,
+            )
+        ),
+
+        // Añade a text-color
+        "text-color": (
+            property: color,
+            class: text,        // genera:  text-white
+            responsive: true,   // genera:  text-md-white
+            state: hover,       // genera:  text-md-white-hover
+                                // Mantiene los valores originales
+            values: map-merge(
+                $utilities-text-emphasis-colors, 
+                (
+                  "white": white,
+                  "black": black,
+                  "teal": teal,
+                )
+            )
+        ),
+
+        // AÑADE más utilidades PERSONALIZADAS aquí:
+        "PEPE": (
+            class: PEPE, // class personalizada : [PEPE-a, PEPE-b, PEPE-md-b]
+            property: background-color,
+            responsive: true,
+            values: (
+                "a": Tan,
+                "b": Coral
+                )
+        ),
+            
+    )
 );
+
+
+
+/*==============================================
+=            UTILITY CLASSES                  =
+==============================================*/
+
+
+.bold {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.lowercase {
+    text-transform: lowercase;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.disabled {
+    color: rgba(0, 0, 0, 0.5);
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.no-select {
+    user-select: none;
+}
+
+
+
+
