@@ -133,10 +133,11 @@ function App() {
                     </div>
                     <p className='opacity-33'>opacity-33 clase creada</p>
                     <p className='opacity-66'>opacity-66 clase creada</p>
-                    <div className="text-white p-2 mb-2 PEPE-a">PEPE-a</div>
-                    <div className="text-white p-2 mb-2 PEPE-b">PEPE-b</div>
-                    <div className="border p-2 mb-2 text-md-teal PEPE-md-b">text-md-teal PEPE-md-b</div>
-                    <div className="border p-2 mb-2 text-warning text-md-teal-hover PEPE-md-b cursor-pointer">text-warning - text-md-teal-hover - PEPE-md-b - cursor-pointer</div>
+                    <div className="p-2 mb-2 text-tealVar bg-secondary">text-tealVar bg-secondary</div>
+                    <div className="text-white p-2 mb-2 custom-tan">custom-tan</div>
+                    <div className="text-white p-2 mb-2 custom-coral">custom-coral</div>
+                    <div className="border p-2 mb-2 text-md-teal custom-tan custom-md-coral">text-md-teal custom-tan custom-md-coral</div>
+                    <div className="border p-2 mb-2 text-warning text-md-teal-hover custom-tan custom-md-coral cursor-pointer">text-warning - text-md-teal-hover - custom-md-b - cursor-pointer</div>
                     <code className='d-block my-5'>projects/16-chanchito/react-app/src/styles/utils/custom-utilities.scss</code>
                 </div>
 

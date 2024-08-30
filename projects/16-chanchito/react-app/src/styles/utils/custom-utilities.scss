@@ -26,24 +26,37 @@ $utilities: map-merge(
             state: hover,       // genera:  text-md-white-hover
                                 // Mantiene los valores originales
             values: map-merge(
-                $utilities-text-emphasis-colors, 
+                $utilities-text-colors, 
                 (
                   "white": white,
                   "black": black,
                   "teal": teal,
+                  "tealVar": var(--bs-teal),
                 )
             )
         ),
 
         // AÑADE más utilidades PERSONALIZADAS aquí:
-        "PEPE": (
-            class: PEPE, // class personalizada : [PEPE-a, PEPE-b, PEPE-md-b]
+        "custom-class-01": (
+            class: custom, // class personalizada (PUEDE SER bg-tan) : [custom-tan, custom-coral, custom-md-coral]
             property: background-color,
             responsive: true,
             values: (
-                "a": Tan,
-                "b": Coral
+                "tan": tan,
+                "coral": coral
                 )
+        ),
+
+        "margin-custom": (
+            class: m, // genera: m-10, m-15, m-20
+            property: margin,
+            responsive: true,
+            values: (
+                10 : 10px,
+                15 : 15px,
+                20 : 20px,
+                1 : $spacer,
+            )
         ),
             
     )
