@@ -20,8 +20,6 @@ function App() {
     const { loading, data } = useHttpData<Category>(url);
     const { loading: loadingMeal, data: dataMeal } = useHttpData<Meal>(makeMealUrl(defaultCategory));
     
-    console.log("dataMeal",dataMeal);
-    
     return (
         <Grid
             templateAreas={`

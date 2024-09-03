@@ -13,10 +13,13 @@ function MainContent({ meals, loading }: Props) {
             <Text>No meals found.</Text>
         );
     }
-
+    
     return (
         <SimpleGrid columns={[2, null, 3]} spacing='20px'>
-            {meals.map(m => (<Card key={m.idMeal} maxW="sm" boxShadow="lg">
+            {meals.map(m => (
+                <Card key={m.idMeal} maxW="sm" boxShadow="lg">
+                    
+                
                     <CardBody>
                         <Image
                             src={m.strMealThumb}
@@ -24,12 +27,10 @@ function MainContent({ meals, loading }: Props) {
                             borderRadius="lg"
                         />
                         <Heading size="md" color="blue.400">
-                            <Text mt="4"> Living room Sofa </Text>
+                        <Text mt="4">{m.strMeal}</Text>
                         </Heading>
                         <Text>
-                            This sofa is perfect for modern tropical spaces, baroque
-                            inspired spaces, earthy toned spaces and for people who
-                            love a chic design with a sprinkle of vintage design.
+                        {m.idMeal} - {m.strMeal}
                         </Text>
                         
                     </CardBody>
