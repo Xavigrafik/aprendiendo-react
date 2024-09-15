@@ -1,4 +1,4 @@
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem, useDisclosure } from '@chakra-ui/react'
 import Header from './components/Header'
 import Sidenav from './components/Sidenav'
 import MainContent from './components/MainContent'
@@ -6,6 +6,7 @@ import {  useState } from 'react'
 import { Category, Meal, SearchForm } from './types'
 import useHttpData from './hooks/useHttpData'
 import axios from 'axios'
+import RecipeModal from './components/RecipeModal'
 
 
 const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
@@ -20,7 +21,7 @@ function App() {
     const [ selectedCategory, setSelectedCategory] = useState<Category>(defaultCategory)
     const { loading, data } = useHttpData<Category>(url);
     const { loading: loadingMeal, data: dataMeal, setData: setMeals, setLoading : setLoadingMeal } = useHttpData<Meal>(makeMealUrl(defaultCategory));
-    
+    const { isOpen,onOpen, onClose } = useDisclosure()
     const searchApi = (searchForm: SearchForm) => {
         
         setLoadingMeal(true);
@@ -32,7 +33,8 @@ function App() {
     }
 
     return (
-        <Grid
+        <>
+            <Grid
             templateAreas={`
                 "header header"
                 "nav main"
@@ -64,9 +66,13 @@ function App() {
             </GridItem>
 
             <GridItem p="4" bg="gray.100" area={'main'}>
-                <MainContent meals={dataMeal} loading = {loadingMeal}></MainContent>
+                <MainContent openRecipe={onOpen} meals={dataMeal} loading = {loadingMeal}></MainContent>
             </GridItem>
-        </Grid>
+
+            </Grid>
+            
+            <RecipeModal isOpen={isOpen} onClose={onClose}></RecipeModal>
+        </>
     )
 }
 
