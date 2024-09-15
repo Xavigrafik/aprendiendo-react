@@ -1,5 +1,7 @@
-import { Button, Card, CardBody, Heading, Text, Image, CardFooter, SimpleGrid, } from '@chakra-ui/react'
+import {  Text, SimpleGrid, Skeleton, } from '@chakra-ui/react'
 import { Meal } from '../types'
+import MealCard from './MealCard';
+import SkeletonCard from './SkeletonCard';
 
 type Props = {
     meals?: Meal[] ;
@@ -8,6 +10,8 @@ type Props = {
 
 function MainContent({ meals, loading }: Props) {
     
+    const skeletons = [1,2,3,4,5,6,7,8]
+
     if (!meals?.length) {
         return (
             <Text>No meals found.</Text>
@@ -15,34 +19,9 @@ function MainContent({ meals, loading }: Props) {
     }
     
     return (
-        <SimpleGrid columns={[2, null, 3]} spacing='20px'>
-            {meals.map(m => (
-                <Card key={m.idMeal} maxW="sm" boxShadow="lg">
-                    
-                
-                    <CardBody>
-                        <Image
-                            src={m.strMealThumb}
-                            alt={m.strMeal}
-                            borderRadius="lg"
-                        />
-                        <Heading size="md" color="blue.400">
-                        <Text mt="4">{m.strMeal}</Text>
-                        </Heading>
-                        <Text>
-                        {m.idMeal} - {m.strMeal}
-                        </Text>
-                        
-                    </CardBody>
-                    <CardFooter pt="0">
-                        <Button  color="white" bgColor="blue.400">
-                            Buy now
-                        </Button>
-                    </CardFooter>
-                </Card>))
-
-            }
-
+        <SimpleGrid  columns={{ lg: 3, sm: 2 }} spacingX="20px" spacingY="20px">
+            {loading && skeletons.map(skeleton => <SkeletonCard key={skeleton}></SkeletonCard>)}
+            {!loading && meals.map(m => (<MealCard key={m.idMeal} meal={m} ></MealCard>))}
         </SimpleGrid>
     )
 }
