@@ -3,15 +3,18 @@ import Header from './components/Header'
 import Sidenav from './components/Sidenav'
 import MainContent from './components/MainContent'
 import {  useState } from 'react'
-import { Category, Meal, SearchForm } from './types'
+import { Category, Meal, SearchForm, MealDetails } from './types'
 import useHttpData from './hooks/useHttpData'
 import axios from 'axios'
 import RecipeModal from './components/RecipeModal'
+import useFetch from './hooks/useFetch'
 
+const baseUrl = "https://www.themealdb.com/api/json/v1/1";
 
-const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+const url = `${baseUrl}/list.php?c=list`;
+
 const makeMealUrl = (category: Category) => {
-    return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}` 
+    return `${baseUrl}/filter.php?c=${category.strCategory}` 
 }
 const defaultCategory = { strCategory: "Beef" }
 
@@ -20,16 +23,32 @@ function App() {
     
     const [ selectedCategory, setSelectedCategory] = useState<Category>(defaultCategory)
     const { loading, data } = useHttpData<Category>(url);
-    const { loading: loadingMeal, data: dataMeal, setData: setMeals, setLoading : setLoadingMeal } = useHttpData<Meal>(makeMealUrl(defaultCategory));
-    const { isOpen,onOpen, onClose } = useDisclosure()
+    const {
+        loading: loadingMeal,
+        data: dataMeal,
+        setData: setMeals,
+        setLoading: setLoadingMeal
+    } = useHttpData<Meal>(makeMealUrl(defaultCategory));
+    
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    
     const searchApi = (searchForm: SearchForm) => {
         
         setLoadingMeal(true);
         
-        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchForm.search}`
+        const url = `${baseUrl}/search.php?s=${searchForm.search}`;
+
         axios.get<{ meals: Meal[] }>(url)
             .then(({ data }) => setMeals(data.meals))
-            .finally(()=>setLoadingMeal(false))
+            .finally(() => setLoadingMeal(false))
+    }
+
+    const { fetch, loading:loadingMealDetails, data: mealDetailData} = useFetch<MealDetails>();
+    
+
+    const searchMealDetails = (meal: Meal) => {
+        onOpen();
+        fetch(`${baseUrl}/lookup.php?i=${meal.idMeal}`)
     }
 
     return (
@@ -58,20 +77,20 @@ function App() {
                 height="calc(100vh - 60px)"
             >
                 <Sidenav
-                    loading={loading}
                     categories={data}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}
+                    loading={loading}
                 ></Sidenav>
             </GridItem>
 
             <GridItem p="4" bg="gray.100" area={'main'}>
-                <MainContent openRecipe={onOpen} meals={dataMeal} loading = {loadingMeal}></MainContent>
+                <MainContent openRecipe={searchMealDetails} meals={dataMeal} loading = {loadingMeal}></MainContent>
             </GridItem>
 
             </Grid>
             
-            <RecipeModal isOpen={isOpen} onClose={onClose}></RecipeModal>
+            <RecipeModal isOpen={isOpen} onClose={onClose} loading={loadingMealDetails} data={mealDetailData}></RecipeModal>
         </>
     )
 }

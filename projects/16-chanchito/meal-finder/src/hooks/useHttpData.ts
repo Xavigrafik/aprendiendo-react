@@ -6,6 +6,8 @@ export default function useHttpData<T>(url: string) {
     const [data, setData] = useState<T[]>()
     const [loading, setLoading] = useState<boolean>(false)
 
+    const loadingDelay = 600; // DELAY PARA OBSERVAR EL LOADING
+    
     useEffect(() => {
         let aborted = false
         if (!url) {
@@ -23,6 +25,7 @@ export default function useHttpData<T>(url: string) {
                     if (data?.meals) {
                         setData(data.meals);
                     } else {
+
                         console.warn("Meals data is undefined");
                     }
                 }
@@ -35,7 +38,9 @@ export default function useHttpData<T>(url: string) {
             })
             .finally(() => {
                 if (!aborted) {
-                    setLoading(false)
+                    setTimeout(() => {
+                        setLoading(false)
+                    }, loadingDelay);
                 }
             })
             

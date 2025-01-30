@@ -1,30 +1,32 @@
 import {
     Button,
     Modal,
-    ModalBody,
-    ModalCloseButton,
     ModalContent,
     ModalFooter,
-    ModalHeader,
     ModalOverlay,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+
+import RecipeModalSkeleton from './RecipeModalSkeleton';
+import { MealDetails } from '../types';
+import RecipeModalContent from './RecipeModalContent';
 
 type Props = {
-    isOpen: boolean
-    onClose: () => void
+    data: MealDetails | undefined;
+    isOpen: boolean;
+    onClose: () => void;
+    loading: boolean;
 }
 
-function RecipeModal({ isOpen, onClose }: Props) {
+function RecipeModal({ isOpen, onClose, loading, data}: Props) {
     return (
         <>
+            
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <h3>EEOO - 18</h3>
-                    </ModalBody>
+
+                    {loading ? <RecipeModalSkeleton /> : data && <RecipeModalContent data={data} /> }
+
                     <ModalFooter>
                         <Button colorScheme="blue" mr={3} onClick={onClose}>
                             Close

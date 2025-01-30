@@ -8,9 +8,15 @@ type Props = {
 
 function MealCard({ meal, openRecipe }: Props) {
     return (
-        <Card maxW="sm" boxShadow="lg" className="WWW">
+        <Card maxW="sm" boxShadow="lg" className="CardCustomClass">
             <CardBody>
                 <Image
+                    // width="260px"
+                    // htmlWidth="100px"
+                    // htmlHeight="100px"
+                    // boxSize="120px"
+                    // aspectRatio={4 / 3}
+                    // fit="cover"
                     src={meal.strMealThumb}
                     alt={meal.strMeal}
                     borderRadius="lg"

@@ -16,4 +16,8 @@ export type SearchForm = {
 
 export type HeaderSearchForm = {
     search?: string;
+};
+  
+export type MealDetails = {
+    [key:string]: string;
   };

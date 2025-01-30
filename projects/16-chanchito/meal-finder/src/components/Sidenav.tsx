@@ -26,6 +26,7 @@ function Sidenav({ loading, categories, selectedCategory, setSelectedCategory }:
                 CATEGORÍAS
             </Heading>
             <VStack align="stretch">
+                
                 {categories.map((cat) => (
                     <Link
                         key={cat.strCategory}
@@ -34,7 +35,10 @@ function Sidenav({ loading, categories, selectedCategory, setSelectedCategory }:
                         py={2}
                         borderRadius={5}
                         {...(selectedCategory.strCategory == cat.strCategory && selectedProps)}
-                        _hover={{ textDecoration: "none" }}
+                        _hover={{
+                            color: selectedCategory.strCategory == cat.strCategory ? 'white' : 'blue.500',
+                            textDecoration: "none"
+                        }}
                     >
                         {cat.strCategory}
                     </Link>
