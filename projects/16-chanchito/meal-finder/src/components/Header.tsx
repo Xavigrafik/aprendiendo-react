@@ -1,18 +1,12 @@
-import {
-    Button,
-    Container,
-    Input,
-    InputGroup,
-    InputLeftElement,
-  } from "@chakra-ui/react";
-  import { useForm } from "react-hook-form";
-  import { IoMdSearch } from "react-icons/io";
-  import { HeaderSearchForm, SearchForm } from "../types";
+import { Button, Container, Input, InputGroup, InputLeftElement, } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { IoMdSearch } from "react-icons/io";
+import { HeaderSearchForm, SearchForm } from "../types";
 
 
-  type Props = {
+type Props = {
     onSubmit: (data: HeaderSearchForm) => void;
-  };
+};
 
 function Header({ onSubmit }: Props) {
     

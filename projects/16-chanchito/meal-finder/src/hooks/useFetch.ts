@@ -7,9 +7,12 @@ export default <T>() => {
     const [data, setData] = useState<T>()
 
     
-    const fetch = (url:string) => {
-        const loadingDelay = 1600; // DELAY PARA OBSERVAR EL LOADING
+    const fetch = (url: string) => {
+        
         setLoading(true);
+        
+        const loadingDelay = 500; // DELAY PARA OBSERVAR EL LOADING
+        
         axios
             .get(url)
             .then(({ data }) => { setData(data.meals[0]) })

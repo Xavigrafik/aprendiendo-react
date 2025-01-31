@@ -6,7 +6,7 @@ export default function useHttpData<T>(url: string) {
     const [data, setData] = useState<T[]>()
     const [loading, setLoading] = useState<boolean>(false)
 
-    const loadingDelay = 600; // DELAY PARA OBSERVAR EL LOADING
+    const loadingDelay = 500; // DELAY PARA OBSERVAR EL LOADING
     
     useEffect(() => {
         let aborted = false
