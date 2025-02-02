@@ -5,7 +5,9 @@ import { Todo } from "../types";
 type TodosContextType = {
     todos: Todo[];
     addTodo: (todo: Todo) => void;
+    toggleTodo: (todo: Todo) => void;
 
 }
+
 
 export default createContext<TodosContextType>({} as TodosContextType)

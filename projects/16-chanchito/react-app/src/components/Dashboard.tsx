@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
-import TodosContext from '../contexts/TodosContext'
+
+import useTodos from '../hooks/useTodos'
 
 
+const Dashboard = () => {
 
-const Dashboard = ({}: Props) => {
-  const {todos} = useContext(TodosContext)
+    const { todos } = useTodos()
+    
   return (
-    <div>Dashboard - {todos.length} </div>
+    <div className='bg-light my-3 border p-3'>TOTAL TODOS: {todos.length} </div>
   )
 }
 

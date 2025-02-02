@@ -1,17 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import App2 from './App2.tsx'
-import App3 from './App2.tsx'
+// import App from './App.tsx'
+// import App from './App2.tsx'
+import App from './App3.tsx'
 
 import './styles/utils/importsBootstrap.scss'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App3 />
-    {/* <App2 /> */}
-    {/* <App /> */}
+    <React.StrictMode>
+        {/* "App" se importa de distintas rutas */}
+        <App />
   </React.StrictMode>,
 )
 

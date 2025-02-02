@@ -1,26 +1,25 @@
-import { useState } from 'react';
-import { Todo } from "./types/";
 import  Dashboard  from './components/Dashboard';
 import  MainContent  from './components/MainContent';
-import TodosContext from './contexts/TodosContext';
+import TodosProvider from './providers/TodosProvider';
 
 
 function App() {
 
-    const [todos, setTodos] = useState<Todo[]>(
-        {id:0, name:"Cocinar", completed:false},
-    )
-
-    const addTodo = (todo: Todo) => {
-        setTodos([todo, ...todos])
-    }
-    
+   
     return (
-        <TodosContext.Provider value={{todos, addTodo}}>
-            <Dashboard></Dashboard>
-            <MainContent></MainContent>
-        </TodosContext.Provider>
+        <TodosProvider>
+            <div className="container">
+                <div className="row">
+                    <div className="col-5">
+                        <Dashboard></Dashboard>
+                        <MainContent></MainContent>
+                        
+                    </div>
+                </div>
+            </div>
+        </TodosProvider>
     )
- }
+}
+ 
 
 export default App;
