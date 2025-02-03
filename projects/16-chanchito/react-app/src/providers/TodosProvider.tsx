@@ -11,11 +11,12 @@ export default function TodosProvider({children}: Props) {
 
     const [todos, setTodos] = useState<Todo[]>(
         [
-            { id: 0, name: "Default task", completed: false },
-            { id: 1, name: "Default task", completed: true },
-            { id: 2, name: "Default task", completed: false },
-            { id: 3, name: "Default task", completed: true },
+            { id: 5, name: "Default task", completed: false },
             { id: 4, name: "Default task", completed: false },
+            { id: 2, name: "Default task", completed: true },
+            { id: 3, name: "Default task", completed: true },
+            { id: 1, name: "Default task", completed: true },
+            { id: 0, name: "Default task", completed: true },
         ]
     )
     
@@ -36,9 +37,25 @@ export default function TodosProvider({children}: Props) {
     
         setTodos(newTodos);
     };
+
+    // Obtiene el total de completos/incpmpletos (true/false)
+    const getTotal = (completed: boolean) => {
+        return  todos.filter((t) => t.completed === completed).length;
+    };
+    
+    // Obtiene el total de completos (true)
+    const getTotalCompleted = () => {
+        return getTotal(true);
+    };
+    
+    // Obtiene el total de incpmpletos (false)
+    const getTotalIncompleted = () => {
+        return getTotal(false);
+    };
+    
     
     return (
-        <TodosContext.Provider value={{ todos, addTodo, toggleTodo }}>
+        <TodosContext.Provider value={{ todos, addTodo, toggleTodo, getTotal, getTotalCompleted, getTotalIncompleted }}>
              {children}
         </TodosContext.Provider>
     )

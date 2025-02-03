@@ -6,6 +6,9 @@ type TodosContextType = {
     todos: Todo[];
     addTodo: (todo: Todo) => void;
     toggleTodo: (todo: Todo) => void;
+    getTotal: (completed:boolean) => number;
+    getTotalCompleted: () => number;
+    getTotalIncompleted: () => number;
 
 }
 
