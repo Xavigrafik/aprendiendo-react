@@ -38,7 +38,12 @@ export default function TodosProvider({children}: Props) {
         setTodos(newTodos);
     };
 
-    // Obtiene el total de completos/incpmpletos (true/false)
+    /**
+    * Obtiene el total de completos/incpmpletos 
+    * @author Xavi Barrios
+    * @version 2025-02-03
+    * @returns {number}
+    */
     const getTotal = (completed: boolean) => {
         return  todos.filter((t) => t.completed === completed).length;
     };
