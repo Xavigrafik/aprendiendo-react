@@ -1,22 +1,34 @@
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import LoginButton from './LoginButton';
+import UserAvatar from './UserAvatar';
+
 
 export function NavMenu() {
+    
+    const [userIsLogged, setUserIsLogged] = useState(false); 
+    
     return (
-        <nav className="NavMenu navbar bg-dark border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
+        <nav className="NavMenu navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
             <div className="container-xxl">
-                <a className="navbar-brand" href="#">
-                </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup" >
                     <div className="navbar-nav me-auto">
-                        <a className="nav-link" href="#">Reservas</a>
-                        <a className="nav-link" href="#">Añadir reserva</a>
+                        <NavLink className="nav-link" to="/">Home</NavLink>
+                        <NavLink className="nav-link" to="/add"> +Add</NavLink>
                     </div>
 
+                    {/* <button className='btn btn-primary'>Log me</button> */}
+
                     <div className="navbar-nav">
-                        <a className="nav-link" href="#">Log in</a>
+                    {userIsLogged ? (
+                        <a className="nav-link" to="/login"><UserAvatar/></a>
+                    ) : (
+                        <LoginButton/>
+                    )}
                     </div>
                 </div>
 

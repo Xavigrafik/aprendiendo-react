@@ -1,8 +1,17 @@
 .NavMenu {
-
+    padding: 0!important;
+    border-bottom:0;
     
-    .navbar-brand,
     .nav-link {
         color: #fff;
+        padding-left: 2rem!important;
+        padding-right: 2rem!important;
+        
+        &.active {
+            --bs-navbar-active-color : lightblue;
+            border-bottom: 5px solid currentColor;
+            background-color: rgba($color: #ffffff, $alpha: 0.33);
+        }
     }
+
 }
