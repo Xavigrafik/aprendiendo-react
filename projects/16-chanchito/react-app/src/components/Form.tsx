@@ -3,100 +3,98 @@ import { useForm } from "react-hook-form";
 import List3 from "./List.3";
 import Select from "./inputs/Select";
 
+type Person = {
+    name: string;
+    lastName: string;
+    email: string;
+    type: string;
+    formState?: () => void; // opcional si no siempre se usa
+};
+
 
 function Form() {
-
-    type Person = {
-        name: string;
-    lastName: string;
-        email: string;
-        type: string;
-        formState?: () => void; // opcional si no siempre se usa
-    };
-    
-    type PeopleArray = {
-        data: Person[];
-    };
-
-    const { register, handleSubmit, formState: { errors }, formState } = useForm<PeopleArray>();
-    
+    const { register, handleSubmit, formState: { errors } } = useForm<Person>(); // Tipado corregido aquí
     const [data, setData] = useState<Person[]>([]);
-    
-    
+
     const onSubmit = (formData: Person) => {
-        
-        console.log("formState: ",formState);
-        //console.log("errors: ",errors);
-        console.log("formData", formData) 
-        console.log("data", data) 
-        //console.log("register", register)
+        console.log("formData", formData);
+        console.log("data", data);
 
+        const newDataItem: Person = {
+            name: formData.name,
+            lastName: formData.lastName,
+            email: formData.email,
+            type: formData.type,
+            formState: () => {
+                // Define una función vacía o alguna lógica para formState
+            },
+        };
 
-         // Crea el nuevo objeto a añadir
-            const newDataItem: Person  = {
-                name: formData.name,
-                lastName: formData.lastName,
-                email: formData.email,
-                type:  formData.type,
-                formState: () => {
-                    // Define una función vacía o alguna lógica para formState
-                },
-            };
+        const newData = [...data, newDataItem];
+        setData(newData);
+    };
 
-            // Crea un nuevo array con los datos actuales y el nuevo elemento
-            const newData = [...data, newDataItem];
-
-            // Actualiza el estado con el nuevo array
-            setData(newData);
-    }
-    
     return (
         <>
-            
             <div className="col-6">
-                <form onSubmit={handleSubmit(onSubmit)} className=" my-3 bg-light p-3 border">
+                <form onSubmit={handleSubmit(onSubmit)} className="my-3 bg-light p-3 border">
                     <div className="row">
                         <div className="col-6 mb-3">
                             <input
-                                {...register('name', { minLength: {value:3, message: "Es mu corto!" } }) }
-                                type="text" className="form-control" id="name" value="PEPE" />
-                            
-                            { errors?.name && <p className="text-danger small">{errors?.name?.message}</p>}
-                            
+                                {...register('name', { required: "Name is required", minLength: { value: 3, message: "Name is too short!" } })}
+                                type="text"
+                                className="form-control"
+                                id="name"
+                                placeholder="name"
+                            />
+                            {errors.name && <p className="text-danger small">{errors.name.message}</p>}
                         </div>
                         <div className="col-6 mb-3">
                             <input
-                                {...register('lastName', { minLength: {value:3, message: "Es mu corto!" } }) }
-                                type="text" className="form-control" id="lastName" value="ALIMAÑA"/>
-                                { errors?.lastName && <p className="text-danger small">{errors?.lastName?.message}</p>}
+                                {...register('lastName', { required: "Last Name is required", minLength: { value: 3, message: "Last Name is too short!" } })}
+                                type="text"
+                                className="form-control"
+                                id="lastName"
+                                placeholder="lastName"
+                            />
+                            {errors.lastName && <p className="text-danger small">{errors.lastName.message}</p>}
                         </div>
                         <div className="col-6 mb-3">
                             <input
-                                {...register('email', { minLength: {value:3, message: "Es mu corto!" } }) }
-                                type="text" className="form-control" id="email" value="pepe@tuputamadre.com" />
-                                { errors?.email && <p className="text-danger small">{errors?.email?.message}</p>}
+                                {...register('email', { required: "Email is required",  minLength: { value: 3, message: "Email is too short!" } })}
+                                type="email" // Tipo email para mejor validación en el navegador
+                                className="form-control"
+                                id="email"
+                                placeholder="email"
+                            />
+                            {errors.email && <p className="text-danger small">{errors.email.message}</p>}
                         </div>
                         <div className="col-6 mb-3">
-                        <input
-                            {...register('type') }
-                            type="text" className="form-control" id="type" value="XX" />
+                            <input
+                                {...register('type', { required: "Type is required" })}
+                                type="text"
+                                className="form-control"
+                                id="type"
+                                placeholder="type"
+                            />
+                            {errors.type && <p className="text-danger small">{errors.type.message}</p>}
                         </div>
 
                         <div className="col-6 mb-3">
-                            <Select></Select>
+                            <Select />
                         </div>
-                
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                    
-                    </form>
+                    <button type="submit" className="btn btn-primary">
+                        Submit
+                    </button>
+                </form>
             </div>
 
             <div className="col-6">
-                {data && <List3 data={data} ></List3>}
+                {data.length > 0 && <List3 data={data} />}
             </div>
-    </>
-  )
+        </>
+    );
 }
 
-export default Form
+export default Form;
