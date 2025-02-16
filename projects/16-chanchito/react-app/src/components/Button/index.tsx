@@ -12,19 +12,8 @@ type Props = {
 
 function Button({ children, isLoading, onClick, className = '', sent }: Props) {
     
-    let content;
-
     const isLoadingClass = `btn btn-${isLoading ? 'secondary LOADING' : 'primary'}`;
     const classProps = `${isLoadingClass} ${className} ${styles.claseDesdeModule} `
-
-    if (isLoading) {
-        content = "Cargando...";
-    } else if (sent) {
-        content = "Enviado!";
-    } else {
-        content = children;
-    }
-    
 
     return (
         <button
@@ -33,7 +22,7 @@ function Button({ children, isLoading, onClick, className = '', sent }: Props) {
             type="button"
             className={classProps}
         >
-           {content}
+            {isLoading ? "Cargando..." : sent ? "Enviado!" : children}
         </button>
     );
 }

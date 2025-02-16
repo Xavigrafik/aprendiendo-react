@@ -7,21 +7,22 @@ import List2 from './List.2';
 
 function DestructuringArrays() {
 
-    const getRandomNum = () => { return "R_NUM: " + Math.random().toString().substring(2,8) }
+    const getRandomId = () => { return "R_ID: " + Math.random().toString().substring(2,8) }
     const getRandomString = () => { return "R_STRING: " + Array(8).fill(undefined).map(_ => String.fromCharCode(48 + Math.random() * (127 - 48))).join('') }
 
     const getNewObject = () => {
         return {
-            id: getRandomNum(),
-            name: getRandomString() ,
+            id: getRandomId(),
+            name: getRandomString(),
+            isInitial: false
         }
     }
 
     const initialProducts = [
-        {id:1, name:"el primero", isInitial: true},
-        {id:2, name:"el segundo" , isInitial: true},
-        getNewObject() ,
-        getNewObject() ,
+        {id:getRandomId(), name:"el primero", isInitial: true},
+        {id:getRandomId(), name:"el segundo" , isInitial: true},
+        getNewObject(),
+        getNewObject(),
     ];
 
     const [products, setProducts] = useState(initialProducts);
@@ -54,9 +55,9 @@ function DestructuringArrays() {
             setProducts([])
         }
     }
-
     return <div className="row my-5">
-            <div className="col-6">
+        <div className="col-6">
+                <small>/components/DestructuringArrays.tsx</small>
                 <h4>{products.length}</h4>
                 <Spacer space={30}></Spacer>
                 <Button className='d-inline-block' onClick={comienzo}>+ comienzo</Button>

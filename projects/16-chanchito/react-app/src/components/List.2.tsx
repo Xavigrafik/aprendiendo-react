@@ -3,7 +3,7 @@ type Props = {
     onSelect?: (el: string) => void;
 };
 type DataItem = {
-    id?: number;
+    id: string;
     name?: string;
     isInitial?: boolean;
 };
