@@ -209,6 +209,7 @@ function App() {
                             <Alert>Este párrafo es "children" de Alert y recibe los estilos de ./Alert.module.scss</Alert>
                             <Alert>"dismisable=false"</Alert>
                             <Alert dismisable={true}>"dismisable=true"</Alert>
+                            <Alert dismisable>dismisable</Alert>
                         </div>
                     </div>
                     
