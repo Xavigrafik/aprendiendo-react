@@ -6,16 +6,16 @@ type Props = {
     children: ReactNode;
     isLoading?: boolean;
     onClick?: () => void;
-    classProps?: string;
+    className?: string;
     sent?: boolean;
 };
 
-function Button({ children, isLoading, onClick, classProps = '', sent }: Props) {
+function Button({ children, isLoading, onClick, className = '', sent }: Props) {
     
     let content;
 
     const isLoadingClass = `btn btn-${isLoading ? 'secondary LOADING' : 'primary'}`;
-    const className = ` ${isLoadingClass} ${classProps} ${styles.claseDesdeModule} `
+    const classProps = `${isLoadingClass} ${className} ${styles.claseDesdeModule} `
 
     if (isLoading) {
         content = "Cargando...";
@@ -31,7 +31,7 @@ function Button({ children, isLoading, onClick, classProps = '', sent }: Props) 
             disabled={isLoading}
             onClick={onClick}
             type="button"
-            className={className}
+            className={classProps}
         >
            {content}
         </button>

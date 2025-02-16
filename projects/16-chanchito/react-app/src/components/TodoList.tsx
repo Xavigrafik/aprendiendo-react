@@ -1,13 +1,15 @@
 // import React, { useContext } from 'react'
 import useTodos from '../hooks/useTodos'
+import Button from './Button'
 
 function TodoList() {
     const { todos, addTodo, toggleTodo } = useTodos()
 
     return (
         <>
-            <button
-                className="btn btn-info mb-3"
+            <Button
+                isLoading = {false}
+                className="mb-3"
                 onClick={() => {
                     addTodo({
                         id: todos.length,
@@ -17,7 +19,7 @@ function TodoList() {
                 }}
             >
                 Add to-do
-            </button>
+            </Button>
 
             <ul className="list-group mb-3">
                 {todos.map((t) => (

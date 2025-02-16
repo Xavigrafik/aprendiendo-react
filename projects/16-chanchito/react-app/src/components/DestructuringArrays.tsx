@@ -59,10 +59,10 @@ function DestructuringArrays() {
             <div className="col-6">
                 <h4>{products.length}</h4>
                 <Spacer space={30}></Spacer>
-                <Button onClick={comienzo}>+ comienzo</Button>
-                <Button onClick={final}>+ final</Button>
-                <Button onClick={eliminar}>Eliminar último</Button>
-                <Button onClick={limpiar}>Limpiar</Button>
+                <Button className='d-inline-block' onClick={comienzo}>+ comienzo</Button>
+                <Button className='d-inline-block' onClick={final}>+ final</Button>
+                <Button className='d-inline-block' onClick={eliminar}>Eliminar último</Button>
+                <Button className='d-inline-block' onClick={limpiar}>Limpiar</Button>
             </div>
             <div className="col-6">
                 { products && <List2 data={products} ></List2>}

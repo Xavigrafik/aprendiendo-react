@@ -1,25 +1,37 @@
+$color1 : #26D0CE;
+$color2 : darken($color1, 15%);
+$color3 : darken($color2, 15%);
+
+
+:root {
+}
 
 .claseDesdeModule {
-         
-        background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
-        margin: 10px;
-        padding: 15px 45px;
-        text-align: center;
-        text-transform: uppercase;
-        transition: 0.5s;
-        background-size: 200% auto;
-        color: white;            
-        box-shadow: 0 0 20px #eee;
-        border-radius: 10px;
-        border:3px solid #1A2980!important;
-        display: block;
-        transition: .25s!important;
-        transition: all ease-in-out 350ms;
+
+    //--bs-btn-hover-border-color : $color3!important;
+    --bs-btn-border-width : 0!important;
+    --bs-btn-border-radius : 100px!important;
+    --bs-btn-padding-x : 2em!important;
+    --bs-btn-padding-y : 0.5em!important;
+
+
+    background-image: linear-gradient(to right, $color2 0%, $color1  51%, $color2  100%);
+    margin: 10px;
+    padding: 0.65em 2em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    transition: .15s ;
+    transition: all ease-in-out 350ms;
 }
 
 .claseDesdeModule:hover {
-        background-position: right center; /* change the direction of the change here */
-        color: #fff;
-        text-decoration: none;
+    background-image: linear-gradient(to right, $color3 0%, $color2  51%, $color3  100%);
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }
-        

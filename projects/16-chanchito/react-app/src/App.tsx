@@ -31,8 +31,11 @@ function App() {
        console.log('imprimiendo desde 2', el);
     };
     const handleAdd = () => {
-        setList([...list, "Minion"]  )
+        setList([...list, "Minion"])
         setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
     }
     const handleRemove = () => {
         setIsLoading(true);
@@ -218,23 +221,25 @@ function App() {
                         
                         <div className="col-4">
 
-                            <Button classProps="me-3" onClick={handleAdd}>+</Button>
-                            <Button classProps="me-3" onClick={handleRemove}>-</Button>
+                            <Button className="ms-0 me-2 d-inline-block" onClick={handleAdd}>+</Button>
+                            <Button className="ms-0 me-2 d-inline-block" onClick={handleRemove}>-</Button>
                             <div className="clearfix"></div>
 
-                            <Button classProps="me-3" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
-                            <Button classProps="me-3" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
+                            <Button className="ms-0 me-2 d-inline-block" isLoading={isLoading} onClick={handleAdd}>+ Loading</Button>
+                            <Button className="ms-0 me-2 d-inline-block" isLoading={isLoading} onClick={handleRemove}>- Loading</Button>
                             <div className="clearfix"></div>
 
-                            <Button classProps="me-3" sent={sent} onClick={handleSend}>Send</Button>
+                            <Button className="ms-0 me-2 d-inline-block" sent={sent} onClick={handleSend}>Send</Button>
 
                             <div className="clearfix"></div>
 
-                            <Button classProps="me-3 btn-danger" onClick={handleReset}>Reset</Button>
+                            <Button className="ms-0 me-2 d-inline-block" onClick={handleReset}>Reset</Button>
                         </div>
 
                         <div className="col-4">
                             <div>Todos los botones son el mismo componente: <code>&lt;Button&gt;XXX&lt;/Button&gt;</code>
+                                <br />
+                                Los estilos se definen en <code>Button.module.scss</code>
                             <br />La prop <code>isLoading</code> y la prop <code>sent</code> junto con las funciones  <code>handleAdd</code>, <code>handleRemove</code>, <code>handleSend</code> ejecutan las distintas funcionalidades
                             </div>
                         </div>
