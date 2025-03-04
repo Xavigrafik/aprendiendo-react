@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import UserAvatar from './UserAvatar';
 
@@ -7,6 +7,7 @@ import UserAvatar from './UserAvatar';
 export function NavMenu() {
     
     const [userIsLogged, setUserIsLogged] = useState(true); 
+    const navigate = useNavigate();
     
     return (
         <nav className="NavMenu navbar navbar-expand-lg" data-bs-theme="dark">
@@ -22,13 +23,13 @@ export function NavMenu() {
                         <NavLink className="nav-link" to="/galeria">Galeria</NavLink>
                     </div>
 
-                    {/* <button className='btn btn-primary'>Log me</button> */}
 
                     <div className="navbar-nav">
+
                     {userIsLogged ? (
-                        <a className="nav-link" to="/login"><UserAvatar/></a>
+                        <a className="nav-link" to="/login"><UserAvatar userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged }/></a>
                     ) : (
-                        <LoginButton/>
+                        <LoginButton userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged } />
                     )}
                     </div>
                 </div>

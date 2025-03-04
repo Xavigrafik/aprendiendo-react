@@ -19,4 +19,20 @@ $textcolor: #f7cf21;
         }
     }
 
+    .dropdown-menu {
+        --bs-dropdown-min-width : 300px;
+        --bs-dropdown-bg : #594c11;
+    }
+
+    .form-control{
+        background-color: #f7cf21;
+        color: #000;
+    }
+
+    .form-check-input:checked {
+        background-color: $textcolor;
+        border-color: $bgcolor;
+    }
+
+
 }
