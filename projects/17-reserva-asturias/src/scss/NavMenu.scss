@@ -24,6 +24,10 @@ $textcolor: #f7cf21;
         --bs-dropdown-bg : #594c11;
     }
 
+    .dropdown-toggle::after {
+        content: none;
+    }
+
     .form-control{
         background-color: #f7cf21;
         color: #000;
@@ -33,6 +37,19 @@ $textcolor: #f7cf21;
         background-color: $textcolor;
         border-color: $bgcolor;
     }
-
-
+    .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.8em;
+        .img {
+            border: 1px solid $textcolor;
+            border-radius: 100%;
+            margin-right: 0.40em;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            overflow: hidden;
+        }
+    }
 }

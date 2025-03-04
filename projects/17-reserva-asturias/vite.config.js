@@ -8,5 +8,14 @@ export default defineConfig({
       preprocessor: 'scss', 
       additionalData: `@import "~bootstrap/scss/bootstrap";` 
     }
-  }
+  },
+  server: {
+    proxy: {
+      '/dog': {
+        target: 'https://place.dog',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/dog/, ''),
+      },
+    },
+  },
 });

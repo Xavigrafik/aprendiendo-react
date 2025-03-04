@@ -16,7 +16,7 @@ function LoginButton({ setUserIsLogged}) {
                 </NavLink>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                     <li>
-                        <form className="p-3">
+                        <form className="px-4 py-2">
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label" > Email </label>
                                 <input
@@ -25,9 +25,6 @@ function LoginButton({ setUserIsLogged}) {
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
                                 />
-                                <div id="emailHelp" className="form-text">
-                                    ayudac?
-                                </div>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="exampleInputPassword1" className="form-label" >
