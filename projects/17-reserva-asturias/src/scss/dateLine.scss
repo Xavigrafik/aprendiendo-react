@@ -1,0 +1,21 @@
+.dateList {
+
+    margin: 0;
+
+    .dateLine {
+        list-style: none;
+        border: 1px solid DeepSkyBlue;
+        background-color: PaleTurquoise;
+        margin-bottom: 0.5em;
+        padding: 0.25em 1em;
+        border-radius: 10px;
+
+        span {
+            &.date {}
+
+            &.user {
+                font-weight: 900;
+            }
+        }
+    }
+}

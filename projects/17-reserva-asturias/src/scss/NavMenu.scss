@@ -1,16 +1,21 @@
+$bgcolor: #594c11;
+$textcolor: #f7cf21;
+
 .NavMenu {
     padding: 0!important;
     border-bottom:0;
+    background-color: #594c11;
     
     .nav-link {
-        color: #fff;
+        color: $textcolor;
         padding-left: 2rem!important;
         padding-right: 2rem!important;
         
         &.active {
-            --bs-navbar-active-color : lightblue;
-            border-bottom: 5px solid currentColor;
-            background-color: rgba($color: #ffffff, $alpha: 0.33);
+            --bs-navbar-active-color : $bgcolor;
+            border-bottom: 5px solid $textcolor;
+            background-color: rgba( $textcolor, $alpha: 0.33);
+            color: #fff;
         }
     }
 
