@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
-function LoginButton({ setUserIsLogged}) {
+function LoginButton({ setUserIsLogged }) {
+    
     return (
         <>
             <div className="dropdown">

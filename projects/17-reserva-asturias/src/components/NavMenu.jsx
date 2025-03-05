@@ -29,7 +29,7 @@ export function NavMenu() {
                     {userIsLogged ? (
                         <a className="nav-link" to="/login"><UserAvatar userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged }/></a>
                     ) : (
-                        <LoginButton userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged } />
+                        <LoginButton userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged } ></LoginButton>
                     )}
                     </div>
                 </div>
