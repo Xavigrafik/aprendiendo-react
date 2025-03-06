@@ -6,7 +6,7 @@ import { ReservationContext } from "../contexts/ReservationContext";
 
 function AddReservation() {
 
-    const { reservations, setReservations } = useContext(ReservationContext);
+    const { reservations, addReservation } = useContext(ReservationContext);
     
     const today = new Date();
     const tomorrow = new Date(today);
@@ -22,7 +22,7 @@ function AddReservation() {
     const [dates, setdates] = useState(initialDate);
 
     const handleReservation = () => {
-        console.log('handleReservation:', reservations);
+
         const newReservation = {
             id: (reservations.length + 1),
             user: 'Xavi AAA',
@@ -30,7 +30,11 @@ function AddReservation() {
             dateOut: dates.dateOut
         }
 
-        setReservations([...reservations, newReservation]); 
+        console.log('handleReservation');
+        
+        addReservation(newReservation);
+
+        console.log([...reservations, newReservation]);
         
     }
 
