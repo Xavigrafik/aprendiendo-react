@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import MyDatePicker from '../components/MyDatePicker'
 import '../scss/reservation.scss'
+import { ReservationContext } from "../contexts/ReservationContext";
+
 
 function AddReservation() {
+
+    const { reservations, setReservations } = useContext(ReservationContext);
+    
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1); 
@@ -12,7 +17,22 @@ function AddReservation() {
         dateOut: "" 
     };
 
+    const emptyDate = "dd/mm/aaaa"
+
     const [dates, setdates] = useState(initialDate);
+
+    const handleReservation = () => {
+        console.log('handleReservation:', reservations);
+        const newReservation = {
+            id: (reservations.length + 1),
+            user: 'Xavi AAA',
+            dateIn: dates.dateIn,
+            dateOut: dates.dateOut
+        }
+
+        setReservations([...reservations, newReservation]); 
+        
+    }
 
     return (
         <div className="container">
@@ -27,13 +47,19 @@ function AddReservation() {
 
                     <div className='dates'>
                         <h5 className='mb-4 mt-5'>Fechas elegidas:</h5>
-                        <span className='dateIn'>{dates.dateIn || "--/--/----"} </span>
+                        <span className='dateIn'>{dates.dateIn || emptyDate } </span>
                         --- 
-                        <span className='dateOut'>{dates.dateOut || "--/--/----"}</span>
+                        <span className='dateOut'>{dates.dateOut || emptyDate}</span>
                     </div>
 
                     <div className='reservationBlockFooter'>
-                        <button className='btn btn-warning mt-5 btn-lg'>Reservar</button>
+                        {(dates.dateOut && dates.dateIn) && 
+                            <button
+                                onClick={handleReservation}
+                                className='btn btn-warning mt-5 btn-lg'>
+                        Reservar
+                </button>
+                        }
                     </div>
                 </div>
             </div>
