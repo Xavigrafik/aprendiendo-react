@@ -1,13 +1,14 @@
-import {  useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import UserAvatar from './UserAvatar';
+import { UserContext } from "../contexts/UserContext";
 
 
 export function NavMenu() {
 
-    const [userIsLogged, setUserIsLogged] = useState(true); 
-    const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+    
     
     return (
         <nav className="NavMenu navbar navbar-expand-lg" data-bs-theme="dark">
@@ -20,18 +21,17 @@ export function NavMenu() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup" >
                     <div className="navbar-nav me-auto">
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                        {userIsLogged && <NavLink className="nav-link" to="/add">Reserva fechas</NavLink>}
+                        {user.isLogged && <NavLink className="nav-link" to="/add">Reserva fechas</NavLink>}
                         <NavLink className="nav-link" to="/galeria">Galeria</NavLink>
                     </div>
 
 
                     <div className="navbar-nav">
-
-                    {userIsLogged ? (
-                        <a className="nav-link" to="/login"><UserAvatar userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged }/></a>
-                    ) : (
-                        <LoginButton userIsLogged={userIsLogged} setUserIsLogged={setUserIsLogged } ></LoginButton>
-                    )}
+                        {user.isLogged ? (
+                            <a className="nav-link" to="/login"><UserAvatar/></a>
+                        ) : (
+                            <LoginButton></LoginButton>
+                        )}
                     </div>
                 </div>
 

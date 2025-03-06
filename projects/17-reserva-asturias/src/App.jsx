@@ -1,22 +1,22 @@
 
 import { NavMenu } from "./components/NavMenu";
-import { useState } from 'react'
 import { BrowserRouter } from "react-router-dom";
 import ROUTES from './routes/routes';
+import { UserProvider } from "./contexts/UserContext";
 import { ReservationProvider } from "./contexts/ReservationContext";
 
 function App() {
-
-
 
     return (
         <>
             <BrowserRouter>
                 
-                <ReservationProvider>
-                    <NavMenu></NavMenu>
-                    {ROUTES}
-                </ReservationProvider>
+                <UserProvider>
+                    <ReservationProvider>
+                        <NavMenu></NavMenu>
+                        {ROUTES}
+                    </ReservationProvider>
+                </UserProvider>
 
             </BrowserRouter>
         </>

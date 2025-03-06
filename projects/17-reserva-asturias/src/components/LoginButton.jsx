@@ -1,7 +1,16 @@
 import { NavLink } from 'react-router-dom'
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
-function LoginButton({ setUserIsLogged }) {
-    
+function LoginButton() {
+
+    const { logUser } = useContext(UserContext);
+
+    function handleClick(e) {
+        e.preventDefault();
+        logUser();
+    }
+
     return (
         <>
             <div className="dropdown">
@@ -48,7 +57,7 @@ function LoginButton({ setUserIsLogged }) {
                                 </label>
                             </div>
                           
-                            <button type="submit" onClick={()=>{setUserIsLogged(true)}} className="btn btn-outline-warning">
+                            <button type="submit" onClick={handleClick} className="btn btn-outline-warning">
                                 Submit
                             </button>
                         </form>

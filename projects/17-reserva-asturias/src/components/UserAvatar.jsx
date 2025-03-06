@@ -1,37 +1,40 @@
-import { useNavigate } from "react-router-dom"
-
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 function AvatarImg() { 
+    const { user } = useContext(UserContext);
     return (
         <span className="avatar">
             <span className="img">
                 <img src="/dog/50/50" className="img-fluid" />
             </span>
-            <span>User name</span>
+            <span>{user.name }</span>
         </span>
     )
 }
 
 
-function UserAvatar({ userIsLogged, setUserIsLogged }) {
+function UserAvatar() {
 
-    const navigate = useNavigate();
+    const { user, logOut } = useContext(UserContext);
 
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('logout');
+        logOut();
+    }
     return (
             <div className="dropdown-center">
                 <span className="dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                     {userIsLogged ? <AvatarImg></AvatarImg> : ""}
+                     {user ? <AvatarImg></AvatarImg> : ""}
                 </span>
                 <ul className="dropdown-menu">
                     <li>
-                        <span className="dropdown-item"
+                        <button className="dropdown-item"
                             href="#"
-                            onClick={() => {
-                                setUserIsLogged(false);
-                                navigate('/'); 
-                            }} >
+                            onClick={(e) => { handleClick(e) }} >
                             Log out
-                        </span>
+                        </button>
                     </li>
                 </ul>
             </div>
