@@ -1,9 +1,12 @@
 import '../scss/reservationLine.scss'
 import { Trash, Pencil } from "lucide-react";
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import { ReservationContext } from '../contexts/ReservationContext';
 import { UserContext } from '../contexts/UserContext';
+
+
 
 
 const ReservationLine = ({ reservation }) => {
@@ -36,5 +39,14 @@ const ReservationLine = ({ reservation }) => {
         </li>
     )
 }
+
+ReservationLine.propTypes = {
+    reservation: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        dateIn: PropTypes.string.isRequired,
+        dateOut: PropTypes.string.isRequired,
+        user: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default ReservationLine
