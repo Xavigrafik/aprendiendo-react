@@ -21,13 +21,13 @@ export function NavMenu() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup" >
                     <div className="navbar-nav me-auto">
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                        {user.isLogged && <NavLink className="nav-link" to="/add">Reserva fechas</NavLink>}
+                        {user.name && <NavLink className="nav-link" to="/add">Reserva fechas</NavLink>}
                         <NavLink className="nav-link" to="/galeria">Galeria</NavLink>
                     </div>
 
 
                     <div className="navbar-nav">
-                        {user.isLogged ? (
+                        {user.name ? (
                             <a className="nav-link" to="/login"><UserAvatar/></a>
                         ) : (
                             <LoginButton></LoginButton>

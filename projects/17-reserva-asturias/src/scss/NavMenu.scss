@@ -2,6 +2,7 @@ $bgcolor: #594c11;
 $textcolor: #f7cf21;
 
 .NavMenu {
+    
     padding: 0!important;
     border-bottom:0;
     background-color: #594c11;
@@ -17,6 +18,13 @@ $textcolor: #f7cf21;
             background-color: rgba( $textcolor, $alpha: 0.33);
             color: #fff;
         }
+    }
+
+    .dropdown-item:focus,
+    .dropdown-item:hover {
+        cursor: pointer;
+        --bs-dropdown-link-hover-bg: #f7cf21!important;
+        --bs-dropdown-link-hover-color: #594c11!important;
     }
 
     .dropdown-menu {

@@ -20,7 +20,6 @@ function UserAvatar() {
 
     function handleClick(e) {
         e.preventDefault();
-        console.log('logout');
         logOut();
     }
     return (
@@ -30,11 +29,11 @@ function UserAvatar() {
                 </span>
                 <ul className="dropdown-menu">
                     <li>
-                        <button className="dropdown-item"
+                        <span className="dropdown-item"
                             href="#"
                             onClick={(e) => { handleClick(e) }} >
                             Log out
-                        </button>
+                        </span>
                     </li>
                 </ul>
             </div>

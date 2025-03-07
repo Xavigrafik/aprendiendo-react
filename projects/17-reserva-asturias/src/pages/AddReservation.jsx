@@ -2,11 +2,12 @@ import { useState, useContext } from 'react'
 import MyDatePicker from '../components/MyDatePicker'
 import '../scss/reservation.scss'
 import { ReservationContext } from "../contexts/ReservationContext";
+import { UserContext } from "../contexts/UserContext";
 
 
 function AddReservation() {
-
     const { reservations, addReservation } = useContext(ReservationContext);
+    const { user } = useContext(UserContext);
     
     const today = new Date();
     const tomorrow = new Date(today);
@@ -25,16 +26,12 @@ function AddReservation() {
 
         const newReservation = {
             id: (reservations.length + 1),
-            user: 'Xavi AAA',
+            user: user.name,
             dateIn: dates.dateIn,
             dateOut: dates.dateOut
         }
 
-        console.log('handleReservation');
-        
         addReservation(newReservation);
-
-        console.log([...reservations, newReservation]);
         
     }
 
