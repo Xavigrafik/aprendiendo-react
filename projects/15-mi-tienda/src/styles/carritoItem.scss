@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .carritoItem {
     border: 1px solid #ccc;
     padding: 1em;
@@ -9,8 +11,8 @@
     transition: all ease-in-out 400ms;
     
     &:hover {
-        border: 1px solid darken(#ccc, 6%);
-        background-color: darken(#f2f3f4, 6%);
+        border: 1px solid color.adjust(#ccc, $lightness: 6%);
+        background-color: color.adjust(#f2f3f4, $lightness: 6%);
     }
 
 

@@ -1,8 +1,10 @@
+@use "sass:color";
+
 #root {
   width: 100%;
   padding: 0;
   min-height: 100vh;
-  background-color: lighten(lightblue, 10%);
+  background-color: color.adjust(lightblue,  $lightness:10%);
 }
 
 
