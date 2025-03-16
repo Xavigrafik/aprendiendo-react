@@ -1,39 +1,70 @@
-import { useState } from "react";
-import Die from "./Die";
+import { useState } from 'react'
+import Die from './Die'
+import { nanoid } from 'nanoid'
 
 export default function Main() {
+    const [dice, setDice] = useState(generateAllNewDice())
+    const [holdingNum, setHoldingNum] = useState(0)
 
-    function handleClick() {
-        console.log('reload');
-        setDice(generateAllNewDice());
+    function rollDice() {
+        setDice((oldDice) =>
+            oldDice.map((die) =>
+                die.isHeld
+                    ? die
+                    : { ...die, value: Math.ceil(Math.random() * 6) }
+            )
+        )
+    }
+
+    function hold(id) {
+        const clickedDie = dice.find((die) => die.id === id);
+        const newHoldingNum = clickedDie.value;
+        console.log(clickedDie,newHoldingNum);
         
+
+        if (holdingNum === 0) {
+            setHoldingNum(newHoldingNum) // Se actualiza el estado con el valor del primer click
+            console.log('newHoldingNum:', newHoldingNum)
+        } else {
+            console.log('else...',holdingNum,  newHoldingNum );
+            if (holdingNum == newHoldingNum ) {
+                console.log('elsito');
+                
+                setDice((oldDice) => {
+                    return oldDice.map((die) => {
+                        return die.id == id ? { ...die, isHeld: !die.isHeld } : die
+                    })
+                })
+            }
+        }
     }
 
     function generateAllNewDice() {
-        let newDice = []
-        for (let i = 0; i < 10; i++) {
-            const random = Math.ceil(Math.random() * 6);
-            newDice.push(random);
-        }
-        
-        return newDice;
+        return new Array(10).fill(0).map(() => ({
+            id: nanoid(),
+            value: Math.ceil(Math.random() * 6),
+            isHeld: false,
+        }))
     }
 
-
-    const [dice, setDice] = useState(generateAllNewDice)
-
-    const diceElements = dice.map((die, index) => {
-        return <Die key={index} value={die} />
+    const diceElements = dice.map((dieObj) => {
+        return (
+            <Die
+                id={dieObj.id}
+                key={dieObj.id}
+                value={dieObj.value}
+                isHeld={dieObj.isHeld}
+                hold={() => hold(dieObj.id)}
+            />
+        )
     })
 
-
-    
     return (
         <main className="main">
-            <div className="dice-container">
-                {diceElements}
-            </div>
-            <button className="btn" onClick={handleClick}>Roll</button>
+            <div className="dice-container">{diceElements}</div>
+            <button className="btn" onClick={rollDice}>
+                Roll
+            </button>
         </main>
     )
 }
