@@ -1,70 +1,78 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Die from './Die'
 import { nanoid } from 'nanoid'
 
 export default function Main() {
+
+    const TOTALDICE = 10;
+
     const [dice, setDice] = useState(generateAllNewDice())
-    const [holdingNum, setHoldingNum] = useState(0)
+    const [holdingNum, setHoldingNum] = useState(null);
+    const [gameWon, setGameWon] = useState(false);
+
+    useEffect(() => {
+        const allHeld = dice.every(die => die.isHeld); 
+        setGameWon(allHeld);
+    }, [dice]);
 
     function rollDice() {
-        setDice((oldDice) =>
-            oldDice.map((die) =>
-                die.isHeld
-                    ? die
-                    : { ...die, value: Math.ceil(Math.random() * 6) }
-            )
-        )
+        if (gameWon) {
+            // Reset del juego
+            setDice(generateAllNewDice());
+            setHoldingNum(0);
+            setGameWon(false);
+        } else {
+            setDice((oldDice) =>
+                oldDice.map((die) =>
+                    die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) }
+                )
+            );
+        }   
     }
 
-    function hold(id) {
-        const clickedDie = dice.find((die) => die.id === id);
-        const newHoldingNum = clickedDie.value;
-        console.log(clickedDie,newHoldingNum);
-        
 
-        if (holdingNum === 0) {
-            setHoldingNum(newHoldingNum) // Se actualiza el estado con el valor del primer click
-            console.log('newHoldingNum:', newHoldingNum)
-        } else {
-            console.log('else...',holdingNum,  newHoldingNum );
-            if (holdingNum == newHoldingNum ) {
-                console.log('elsito');
-                
-                setDice((oldDice) => {
-                    return oldDice.map((die) => {
-                        return die.id == id ? { ...die, isHeld: !die.isHeld } : die
-                    })
-                })
-            }
+    function hold(id) {
+        const newHoldingNum = dice.find((die) => die.id === id).value;
+        // console.log('newHoldingNum: ', newHoldingNum);
+        
+        if (holdingNum === null) {
+            setHoldingNum(newHoldingNum);
+            setDice(oldDice =>
+                oldDice.map(die =>
+                    die.id === id ? { ...die, isHeld: true } : die
+                )
+            );
+
+        } else if (holdingNum === newHoldingNum) {
+            setDice(oldDice =>
+                oldDice.map(die =>
+                    die.id === id ? { ...die, isHeld: !die.isHeld } : die
+                )
+            );
         }
     }
 
+
     function generateAllNewDice() {
-        return new Array(10).fill(0).map(() => ({
+        return new Array(TOTALDICE).fill(0).map(() => ({
             id: nanoid(),
             value: Math.ceil(Math.random() * 6),
             isHeld: false,
         }))
     }
 
-    const diceElements = dice.map((dieObj) => {
-        return (
-            <Die
-                id={dieObj.id}
-                key={dieObj.id}
-                value={dieObj.value}
-                isHeld={dieObj.isHeld}
-                hold={() => hold(dieObj.id)}
-            />
-        )
-    })
 
     return (
-        <main className="main">
-            <div className="dice-container">{diceElements}</div>
-            <button className="btn" onClick={rollDice}>
-                Roll
+        <main className={`main`}>
+            <div className="dice-container">
+                {dice.map(die => (
+                    <Die key={die.id} value={die.value} isHeld={die.isHeld} hold={() => hold(die.id)} />
+                ))}
+            </div>
+            <button className={`btn ${gameWon && 'reset'}`} onClick={rollDice}>
+                {gameWon ? "Reset" : "Roll"}
             </button>
+
         </main>
     )
 }

@@ -27,10 +27,12 @@ div#root {
 
 
 .main {
+    background-color: #f2f3f4;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 
     .btn {
         width: auto;
@@ -43,12 +45,17 @@ div#root {
         font-size: 1rem;
         font-weight: 700;
         color: #fff;
+        
+        &.reset {
+            color: darkgreen;
+            background-color: lightgreen;
+            border: 2px solid darkgreen;
+        }
     }
 
 
 
     .dice-container {
-        background-color: #f2f3f4;
         border-radius: 5px;
         width: auto;
         height: auto;
