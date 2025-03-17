@@ -17,14 +17,31 @@ export const ReservationProvider = ({ children }) => {
     const [reservations, setReservations] = useState(initialReservations);
     
     // ORDENA por dateIn cuando haya cambios en `reservations`
-       const sortedReservations = useMemo(() => {
+    const sortedReservations = useMemo(() => {
         return [...reservations].sort((a, b) => new Date(a.dateIn) - new Date(b.dateIn));
-       }, [reservations]);
+    }, [reservations]);
     
 
     const addReservation = (reservation) => {
+        const isDateOk = checkDates(reservation.dateIn, reservation.dateOut);
+        console.log('isDateOk: ', isDateOk);
+        
         setReservations([...reservations, reservation]);
     };
+
+
+
+    const checkDates = (dateIn, dateOut) => { 
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        const start = new Date(dateIn);
+        const end = new Date(dateOut);
+
+        if (isNaN(start) || isNaN(end)) return false; // Verifica si las fechas son válidas
+
+        return start >= now && start < end; // La fecha de entrada debe ser hoy o futura, y menor que la salida
+    }
+
 
     const deleteReservation = (id) => {
         let copy = [...reservations];
@@ -38,6 +55,8 @@ export const ReservationProvider = ({ children }) => {
         }
         setReservations(copy);
     };
+
+
 
     return (
         <ReservationContext.Provider value={{ reservations: sortedReservations, addReservation, deleteReservation }}>
