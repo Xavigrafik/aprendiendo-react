@@ -1,73 +1,87 @@
-import { useState, useContext } from 'react'
-import MyDatePicker from '../components/MyDatePicker'
-import '../scss/reservation.scss'
+import { useState, useContext, useEffect, useCallback } from 'react';
 import { ReservationContext } from "../contexts/ReservationContext";
 import { UserContext } from "../contexts/UserContext";
-
-
+import { DateRangePicker } from 'react-date-range';
+import '../scss/reservation.scss';
+import { formatDate } from '../utils/dates';
 
 
 function AddReservation() {
+
     const { reservations, addReservation } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
-    
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1); 
 
-    const initialDate = { 
-        dateIn: tomorrow.toISOString().split('T')[0], // Formato YYYY-MM-DD
-        dateOut: "" 
-    };
+    const [datePickerState, setDatePickerState] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: 'selection'
+        }
+    ]);
 
-    const emptyDate = "dd/mm/aaaa"
+    useEffect(() => {
+        console.log(datePickerState);
+    }, [datePickerState]);
 
-    const [dates, setdates] = useState(initialDate);
-
-    const handleReservation = () => {
-
+    const handleReservation = useCallback(() => {
+        
         const newReservation = {
             id: (reservations.length + 1),
             user: user.name,
-            dateIn: dates.dateIn,
-            dateOut: dates.dateOut
-        }
-
+            dateIn: datePickerState[0].startDate,
+            dateOut: datePickerState[0].endDate,
+        };
+        console.log(newReservation);
         addReservation(newReservation);
-        
-    }
+
+    }, [reservations, addReservation, user, datePickerState]);
 
     return (
         <div className="container">
             <div className="row">
-                <div className="col-6 reservationBlock">
-                    <h3 className='title'>AddReservation</h3>
-
-                    <div className='d-flex mb-3'>
-                        <MyDatePicker name="dateIn" selectedDate={dates.dateIn} setdates={setdates} />
-                        <MyDatePicker name="dateOut" selectedDate={dates.dateOut} setdates={setdates} />
-                    </div>
-
-                    <div className='dates'>
-                        <h5 className='mb-4 mt-5'>Fechas elegidas:</h5>
-                        <span className='dateIn'>{dates.dateIn || emptyDate } </span>
-                        --- 
-                        <span className='dateOut'>{dates.dateOut || emptyDate}</span>
-                    </div>
-
+                <div className="col-auto reservationBlock">
+                    {user && <h3 className='title'>Bienvenido {user.name}</h3>}
+                    <DateRangePicker
+                        onChange={item => {
+                            const newSelection = item.selection;
+                            if (
+                                newSelection.startDate !== datePickerState[0].startDate ||
+                                newSelection.endDate !== datePickerState[0].endDate
+                            ) {
+                                setDatePickerState([newSelection]);
+                            }
+                        }}
+                        staticRanges={[]}
+                        inputRanges={[]}
+                        minDate={new Date()}
+                        showDateDisplay={true}
+                        showSelectionPreview={false}
+                        moveRangeOnFirstSelection={false}
+                        months={2}
+                        ranges={datePickerState}
+                        direction="horizontal"
+                    />
                     <div className='reservationBlockFooter'>
-                        {(dates.dateOut && dates.dateIn) && 
+                        {(datePickerState[0].startDate && datePickerState[0].endDate) &&
                             <button
                                 onClick={handleReservation}
-                                className='btn btn-warning mt-5 btn-lg'>
-                        Reservar
-                </button>
+                                className='btn btn-warning my-3 btn-lg'>
+                                Reservar
+                            </button>
                         }
                     </div>
                 </div>
             </div>
+            <div className='alert alert-info mt-3'>
+                <p>Default: {formatDate(datePickerState[0].startDate)}</p>
+                <p>kebap: {formatDate(datePickerState[0].startDate, 'kebap')}</p>
+                <p>slash: {formatDate(datePickerState[0].startDate, 'slash')}</p>
+                <p>abrv: {formatDate(datePickerState[0].startDate, 'abrv')}</p>
+                <p>short: {formatDate(datePickerState[0].startDate, 'short')}</p>
+                <p>long: {formatDate(datePickerState[0].startDate, 'long')}</p>
         </div>
-    )
+        </div>
+    );
 }
 
-export default AddReservation
+export default AddReservation;

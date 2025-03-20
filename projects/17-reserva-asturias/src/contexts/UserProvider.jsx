@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserContext } from './UserContext';
+import { Navigate } from 'react-router-dom';
 
 const userNoLogged = {
     id: null,
@@ -9,7 +10,8 @@ const userNoLogged = {
 
 
 
-export  const UserProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
+    
     const [user, setUser] = useState(userNoLogged);
 
     const newUser = {
@@ -22,7 +24,16 @@ export  const UserProvider = ({ children }) => {
 
     const logOut = () => {
         setUser(userNoLogged);
+       console.log(user);
+       
+
     };
+    
+    // useEffect(() => {
+    //     if (user.id == null ) {
+    //         Navigate("/");
+    //     }
+    // }, [user]);
 
     return (
         <UserContext.Provider value={{ user, logUser, logOut }}>

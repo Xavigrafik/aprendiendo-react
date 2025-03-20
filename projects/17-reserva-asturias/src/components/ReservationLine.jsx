@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { ReservationContext } from '../contexts/ReservationContext';
 import { UserContext } from '../contexts/UserContext';
 
-
+import { formatDate } from '../utils/dates';
 
 
 const ReservationLine = ({ reservation }) => {
@@ -26,7 +26,8 @@ const ReservationLine = ({ reservation }) => {
 
             <div className="info">
                 <span className='id'>{reservation.id}</span>
-                <span className='date'>{reservation.dateIn}</span> &lt;--&gt; <span className='date'>{reservation.dateOut}</span> - <span className='user'>{reservation.user}</span>
+                <span className='date'>{formatDate(reservation.dateIn, 'abrv')}</span>
+                al <span className='date'>{formatDate(reservation.dateOut, 'abrv')}</span> - <span className='user'>{reservation.user}</span>
             </div>
 
             {
@@ -37,14 +38,15 @@ const ReservationLine = ({ reservation }) => {
                 </div>
             }
         </li>
+        
     )
 }
 
 ReservationLine.propTypes = {
     reservation: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        dateIn: PropTypes.string.isRequired,
-        dateOut: PropTypes.string.isRequired,
+        dateIn: PropTypes.instanceOf(Date).isRequired,
+        dateOut: PropTypes.instanceOf(Date).isRequired,
         user: PropTypes.string.isRequired,
     }).isRequired,
 };

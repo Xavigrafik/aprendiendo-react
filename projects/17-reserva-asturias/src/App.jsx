@@ -5,6 +5,10 @@ import ROUTES from './routes/routes';
 import { UserProvider } from "./contexts/UserProvider";
 import { ReservationProvider } from "./contexts/ReservationProvider";
 
+
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 function App() {
 
     return (

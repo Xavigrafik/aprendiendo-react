@@ -10,7 +10,7 @@ const MyDatePicker = ({ name, selectedDate, setdates }) => {
     };
 
     const today = new Date().toISOString().split('T')[0];
-    console.log('today: ', today);
+    //console.log('today: ', today);
     
     // const nextWeek = () => {
     //     const today = new Date();

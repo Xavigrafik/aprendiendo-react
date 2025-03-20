@@ -8,21 +8,24 @@ import { ReservationContext } from './ReservationContext';
 export const ReservationProvider = ({ children }) => {
 
     const initialReservations = [
-        { id: 100, user: 'Guille', dateIn: '04/04/2020', dateOut: '25/06/2024' },
-        { id: 101, user: 'Xavi',   dateIn: '01/04/2020', dateOut: '24/04/2021' },
-        { id: 102, user: 'Vicens', dateIn: '02/04/2020', dateOut: '24/05/2022' },
-        { id: 103, user: 'Guille', dateIn: '03/04/2020', dateOut: '25/06/2023' },
-    ]
+        { id: 100, user: 'Guille', dateIn: new Date('2020-04-04'), dateOut: new Date('2024-06-25') },
+        { id: 101, user: 'Xavi',  dateIn: new Date('2020-04-01'), dateOut: new Date('2021-04-24') },
+        { id: 102, user: 'Vicens', dateIn: new Date('2020-04-02'), dateOut: new Date('2022-05-24') },
+        { id: 103, user: 'Guille', dateIn: new Date('2020-04-03'), dateOut: new Date('2023-06-25') },
+    ];
 
     const [reservations, setReservations] = useState(initialReservations);
-    
-    // ORDENA por dateIn cuando haya cambios en `reservations`
+
     const sortedReservations = useMemo(() => {
-        return [...reservations].sort((a, b) => new Date(a.dateIn) - new Date(b.dateIn));
+        console.log('sorting reservations', reservations);
+        const sorted = [...reservations].sort((a, b) => a.dateIn - b.dateOut);
+        return sorted;
     }, [reservations]);
     
 
     const addReservation = (reservation) => {
+        console.log('addReservation: ', reservation);
+        
         const isDateOk = checkDates(reservation.dateIn, reservation.dateOut);
         console.log('isDateOk: ', isDateOk);
         

@@ -25,6 +25,14 @@
             }
         }
 
+        .info {
+            //display: grid;
+            //grid-template-columns: repeat(10,1fr);
+            gap: 10px;
+            display: flex;
+            align-items: center;
+        }
+
         span {
             &.id {
                 background-color: #fff;
@@ -36,8 +44,11 @@
                 text-align: center;
                 border-radius: 4px;
             }
-            &.date {}
-
+            &.date {
+                background: #ffffffaa;
+                padding: 0 0.66em;
+                border-radius: 5px;
+            }
             &.user {
                 font-weight: 900;
             }
