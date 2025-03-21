@@ -1,42 +1,34 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from "react";
 import { UserContext } from './UserContext';
-import { Navigate } from 'react-router-dom';
-
-const userNoLogged = {
-    id: null,
-    name: null,
-}
-
+import { useEffect, useState } from 'react';
 
 
 export const UserProvider = ({ children }) => {
     
-    const [user, setUser] = useState(userNoLogged);
+    const [user, setUser] = useState(null);
 
     const newUser = {
         id: 22,
         name: "Xavi",
     }
-    const logUser = () => {
+    const logIn = () => {
         setUser(newUser);
     };
 
     const logOut = () => {
-        setUser(userNoLogged);
-       console.log(user);
-       
-
+        setUser(null);
     };
-    
+
     // useEffect(() => {
-    //     if (user.id == null ) {
-    //         Navigate("/");
+    //     if (user.id == null) {
+    //         console.log('Usuario no logueado');
     //     }
     // }, [user]);
+    
+    const value = { user, logIn, logOut };
 
     return (
-        <UserContext.Provider value={{ user, logUser, logOut }}>
+        <UserContext.Provider value= {value}>
             {children}
         </UserContext.Provider>
     );

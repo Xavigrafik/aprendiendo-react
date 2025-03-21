@@ -25,6 +25,11 @@
             }
         }
 
+        &.active{
+            border-color: darkslateblue;
+            background-color: rgba(PaleTurquoise, 1);
+        }
+
         .info {
             //display: grid;
             //grid-template-columns: repeat(10,1fr);

@@ -20,21 +20,21 @@ function AddReservation() {
     ]);
 
     useEffect(() => {
-        console.log(datePickerState);
+        //console.log(datePickerState);
     }, [datePickerState]);
 
     const handleReservation = useCallback(() => {
         
         const newReservation = {
-            id: (reservations.length + 1),
+            id: Date.now(),
             user: user.name,
             dateIn: datePickerState[0].startDate,
             dateOut: datePickerState[0].endDate,
         };
-        console.log(newReservation);
+        //console.log(newReservation);
         addReservation(newReservation);
 
-    }, [reservations, addReservation, user, datePickerState]);
+    }, [ addReservation, user, datePickerState]);
 
     return (
         <div className="container">

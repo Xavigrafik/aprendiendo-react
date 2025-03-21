@@ -14,7 +14,7 @@ function Home() {
                 <div className="col">
 
                     <h3>Home</h3>
-                    <h5>{user.name}</h5>
+                    {user && <h5>{user.name}</h5>}
                     
                     <ul className="reservationList">
 

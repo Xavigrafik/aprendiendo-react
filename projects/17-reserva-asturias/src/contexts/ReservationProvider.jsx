@@ -17,19 +17,20 @@ export const ReservationProvider = ({ children }) => {
     const [reservations, setReservations] = useState(initialReservations);
 
     const sortedReservations = useMemo(() => {
-        console.log('sorting reservations', reservations);
+        //console.log('sorting reservations', reservations);
         const sorted = [...reservations].sort((a, b) => a.dateIn - b.dateOut);
         return sorted;
     }, [reservations]);
     
 
-    const addReservation = (reservation) => {
-        console.log('addReservation: ', reservation);
+    const addReservation = (newReservation) => {
+        //console.log('addReservation: ', reservation);
         
-        const isDateOk = checkDates(reservation.dateIn, reservation.dateOut);
-        console.log('isDateOk: ', isDateOk);
-        
-        setReservations([...reservations, reservation]);
+        const isDateOk = checkDates(newReservation.dateIn, newReservation.dateOut);
+        //console.log('isDateOk: ', isDateOk);
+        if (isDateOk) {
+            setReservations([...reservations, newReservation]);
+        }
     };
 
 

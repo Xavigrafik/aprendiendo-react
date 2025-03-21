@@ -4,11 +4,11 @@ import { UserContext } from "../contexts/UserContext";
 
 function LoginButton() {
 
-    const { logUser } = useContext(UserContext);
+    const { logIn } = useContext(UserContext);
 
     function handleClick(e) {
         e.preventDefault();
-        logUser();
+        logIn();
     }
 
     return (
