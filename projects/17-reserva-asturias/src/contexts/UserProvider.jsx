@@ -5,12 +5,15 @@ import { useEffect, useState } from 'react';
 
 export const UserProvider = ({ children }) => {
     
-    const [user, setUser] = useState(null);
-
+    
     const newUser = {
         id: 22,
         name: "Xavi",
     }
+    
+    const [user, setUser] = useState(newUser);
+
+
     const logIn = () => {
         setUser(newUser);
     };

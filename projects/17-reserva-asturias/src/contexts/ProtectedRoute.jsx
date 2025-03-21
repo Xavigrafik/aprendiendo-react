@@ -8,8 +8,6 @@ const ProtectedRoute = () => {
     const navigate = useNavigate(); // Obtén la función navigate
 
     useEffect(() => {
-        console.log("ProtectedRoute.useEffect", user, location);
-        
         if (!user) {
             // Si el usuario no está autenticado, redirige a la página de inicio
             // y guarda la ubicación actual para redirigir después del inicio de sesión.

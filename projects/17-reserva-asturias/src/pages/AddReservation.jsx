@@ -1,27 +1,55 @@
-import { useState, useContext, useEffect, useCallback } from 'react';
+import { useState, useContext, useEffect, useCallback, useMemo } from 'react';
 import { ReservationContext } from "../contexts/ReservationContext";
 import { UserContext } from "../contexts/UserContext";
-import { DateRangePicker } from 'react-date-range';
-import '../scss/reservation.scss';
+import { DateRangePicker, } from 'react-date-range';
 import { formatDate } from '../utils/dates';
+
+import '../scss/reservation.scss';
 
 
 function AddReservation() {
-
+    
     const { reservations, addReservation } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
-
+    
+    const [buttonIsDisabled, setButtonIsDisabled] = useState(true)
+    
+    const startingDate = useMemo(() => new Date(), []);
+    
     const [datePickerState, setDatePickerState] = useState([
         {
-            startDate: new Date(),
-            endDate: new Date(),
+            startDate: startingDate,
+            endDate: startingDate,
             key: 'selection'
         }
     ]);
 
+
     useEffect(() => {
-        //console.log(datePickerState);
+        // Deshabilita el botón si ambas fechas son iguales a startingDate
+        setButtonIsDisabled(
+          datePickerState[0].startDate.getTime() === startingDate.getTime() &&
+          datePickerState[0].endDate.getTime() === startingDate.getTime()
+        );
     }, [datePickerState]);
+    
+
+    useEffect(() => {
+        //console.log('buttonIsDisabled', buttonIsDisabled);
+    }, [buttonIsDisabled]);
+
+
+    const handleClearDates = () => {
+        setDatePickerState([
+            {
+                startDate: startingDate,
+                endDate: startingDate,
+                key: 'selection'
+            }
+        ]
+        )
+        
+    }
 
     const handleReservation = useCallback(() => {
         
@@ -33,6 +61,8 @@ function AddReservation() {
         };
         //console.log(newReservation);
         addReservation(newReservation);
+        console.log("Reservando...", datePickerState[0]);
+        handleClearDates();
 
     }, [ addReservation, user, datePickerState]);
 
@@ -61,14 +91,25 @@ function AddReservation() {
                         ranges={datePickerState}
                         direction="horizontal"
                     />
-                    <div className='reservationBlockFooter'>
-                        {(datePickerState[0].startDate && datePickerState[0].endDate) &&
+                    <div className='reservationBlockFooter row'>
+
+                        <div className="col d-flex justify-content-end gap-3">
+                             <button
+                                onClick={handleClearDates}
+                                className={`btn btn-link my-3 btn-sm ${buttonIsDisabled && "opacity-0"}`}>
+                                Borrar fechas
+                            </button>
+
                             <button
                                 onClick={handleReservation}
-                                className='btn btn-warning my-3 btn-lg'>
+                                disabled={buttonIsDisabled}
+                                 className={`btn btn-warning my-3 px-4 btn-lg ${buttonIsDisabled && "opacity-0"}`}>
                                 Reservar
                             </button>
-                        }
+                        </div>
+
+                   
+
                     </div>
                 </div>
             </div>
@@ -79,7 +120,7 @@ function AddReservation() {
                 <p>abrv: {formatDate(datePickerState[0].startDate, 'abrv')}</p>
                 <p>short: {formatDate(datePickerState[0].startDate, 'short')}</p>
                 <p>long: {formatDate(datePickerState[0].startDate, 'long')}</p>
-        </div>
+            </div>
         </div>
     );
 }

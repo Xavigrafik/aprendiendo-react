@@ -8,10 +8,10 @@ import { ReservationContext } from './ReservationContext';
 export const ReservationProvider = ({ children }) => {
 
     const initialReservations = [
-        { id: 100, user: 'Guille', dateIn: new Date('2020-04-04'), dateOut: new Date('2024-06-25') },
-        { id: 101, user: 'Xavi',  dateIn: new Date('2020-04-01'), dateOut: new Date('2021-04-24') },
-        { id: 102, user: 'Vicens', dateIn: new Date('2020-04-02'), dateOut: new Date('2022-05-24') },
-        { id: 103, user: 'Guille', dateIn: new Date('2020-04-03'), dateOut: new Date('2023-06-25') },
+        { id: 100, user: 'Guille', dateIn: new Date('2020-04-04'), dateOut: new Date('2020-06-25') },
+        { id: 101, user: 'Xavi',  dateIn: new Date('2021-04-01'), dateOut: new Date('2021-04-24') },
+        { id: 102, user: 'Vicens', dateIn: new Date('2022-04-02'), dateOut: new Date('2022-05-24') },
+        { id: 103, user: 'Pepe', dateIn: new Date('2023-04-03'), dateOut: new Date('2023-06-25') },
     ];
 
     const [reservations, setReservations] = useState(initialReservations);

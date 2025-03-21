@@ -13,10 +13,12 @@ function AvatarImg() {
     );
 }
 
+
+
 function UserAvatar() {
     const { user, logOut } = useContext(UserContext);
 
-    function handleClick(e) {
+    function handleLogOut(e) {
         e.preventDefault();
         logOut();
     }
@@ -28,7 +30,7 @@ function UserAvatar() {
             </span>
             <ul className="dropdown-menu">
                 <li>
-                    <button className="dropdown-item" onClick={handleClick}>
+                    <button className="dropdown-item" onClick={handleLogOut}>
                         Log out
                     </button>
                 </li>
