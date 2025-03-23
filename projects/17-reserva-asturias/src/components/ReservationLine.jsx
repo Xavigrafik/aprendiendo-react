@@ -11,12 +11,18 @@ import { formatDate } from '../utils/dates';
 
 const ReservationLine = ({ reservation }) => {
 
-    const { deleteReservation, reservations } = useContext(ReservationContext);
+    const { deleteReservation, modifyReservation, reservations } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
     
     function handleDelete(id) {
         if (user && user.name == reservation.user ) {
             deleteReservation(id)
+        }
+        return
+    }
+    function handleModify(id) {
+        if (user && user.name == reservation.user ) {
+            modifyReservation(id)
         }
         return
     }
@@ -33,7 +39,7 @@ const ReservationLine = ({ reservation }) => {
             {
                 (user && user.name  == reservation.user ) &&
                 <div className="actions">
-                    <span className='modify'><Pencil size={24} /></span>
+                    <span onClick={()=> handleModify(reservation.id)} className='modify'><Pencil size={24} /></span>
                     <span onClick={() => handleDelete(reservation.id)} className='delete'><Trash size={24} /></span>
                 </div>
             }

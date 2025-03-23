@@ -6,6 +6,7 @@ import { formatDate } from '../utils/dates';
 import { checkDates } from '../utils/checkDates'; // Importa la función de validación
 
 import '../scss/reservation.scss';
+import ReservationsBlock from '../components/ReservationsBlock';
 
 
 function AddReservation() {
@@ -65,15 +66,20 @@ function AddReservation() {
             };
             addReservation(newReservation);
             handleClearDates();
+            alert('Reserva realizada')
         } else {
-          console.log("Fechas no permitidas");
-          // @TODO mostrar mensaje de error al usuario
+            alert("Fechas no permitidas");
         }
 
     }, [ addReservation, user, datePickerState]);
 
     return (
         <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <ReservationsBlock></ReservationsBlock>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-auto reservationBlock">
                     {user && <h3 className='title'>Bienvenido {user.name}</h3>}
@@ -113,20 +119,25 @@ function AddReservation() {
                                 Reservar
                             </button>
                         </div>
+                    </div>
 
-                   
+                </div>
+            </div>
 
+            <div className="row">
+                <div className="col-12">
+                    <div className='alert alert-info mt-3'>
+                        <h4>FormatDate:</h4>
+                        <p>Default: <strong>{formatDate(datePickerState[0].startDate)}</strong></p>
+                        <p>kebap: <strong>{formatDate(datePickerState[0].startDate, 'kebap')}</strong></p>
+                        <p>slash: <strong>{formatDate(datePickerState[0].startDate, 'slash')}</strong></p>
+                        <p>abrv: <strong>{formatDate(datePickerState[0].startDate, 'abrv')}</strong></p>
+                        <p>short: <strong>{formatDate(datePickerState[0].startDate, 'short')}</strong></p>
+                        <p>long: <strong>{formatDate(datePickerState[0].startDate, 'long')}</strong></p>
                     </div>
                 </div>
             </div>
-            <div className='alert alert-info mt-3'>
-                <p>Default: {formatDate(datePickerState[0].startDate)}</p>
-                <p>kebap: {formatDate(datePickerState[0].startDate, 'kebap')}</p>
-                <p>slash: {formatDate(datePickerState[0].startDate, 'slash')}</p>
-                <p>abrv: {formatDate(datePickerState[0].startDate, 'abrv')}</p>
-                <p>short: {formatDate(datePickerState[0].startDate, 'short')}</p>
-                <p>long: {formatDate(datePickerState[0].startDate, 'long')}</p>
-            </div>
+
         </div>
     );
 }

@@ -4,7 +4,6 @@ import { ReservationContext } from './ReservationContext';
 
 
 
-
 export const ReservationProvider = ({ children }) => {
 
     const initialReservations = [
@@ -43,10 +42,23 @@ export const ReservationProvider = ({ children }) => {
         setReservations(copy);
     };
 
+    const modifyReservation = (id) => {
+        let copy = [...reservations];
+
+        // Verifica si el item ya existe
+        let itemIndex = copy.findIndex((reservation) => reservation.id === id);
+        
+        // Si el item existe 
+        if (itemIndex !== -1) {
+            alert('inserta nuevas fechas')
+        }
+        setReservations(copy);
+    };
+
 
 
     return (
-        <ReservationContext.Provider value={{ reservations: sortedReservations, addReservation, deleteReservation }}>
+        <ReservationContext.Provider value={{ reservations: sortedReservations, addReservation, deleteReservation, modifyReservation }}>
             {children}
         </ReservationContext.Provider>
     );
