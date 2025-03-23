@@ -25,6 +25,7 @@ const ReservationLine = ({ reservation }) => {
         <li className={`reservationLine ${user && user.name  == reservation.user ? "active" : ""}`} data-id={reservation.id}>
 
             <div className="info">
+                <span className='id'>{reservation.id}</span>
                 <span className='date'>{formatDate(reservation.dateIn, 'abrv')}</span>
                 al <span className='date'>{formatDate(reservation.dateOut, 'abrv')}</span> - <span className='user'>{reservation.user}</span>
             </div>

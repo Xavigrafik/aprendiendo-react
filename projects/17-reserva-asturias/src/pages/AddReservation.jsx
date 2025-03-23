@@ -3,6 +3,7 @@ import { ReservationContext } from "../contexts/ReservationContext";
 import { UserContext } from "../contexts/UserContext";
 import { DateRangePicker, } from 'react-date-range';
 import { formatDate } from '../utils/dates';
+import { checkDates } from '../utils/checkDates'; // Importa la función de validación
 
 import '../scss/reservation.scss';
 
@@ -53,16 +54,21 @@ function AddReservation() {
 
     const handleReservation = useCallback(() => {
         
-        const newReservation = {
-            id: Date.now(),
-            user: user.name,
-            dateIn: datePickerState[0].startDate,
-            dateOut: datePickerState[0].endDate,
-        };
-        //console.log(newReservation);
-        addReservation(newReservation);
-        console.log("Reservando...", datePickerState[0]);
-        handleClearDates();
+        const isDateAllowed = checkDates(datePickerState[0].startDate, datePickerState[0].endDate);
+        
+        if (isDateAllowed) {
+            const newReservation = {
+                id: Date.now(),
+                user: user.name,
+                dateIn: datePickerState[0].startDate,
+                dateOut: datePickerState[0].endDate,
+            };
+            addReservation(newReservation);
+            handleClearDates();
+        } else {
+          console.log("Fechas no permitidas");
+          // @TODO mostrar mensaje de error al usuario
+        }
 
     }, [ addReservation, user, datePickerState]);
 
