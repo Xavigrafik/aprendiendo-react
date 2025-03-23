@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useMemo } from 'react';
 import { ReservationContext } from './ReservationContext';
+import MyModal from '../components/MyModal';
 
 
 
@@ -50,9 +51,9 @@ export const ReservationProvider = ({ children }) => {
         
         // Si el item existe 
         if (itemIndex !== -1) {
-            alert('inserta nuevas fechas')
+            alert('Inserta nuevas fechas' + id)
         }
-        setReservations(copy);
+        //setReservations(copy);
     };
 
 

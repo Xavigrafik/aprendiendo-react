@@ -22,7 +22,7 @@ const ReservationLine = ({ reservation }) => {
     }
     function handleModify(id) {
         if (user && user.name == reservation.user ) {
-            modifyReservation(id)
+             modifyReservation(id)
         }
         return
     }
