@@ -1,28 +1,73 @@
 import '../scss/reservationLine.scss'
-import { Trash, Pencil } from "lucide-react";
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useContext, useState } from 'react';
+import { DateRangePicker } from 'react-date-range';
 
 import { ReservationContext } from '../contexts/ReservationContext';
 import { UserContext } from '../contexts/UserContext';
+import { ModalContext } from '../contexts/ModalContext';
 
 import { formatDate } from '../utils/dates';
+import { Trash, Pencil } from "lucide-react";
 
 
 const ReservationLine = ({ reservation }) => {
 
-    const { deleteReservation, modifyReservation, reservations } = useContext(ReservationContext);
+    const { deleteReservation, modifyReservation, startingDate } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
+    const { openModal, closeModal, isModalOpen } = useContext(ModalContext);
+    
+
+    const [datePickerState, setDatePickerState] = useState([
+        {
+            startDate: reservation.dateIn,
+            endDate: reservation.dateOut,
+            key: 'selection',
+        },
+    ]);
     
     function handleDelete(id) {
-        if (user && user.name == reservation.user ) {
+        if (user && user.name == reservation.user) {
             deleteReservation(id)
         }
         return
     }
+
+    const modiFyModalBody = (
+        
+        <DateRangePicker
+            onChange={(item) => {
+                console.log("Antes de la actualización:", datePickerState);
+                const newSelection = item.selection;
+                setDatePickerState([newSelection]);
+                console.log("Después de la actualización:", [newSelection]);
+        }}
+            weekStartsOn={7}
+            staticRanges={[]}
+            inputRanges={[]}
+            minDate={null}
+            showDateDisplay={true}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={2}
+            ranges={datePickerState}
+            direction="horizontal"
+        />
+        
+    )
+    
     function handleModify(id) {
         if (user && user.name == reservation.user ) {
-             modifyReservation(id)
+            openModal({
+                title: 'Notificación',
+                size: 'lg',
+                body: modiFyModalBody,
+                footer: <button className="btn btn-primary"  onClick={() => {
+                    modifyReservation(id, datePickerState[0].startDate, datePickerState[0].endDate);
+                    closeModal();
+                }}>Aceptar</button>,
+            });
+            
         }
         return
     }

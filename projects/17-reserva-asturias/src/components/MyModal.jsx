@@ -1,51 +1,50 @@
-import React, { useState } from 'react';
+import { useContext } from 'react'
 
-const MyModal = (props) => {
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+import { ModalContext } from "../contexts/ModalContext";
+
+const MyModal = () => {
+    
+    const { isModalOpen, closeModal, modalContent } = useContext(ModalContext);
+
+    if (!isModalOpen) return null // No renderizar si no está abierto
+    
+    console.log('MyModal renderizado'); // Verifica si se renderiza múltiples veces
+
 
     return (
-        <>
-            <div
-                className={`modal fade ${show ? 'show d-block' : ''}`} // Usamos d-block para Bootstrap
-                style={{ display: show ? 'block' : 'none' }}
-                id="exampleModal"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">
-                                Modal title
-                            </h1>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                onClick={handleClose}
-                            ></button>
-                        </div>
-                        <div className="modal-body">
-                            {props.children}
-                        </div>
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-secondary"
-                                onClick={handleClose}
-                            >
-                                Close
-                            </button>
-                            <button type="button" className="btn btn-primary">
-                                Save changes
-                            </button>
-                        </div>
+        <div
+            className={`modal fade show d-block ${ 'modal-' + (modalContent?.size ? modalContent?.size : 'xl') }`}
+            style={{ display: 'block' }}
+            tabIndex="-1"
+            aria-labelledby="modalLabel"
+            aria-hidden="true"
+        >
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id="modalLabel">
+                            {modalContent?.title || 'Modal'}
+                        </h1>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            onClick={closeModal}
+                        ></button>
+                    </div>
+                    <div className="modal-body text-center">{modalContent?.body}</div>
+                    <div className="modal-footer">
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            onClick={closeModal}
+                        >
+                            Close
+                        </button>
+                        {modalContent?.footer}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

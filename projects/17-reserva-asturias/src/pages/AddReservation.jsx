@@ -1,12 +1,16 @@
 import { useState, useContext, useEffect, useCallback, useMemo } from 'react';
-import { ReservationContext } from "../contexts/ReservationContext";
+
 import { UserContext } from "../contexts/UserContext";
+import { ReservationContext } from "../contexts/ReservationContext";
+
 import { DateRangePicker, } from 'react-date-range';
 import { formatDate } from '../utils/dates';
 import { checkDates } from '../utils/checkDates'; // Importa la función de validación
 
-import '../scss/reservation.scss';
 import ReservationsBlock from '../components/ReservationsBlock';
+
+
+import '../scss/reservation.scss';
 
 
 function AddReservation() {
@@ -18,6 +22,7 @@ function AddReservation() {
     
     const startingDate = useMemo(() => new Date(), []);
     
+
     const [datePickerState, setDatePickerState] = useState([
         {
             startDate: startingDate,

@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import ReservationLine from '../components/ReservationLine'
 import { ReservationContext } from '../contexts/ReservationContext'
 import { UserContext } from '../contexts/UserContext'
-import  MyModal  from './MyModal'
 
 const ReservationsBlock = () => {
     const { reservations } = useContext(ReservationContext)
@@ -23,9 +22,7 @@ const ReservationsBlock = () => {
                 })}
             </ul>
 
-            <MyModal>
-                <h3>EEOO__27</h3>
-            </MyModal>
+
         </>
     )
 }

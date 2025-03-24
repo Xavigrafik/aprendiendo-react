@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useMemo } from 'react';
 import { ReservationContext } from './ReservationContext';
-import MyModal from '../components/MyModal';
 
 
 
@@ -28,7 +27,7 @@ export const ReservationProvider = ({ children }) => {
         console.log('reserva añadida!', newReservation);
     };
 
-
+    const startingDate = useMemo(() => new Date(), []);
 
     const deleteReservation = (id) => {
         let copy = [...reservations];
@@ -51,7 +50,7 @@ export const ReservationProvider = ({ children }) => {
         
         // Si el item existe 
         if (itemIndex !== -1) {
-            alert('Inserta nuevas fechas' + id)
+            //alert('Inserta nuevas fechas' + id)
         }
         //setReservations(copy);
     };
@@ -59,7 +58,7 @@ export const ReservationProvider = ({ children }) => {
 
 
     return (
-        <ReservationContext.Provider value={{ reservations: sortedReservations, addReservation, deleteReservation, modifyReservation }}>
+        <ReservationContext.Provider value={{ reservations: sortedReservations,startingDate, addReservation, deleteReservation, modifyReservation }}>
             {children}
         </ReservationContext.Provider>
     );
