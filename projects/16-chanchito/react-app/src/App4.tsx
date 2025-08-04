@@ -16,7 +16,6 @@ export default function App() {
             <select
                 value={userId === undefined ? "" : userId}
                 onChange={(e) => {
-                    console.log('cambiando..');
                     const value = e.target.value;
                     setUserId(value === "" ? undefined : Number(value));
                 }}
