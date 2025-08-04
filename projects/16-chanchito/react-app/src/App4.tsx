@@ -1,24 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
-
-type Todo = {
-    id: number;
-    title: string;
-    completed: boolean;
-    userId: number;
-}
-
-const url = 'https://jsonplaceholder.typicode.com/todos';
-
-const queryTodos = ():Promise<Todo[]> => {
-    return fetch(url).then((response)=>response.json())
-}
+import useTodos from "./hooks/useTodos"
 
 export default function App() {
 
-    const { data } = useQuery({
-        queryKey: ["todos"],
-        queryFn: queryTodos,
-    });
+    const { data, error, isLoading } = useTodos();
+
+    if (error) return <h2>{error.message}</h2>
+    if (isLoading) return <h2>Cargando...</h2>
     
     return (
         <>
