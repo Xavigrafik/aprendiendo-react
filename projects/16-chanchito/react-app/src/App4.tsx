@@ -1,10 +1,12 @@
 import { useState } from "react";
-import useTodos from "./hooks/useTodos"
+import useTodos from './hooks/useTodos';
 
 export default function App() {
 
     const [userId, setUserId] = useState<number | undefined>(undefined);
-    const { data, error, isLoading } = useTodos(userId);
+    const pageSize = 15;
+    const [page, setPage] = useState(1);
+    const { data, error, isLoading, isPlaceholderData } = useTodos({ page, pageSize });
 
     if (error) return <h2>{error.message}</h2>
     if (isLoading) return <h2>Cargando...</h2>
@@ -14,6 +16,7 @@ export default function App() {
             <h3>Todos</h3>
 
             <select
+                className="d-none"
                 value={userId === undefined ? "" : userId}
                 onChange={(e) => {
                     const value = e.target.value;
@@ -30,6 +33,10 @@ export default function App() {
                     <li key={todo.id}>{todo.title}</li>
                 ))}
             </ul>
+
+            <button disabled={page == 1} onClick={()=>setPage(page -1)} >{'-1'}</button>
+            <button onClick={() => setPage(page + 1)}>{'+1'}</button>
+            {isPlaceholderData && <span>Cargando...</span> }
         </>
     )
 }
