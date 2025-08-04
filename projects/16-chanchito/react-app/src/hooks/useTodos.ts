@@ -10,10 +10,17 @@ type Todo = {
     userId: number;
 }
 
-const url = 'https://jsonplaceholder.typicode.com/todos';
 
-const queryTodos = (): Promise<Todo[]> => {
-    return fetch(url).then((response) => {
+const queryTodos = (userId: number | undefined): Promise<Todo[]> => {
+
+    const url = 'https://jsonplaceholder.typicode.com/todos?';
+    const queryParams = userId ? new URLSearchParams({
+        'userId': String(userId),
+    
+    }) : "";
+    console.log('queryParams: ',queryParams);
+    
+    return fetch(url + queryParams).then((response) => {
         if (!response.ok) throw new Error(`Error ${response.status}`)
             return response.json()
     });
@@ -21,14 +28,10 @@ const queryTodos = (): Promise<Todo[]> => {
 }
 
 
-function useTodos() {
+export default function useTodos(userId: number|undefined) {
 
     return useQuery({
-        queryKey: ["todos"],
-        queryFn: queryTodos,
+        queryKey: userId ? ["users", userId, "todos"] : ["todos"],
+        queryFn: ()=> queryTodos(userId),
     });
-    
-    return useContext(TodosContext)
 }
-
-export default useTodos;
