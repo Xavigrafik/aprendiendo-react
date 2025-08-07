@@ -16,10 +16,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 // import App from './App4.tsx'
  
 // mutaciones, react-query, useMutation
-// import App from './App5.tsx'
+import App from './App5.tsx'
  
-// Routing
- import App from './App6.tsx'
 
 import './styles/utils/importsBootstrap.scss'
 
