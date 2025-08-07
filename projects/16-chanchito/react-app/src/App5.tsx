@@ -36,7 +36,7 @@ export default function App() {
         // `mutationFn`: La función que se ejecuta cuando llamas a `mutate()`. Recibe el objeto que pasas a `mutate()` (el nuevo post).
         mutationFn: (post: Post) =>
             axios
-                .post<Post>("https://jsonplaceholder.typicode.com/aaposts", post)
+                .post<Post>("https://jsonplaceholder.typicode.com/posts", post)
                 .then((response) => response.data),
 
         // `onMutate` se ejecuta antes de la petición y recibe el objeto que se va a mutar (`newPost`).
