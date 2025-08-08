@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom'
 import Home from './Home'
 import ProductPage from './ProductPage'
 import ProductDetail from "./ProductDetail";
 import Layout from "./Layout";
 import UserPage from "./UserPage";
-import ErrorPage from "./ErrorPage";
 import PrivateRoute from './PrivateRoute'; // Importamos el nuevo componente
+import ErrorDetail from './ErrorDetail';
 
 const router = createBrowserRouter([
     {
@@ -17,8 +17,9 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
+                // todo lo que no esté definido
                 path: "*",
-                element: <ErrorPage/>
+                element: <ErrorDetail/>
             },
             {
                 path: "productos",
@@ -31,10 +32,10 @@ const router = createBrowserRouter([
             {
                 // La ruta '/user' y sus hijos ahora están protegidos por PrivateRoute
                 path: "user",
-                element: <PrivateRoute><UserPage /></PrivateRoute>,
+                element: <PrivateRoute><UserPage/></PrivateRoute>,
             },
         ]
     }
 ]);
 
-export default router;
+export default router
