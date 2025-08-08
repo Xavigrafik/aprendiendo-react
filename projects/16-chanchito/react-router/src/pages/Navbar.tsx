@@ -9,6 +9,7 @@ export default function Home() {
             <nav>
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/productos">Productos</NavLink>
+                <NavLink to="/user">Usuario</NavLink>
             </nav>
         </>
     );
