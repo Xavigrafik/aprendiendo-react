@@ -10,6 +10,7 @@ export default function Home() {
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/productos">Productos</NavLink>
                 <NavLink to="/user">Usuario</NavLink>
+                <NavLink to="/xxxx">Error page</NavLink>
             </nav>
         </>
     );
