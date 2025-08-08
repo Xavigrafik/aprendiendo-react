@@ -16,6 +16,7 @@ const ProductDetail = ({ }: Props) => {
 
     
     const params = useParams();
+    const { id } = useParams();
     console.log("params: ", params);
     // params captura los parámetros dinámicos de la URL.
     // En este caso, si la ruta es "/productos/:id", `params.id` será "1".
@@ -48,7 +49,7 @@ const ProductDetail = ({ }: Props) => {
     
     return (
         <>
-            <div>ProductDetail</div>
+            <div>Página de detalle del Producto: {id}</div>
             <button onClick={()=>navigate("/productos")}>Productos</button>
         </>
     )

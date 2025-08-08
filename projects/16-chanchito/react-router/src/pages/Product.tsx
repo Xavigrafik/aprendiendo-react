@@ -14,10 +14,7 @@ export default function Home() {
             <div className="row">
                 <div className="col">
                     <h1>Productos page</h1>
-                    <Link to="/">Inicio</Link>
-
                     <ul>
-
                         {products.map((p) => {
                             return <li key={p.id}>
                                 <Link to={`/productos/${p.id}`}>{p.name}</Link>
