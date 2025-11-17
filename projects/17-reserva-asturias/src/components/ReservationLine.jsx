@@ -1,7 +1,6 @@
 import '../scss/reservationLine.scss'
 import PropTypes from 'prop-types';
-import { useContext, useState } from 'react';
-import { DateRangePicker } from 'react-date-range';
+import { useContext, useMemo, useCallback } from 'react'; 
 
 import { ReservationContext } from '../contexts/ReservationContext';
 import { UserContext } from '../contexts/UserContext';
@@ -10,70 +9,57 @@ import { ModalContext } from '../contexts/ModalContext';
 import { formatDate } from '../utils/dates';
 import { Trash, Pencil } from "lucide-react";
 
+// Importamos el componente Wrapper del modal
+import ModifyReservationModal from './ModifyReservationModal';
+
 
 const ReservationLine = ({ reservation }) => {
 
     const { deleteReservation, modifyReservation, startingDate } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
-    const { openModal, closeModal, isModalOpen } = useContext(ModalContext);
+    const { openModal, closeModal } = useContext(ModalContext);
     
+    
+    // 🟢 CORRECCIÓN: Definición de isOwner (restaurada)
+    const isOwner = useMemo(() => 
+        user && user.name === reservation.user, 
+        [user, reservation.user]
+    );
 
-    const [datePickerState, setDatePickerState] = useState([
-        {
-            startDate: reservation.dateIn,
-            endDate: reservation.dateOut,
-            key: 'selection',
-        },
-    ]);
-    
-    function handleDelete(id) {
-        if (user && user.name == reservation.user) {
-            deleteReservation(id)
+    // 🟢 CORRECCIÓN: Definición de handleDelete (restaurada)
+    const handleDelete = useCallback((id) => {
+        if (isOwner) {
+            deleteReservation(id);
         }
-        return
-    }
+    }, [isOwner, deleteReservation]);
 
-    const modiFyModalBody = (
-        
-        <DateRangePicker
-            onChange={(item) => {
-                console.log("Antes de la actualización:", datePickerState);
-                const newSelection = item.selection;
-                setDatePickerState([newSelection]);
-                console.log("Después de la actualización:", [newSelection]);
-        }}
-            weekStartsOn={7}
-            staticRanges={[]}
-            inputRanges={[]}
-            minDate={null}
-            showDateDisplay={true}
-            showSelectionPreview={true}
-            moveRangeOnFirstSelection={false}
-            months={2}
-            ranges={datePickerState}
-            direction="horizontal"
-        />
-        
-    )
-    
+
+    // Función handleModify (usando el componente Wrapper)
     function handleModify(id) {
-        if (user && user.name == reservation.user ) {
-            openModal({
-                title: 'Notificación',
-                size: 'lg',
-                body: modiFyModalBody,
-                footer: <button className="btn btn-primary"  onClick={() => {
-                    modifyReservation(id, datePickerState[0].startDate, datePickerState[0].endDate);
-                    closeModal();
-                }}>Aceptar</button>,
-            });
-            
+        
+        if (!isOwner) {
+            return;
         }
-        return
+
+        openModal({
+            title: 'Modificar Reserva',
+            size: 'lg',
+            // Renderizamos el componente como un Elemento React.
+            body: (
+                <ModifyReservationModal
+                    reservation={reservation}
+                    startingDate={startingDate}
+                    modifyReservation={modifyReservation}
+                    closeModal={closeModal}
+                />
+            ),
+            // El botón 'Aceptar' se movió al cuerpo del modal (dentro de ModifyReservationModal)
+            footer: null, 
+        });
     }
 
     return (
-        <li className={`reservationLine ${user && user.name  == reservation.user ? "active" : ""}`} data-id={reservation.id}>
+        <li className={`reservationLine ${isOwner ? "active" : ""}`} data-id={reservation.id}>
 
             <div className="info">
                 <span className='id'>{reservation.id}</span>
@@ -82,14 +68,13 @@ const ReservationLine = ({ reservation }) => {
             </div>
 
             {
-                (user && user.name  == reservation.user ) &&
+                (isOwner ) &&
                 <div className="actions">
                     <span onClick={()=> handleModify(reservation.id)} className='modify'><Pencil size={24} /></span>
                     <span onClick={() => handleDelete(reservation.id)} className='delete'><Trash size={24} /></span>
                 </div>
             }
         </li>
-        
     )
 }
 

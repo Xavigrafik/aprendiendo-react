@@ -7,17 +7,18 @@ import { ReservationContext } from './ReservationContext';
 export const ReservationProvider = ({ children }) => {
 
     const initialReservations = [
-        { id: 100, user: 'Guille', dateIn: new Date('2020-04-04'), dateOut: new Date('2020-06-25') },
-        { id: 101, user: 'Xavi',  dateIn: new Date('2021-04-01'), dateOut: new Date('2021-04-24') },
-        { id: 102, user: 'Vicens', dateIn: new Date('2022-04-02'), dateOut: new Date('2022-05-24') },
-        { id: 103, user: 'Pepe', dateIn: new Date('2023-04-03'), dateOut: new Date('2023-06-25') },
+        { id: 100, user: 'Guille', dateIn: new Date('2026-01-04'), dateOut: new Date('2026-01-08') }, // 4 días, Enero
+        { id: 101, user: 'Xavi',   dateIn: new Date('2026-02-01'), dateOut: new Date('2026-02-05') }, // 4 días, Febrero
+        { id: 102, user: 'Ricardo', dateIn: new Date('2026-03-02'), dateOut: new Date('2026-03-06') }, // 4 días, Marzo
+        { id: 103, user: 'Ricardo',   dateIn: new Date('2026-04-03'), dateOut: new Date('2026-04-07') }, // 4 días, Abril
+        { id: 104, user: 'Xavi',   dateIn: new Date('2026-05-01'), dateOut: new Date('2026-05-05') }, // 4 días, Mayo
     ];
 
     const [reservations, setReservations] = useState(initialReservations);
 
     const sortedReservations = useMemo(() => {
         //console.log('sorting reservations', reservations);
-        const sorted = [...reservations].sort((a, b) => a.dateIn - b.dateOut);
+        const sorted = [...reservations].sort((a, b) => a.dateIn - b.dateIn);
         return sorted;
     }, [reservations]);
     
@@ -42,17 +43,27 @@ export const ReservationProvider = ({ children }) => {
         setReservations(copy);
     };
 
-    const modifyReservation = (id) => {
-        let copy = [...reservations];
+    const modifyReservation = (id, newDateIn, newDateOut) => {
+            setReservations(prevReservations => {
+                const itemIndex = prevReservations.findIndex(reservation => reservation.id === id);
+                
+                if (itemIndex === -1) {
+                    return prevReservations; // No se encontró, retorna el array sin cambios
+                }
+                
+                // Creamos una copia del array
+                const newReservations = [...prevReservations];
 
-        // Verifica si el item ya existe
-        let itemIndex = copy.findIndex((reservation) => reservation.id === id);
-        
-        // Si el item existe 
-        if (itemIndex !== -1) {
-            //alert('Inserta nuevas fechas' + id)
-        }
-        //setReservations(copy);
+                // Actualizamos la reserva específica
+                newReservations[itemIndex] = {
+                    ...newReservations[itemIndex],
+                    dateIn: newDateIn,
+                    dateOut: newDateOut,
+                };
+                
+                console.log(`Reserva ${id} modificada: ${newDateIn.toDateString()} a ${newDateOut.toDateString()}`);
+                return newReservations;
+            });
     };
 
 
