@@ -19,8 +19,7 @@ const ReservationLine = ({ reservation }) => {
     const { user } = useContext(UserContext);
     const { openModal, closeModal } = useContext(ModalContext);
     
-    
-    // 🟢 CORRECCIÓN: Definición de isOwner (restaurada)
+
     const isOwner = useMemo(() => 
         user && user.name === reservation.user, 
         [user, reservation.user]
@@ -59,21 +58,24 @@ const ReservationLine = ({ reservation }) => {
     }
 
     return (
-        <li className={`reservationLine ${isOwner ? "active" : ""}`} data-id={reservation.id}>
+        <li className={`reservationLine ${isOwner ? "active" : ""}`  }  data-id={reservation.id}>
 
             <div className="info">
                 <span className='id'>{reservation.id}</span>
+                <span className='user'>{reservation.user}</span>
                 <span className='date'>{formatDate(reservation.dateIn, 'abrv')}</span>
-                al <span className='date'>{formatDate(reservation.dateOut, 'abrv')}</span> - <span className='user'>{reservation.user}</span>
-            </div>
+                <span className='date'>{formatDate(reservation.dateOut, 'abrv')}</span>
+                <span className={`status badge rounded-pill text-bg-secondary ${reservation.status}`}> {reservation.status}</span>
 
             {
                 (isOwner ) &&
-                <div className="actions">
+                <span className="actions">
                     <span onClick={()=> handleModify(reservation.id)} className='modify'><Pencil size={24} /></span>
                     <span onClick={() => handleDelete(reservation.id)} className='delete'><Trash size={24} /></span>
-                </div>
+                </span>
             }
+            </div>
+
         </li>
     )
 }

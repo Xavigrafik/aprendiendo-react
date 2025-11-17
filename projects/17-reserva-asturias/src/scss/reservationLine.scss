@@ -5,20 +5,18 @@
 
     .reservationLine {
         list-style: none;
-        border: 3px solid #283212;
-        background-color: rgba(PaleTurquoise, 0.5);
-        margin-bottom: 0.5em;
-        padding: 0 1em 0 0;
-        border-radius: 10px;
         font-size: 1.2em;
         overflow: hidden;
+        background-color: rgba(#ffffff, 0.33);
 
         display: flex;
         align-items: center;
         justify-content: space-between;
+        height: 60px;
+        margin-bottom: 3px;
         
         &:hover {
-            background-color: rgba(PaleTurquoise, 0.8);
+            background-color: rgba(#ffffff, 0.66);
 
             .actions {
                 opacity: 1;
@@ -26,28 +24,32 @@
         }
 
         &.active{
-            border-color: darkslateblue;
-            background-color: rgba(PaleTurquoise, 1);
+            border-color: lightgrey;
+            background-color: rgba(#ffffff, 0.8);
+        }
+        
+        &.header {
+            background-color: rgba(#ffffff, 1);
+            border-radius: 20px 20px 0 0;
+            font-weight: bold;
+            font-size: 15px;
+
         }
 
         .info {
-            //display: grid;
-            //grid-template-columns: repeat(10,1fr);
+            width: 100%;
             gap: 10px;
-            display: flex;
+            display: grid;
             align-items: center;
+            grid-template-columns: repeat(6, minmax(100px, 1fr));
         }
 
         span {
             &.id {
-                background-color: #fff;
                 padding: 0.25em 0.5em;
                 margin-right: 1.5em;
                 display: inline-block;
                 width: 50px;
-                height: 40px;
-                text-align: center;
-                border-radius: 4px;
                 overflow: hidden;
             }
             &.date {
@@ -55,22 +57,36 @@
                 padding: 0 0.66em;
                 border-radius: 5px;
             }
-            &.user {
-                font-weight: 900;
+            &.user {}
+
+            &.status {
+                font-size: 14px;
+                font-weight: lighter;
+
+                &.pasado {
+                    color: #fff !important;
+                    background-color: rgb(220, 53, 69) !important;
+                }
+                &.current {
+                    color: #fff !important;
+                    background-color: rgb(25, 135, 84) !important;
+                }
+                &.futuro {
+                    opacity: 0;
+                }
             }
         }
 
         .actions {
             opacity: 1;
             display: flex;
-            gap: 0.5em;
-            align-items: center;
-            justify-content: center;
-
+            align-self: flex-end;
+            justify-self: flex-end;
+            margin-left: auto;
             span {
                 cursor: pointer;
                 opacity: 0.5;
-                border-radius: 5px;
+                border-radius: 50px;
                 padding: 0.25em 0.5em ;
                 width: 40px;
                 height: 40px;
@@ -80,7 +96,7 @@
 
                 &:hover{
                     opacity: 1;
-                    background-color: #fff;
+                    background-color: #db5f5f;
                 }
             }
         }
