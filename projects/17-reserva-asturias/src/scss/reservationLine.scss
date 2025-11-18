@@ -46,22 +46,31 @@
 
         span {
             &.id {
-                padding: 0.25em 0.5em;
+                padding: 0.5em 1em;
                 margin-right: 1.5em;
                 display: inline-block;
                 width: 50px;
                 overflow: hidden;
             }
             &.date {
-                background: #ffffffaa;
-                padding: 0 0.66em;
                 border-radius: 5px;
             }
-            &.user {}
+            &.user {
+                font-size: 0.85em;
+            }
 
             &.status {
-                font-size: 14px;
+                font-size: 12px;
                 font-weight: lighter;
+                width: min-content;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 100px;
+                min-height: 22px;
+                padding: 0;
+                line-height: 0.7;
+
 
                 &.pasado {
                     color: #fff !important;

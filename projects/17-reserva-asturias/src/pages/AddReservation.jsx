@@ -129,20 +129,6 @@ function AddReservation() {
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col-12">
-                    <div className='alert alert-info mt-3'>
-                        <h4>FormatDate:</h4>
-                        <p>Default: <strong>{formatDate(datePickerState[0].startDate)}</strong></p>
-                        <p>kebap: <strong>{formatDate(datePickerState[0].startDate, 'kebap')}</strong></p>
-                        <p>slash: <strong>{formatDate(datePickerState[0].startDate, 'slash')}</strong></p>
-                        <p>abrv: <strong>{formatDate(datePickerState[0].startDate, 'abrv')}</strong></p>
-                        <p>short: <strong>{formatDate(datePickerState[0].startDate, 'short')}</strong></p>
-                        <p>long: <strong>{formatDate(datePickerState[0].startDate, 'long')}</strong></p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     );
 }

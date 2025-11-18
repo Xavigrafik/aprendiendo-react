@@ -41,3 +41,13 @@ export function formatDate(date, style=null) {
     return `${day}-${month}-${year}`;
 
 }
+
+
+/**
+ * Devuelve un objeto Date que representa la fecha y hora actual.
+ *
+ * @returns {Date} La instancia de Date para el momento presente.
+ */
+export function getToday() { 
+    return new Date();
+}
