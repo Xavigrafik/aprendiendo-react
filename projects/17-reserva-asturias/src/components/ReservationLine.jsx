@@ -7,7 +7,7 @@ import { UserContext } from '../contexts/UserContext';
 import { ModalContext } from '../contexts/ModalContext';
 
 import { formatDate } from '../utils/dates';
-import { Trash, Pencil } from "lucide-react";
+
 
 // Importamos el componente Wrapper del modal
 import ModifyReservationModal from './ModifyReservationModal';
@@ -70,8 +70,10 @@ const ReservationLine = ({ reservation }) => {
             {
                 (isOwner ) &&
                 <span className="actions">
-                    <span onClick={()=> handleModify(reservation.id)} className='modify'><Pencil size={24} /></span>
-                    <span onClick={() => handleDelete(reservation.id)} className='delete'><Trash size={24} /></span>
+                    <span onClick={()=> handleModify(reservation.id)} className='modify'><span class="material-symbols-sharp">edit</span></span>
+                            <span onClick={() => handleDelete(reservation.id)} className='delete'>
+                                <span class="material-symbols-sharp">delete</span>
+                    </span>
                 </span>
             }
             </div>

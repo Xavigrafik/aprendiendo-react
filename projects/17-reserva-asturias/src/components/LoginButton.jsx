@@ -26,7 +26,7 @@ function LoginButton() {
                 </NavLink>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                     <li>
-                        <form className="px-4 py-2">
+                        <form id="loginForm" className="px-4 py-2">
                             <div className="mb-3">
                                 <label htmlFor="exampleInputEmail1" className="form-label" > Email </label>
                                 <input
@@ -57,7 +57,7 @@ function LoginButton() {
                                 </label>
                             </div>
                           
-                            <button type="submit" onClick={handleClick} className="btn btn-outline-warning">
+                            <button type="submit" onClick={handleClick} className="btn">
                                 Submit
                             </button>
                         </form>

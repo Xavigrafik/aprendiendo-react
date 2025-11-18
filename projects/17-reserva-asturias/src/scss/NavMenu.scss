@@ -1,50 +1,62 @@
-$bgcolor: #594c11;
-$textcolor: #f7cf21;
+$bgcolor: rgba(#000, 0.50);
+$textcolor: #470b0b;
 
 .NavMenu {
     
     padding: 0!important;
     border-bottom:0;
-    background-color: #594c11;
+    background-color: $bgcolor;
     
     .nav-link {
-        color: $textcolor;
         padding-left: 2rem!important;
         padding-right: 2rem!important;
+        color: #fff;
         
         &.active {
+            color: #fff;
             --bs-navbar-active-color : $bgcolor;
             border-bottom: 5px solid $textcolor;
-            background-color: rgba( $textcolor, $alpha: 0.33);
-            color: #fff;
+            background-color: rgba($textcolor, 0.66);
         }
     }
 
     .dropdown-item:focus,
     .dropdown-item:hover {
         cursor: pointer;
-        --bs-dropdown-link-hover-bg: #f7cf21!important;
-        --bs-dropdown-link-hover-color: #594c11!important;
+        --bs-dropdown-link-hover-bg: $textcolor!important;
+        --bs-dropdown-link-hover-color: $bgcolor!important;
     }
 
     .dropdown-menu {
         --bs-dropdown-min-width : 300px;
-        --bs-dropdown-bg : #594c11;
+        --bs-dropdown-bg : #470b0b;
+        --bs-border-color: #fff;
+
     }
 
     .dropdown-toggle::after {
         content: none;
     }
 
-    .form-control{
-        background-color: #f7cf21;
-        color: #000;
-    }
+    
+    #loginForm {
 
-    .form-check-input:checked {
-        background-color: $textcolor;
-        border-color: $bgcolor;
+        .form-control{
+            background-color: $textcolor;
+            color: #fff;
+        }
+        
+        & > button {
+            border:1px solid #fff;
+        }
+        .form-check-input:checked {
+            background-color: $textcolor;
+            border-color: $bgcolor;
+            
+        }
     }
+    
+
     .avatar {
         display: flex;
         align-items: center;
