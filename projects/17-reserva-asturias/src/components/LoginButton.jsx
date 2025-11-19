@@ -22,7 +22,7 @@ function LoginButton() {
                     aria-expanded="false"
                     to="/login"
                 >
-                    Log in
+                    <span className="material-symbols-sharp"> person </span>
                 </NavLink>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                     <li>

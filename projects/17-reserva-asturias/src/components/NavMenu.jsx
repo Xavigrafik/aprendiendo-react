@@ -28,8 +28,8 @@ export function NavMenu() {
 
                     <div className="navbar-nav">
                         {user ? (
-                            <a className="nav-link" to="/login"><UserAvatar/></a>
-                        ) : (
+                                <a className="nav-link"><UserAvatar/></a>
+                            ) : (
                             <LoginButton></LoginButton>
                         )}
                     </div>

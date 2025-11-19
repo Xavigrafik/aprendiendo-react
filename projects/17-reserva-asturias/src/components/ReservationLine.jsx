@@ -70,9 +70,9 @@ const ReservationLine = ({ reservation }) => {
             {
                 (isOwner ) &&
                 <span className="actions">
-                    <span onClick={()=> handleModify(reservation.id)} className='modify'><span class="material-symbols-sharp">edit</span></span>
+                    <span onClick={()=> handleModify(reservation.id)} className='modify'><span className="material-symbols-sharp">edit</span></span>
                             <span onClick={() => handleDelete(reservation.id)} className='delete'>
-                                <span class="material-symbols-sharp">delete</span>
+                                <span className="material-symbols-sharp">delete</span>
                     </span>
                 </span>
             }

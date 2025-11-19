@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo } from 'react'
+import { useContext, useState, useMemo, useEffect } from 'react'
 import ReservationLine from '../components/ReservationLine'
 import { ReservationContext } from '../contexts/ReservationContext'
 import { UserContext } from '../contexts/UserContext'
@@ -13,13 +13,11 @@ const ReservationsBlock = () => {
 
     // 3. Lógica de filtrado utilizando el principio de comparación por Nombre
     const filteredReservations = useMemo(() => {
-        // Si no está filtrado O no hay usuario logueado O no hay nombre, devuelve todo.
+        
         if (!isFilteredByUser || !user?.name) { 
             return reservations
         }
         
-        // **FILTRO POR NOMBRE (Como en isOwner):**
-        // Compara user.name con la propiedad de nombre del usuario en la reserva (asumida como reservation.user)
         return reservations.filter(reservation => user.name === reservation.user)
         
     }, [reservations, isFilteredByUser, user]) // Dependencia: el array completo, el toggle y el objeto user
@@ -33,7 +31,22 @@ const ReservationsBlock = () => {
 
     // 5. Renderizado
     return (
-        <>
+        <>  
+            {user && 
+                <div className="row">
+                    <div className="col">
+                        <button id="filterReservations" onClick={handleFilterToggle} >
+                            {isFilteredByUser ? (
+                                <span className="material-symbols-sharp"> toggle_on </span>
+                            ) : (
+                                <span className="material-symbols-sharp"> toggle_off </span>
+                            )}
+                            <div>{!isFilteredByUser ? 'Show MY reservations' : 'Show ALL reservations'}</div>
+                        </button>
+                    </div>
+                </div>
+            }
+
             <ul className="reservationList">
                 {!filteredReservations.length && <p>No hay fechas reservadas.</p>}
 
@@ -56,23 +69,8 @@ const ReservationsBlock = () => {
                 ))}
             </ul>
                 
-            <div className="row">
-                <div className="col">
-                    <button 
-                        id="filterReservations" 
-                        onClick={handleFilterToggle} 
-                        // Deshabilitar si no hay un nombre de usuario disponible para filtrar
-                        disabled={!user?.name} 
-                    >
-                        {isFilteredByUser ? (
-                            <span className="material-symbols-sharp"> toggle_on </span>
-                        ) : (
-                            <span className="material-symbols-sharp"> toggle_off </span>
-                        )}
-                        <div>{isFilteredByUser ? 'Showing MY reservations' : 'Show ALL reservations'}</div>
-                    </button>
-                </div>
-            </div>
+            
+
         </>
     )
 }
