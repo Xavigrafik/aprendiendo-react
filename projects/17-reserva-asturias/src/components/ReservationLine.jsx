@@ -70,9 +70,9 @@ const ReservationLine = ({ reservation }) => {
             {
                 (isOwner ) &&
                 <span className="actions">
-                    <span onClick={()=> handleModify(reservation.id)} className='modify'><span className="material-symbols-sharp">edit</span></span>
-                            <span onClick={() => handleDelete(reservation.id)} className='delete'>
-                                <span className="material-symbols-sharp">delete</span>
+                    <span onClick={()=> handleModify(reservation.id)} className={`modify ${reservation.status == "pasado" ? "disabled" : ""}`}><span className="material-symbols-sharp">edit</span></span>
+                    <span onClick={() => handleDelete(reservation.id)} className={`delete ${reservation.status == "pasado" ? "disabled" : ""}`}> 
+                            <span className="material-symbols-sharp">delete</span>
                     </span>
                 </span>
             }
