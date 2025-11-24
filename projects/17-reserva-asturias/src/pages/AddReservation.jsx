@@ -11,6 +11,7 @@ import ReservationsBlock from '../components/ReservationsBlock';
 
 
 import '../scss/reservation.scss';
+import { ModalContext } from "../contexts/ModalContext";
 
 
 function AddReservation() {
@@ -18,6 +19,7 @@ function AddReservation() {
     const { reservations, addReservation } = useContext(ReservationContext);
     const { user } = useContext(UserContext);
     
+    const { openModal } = useContext(ModalContext);
     const [buttonIsDisabled, setButtonIsDisabled] = useState(true)
     
     const startingDate = useMemo(() => new Date(), []);
@@ -38,12 +40,8 @@ function AddReservation() {
           datePickerState[0].startDate.getTime() === startingDate.getTime() &&
           datePickerState[0].endDate.getTime() === startingDate.getTime()
         );
-    }, [datePickerState]);
+    }, [datePickerState, startingDate]);
     
-
-    useEffect(() => {
-        //console.log('buttonIsDisabled', buttonIsDisabled);
-    }, [buttonIsDisabled]);
 
 
     const handleClearDates = () => {
@@ -71,9 +69,21 @@ function AddReservation() {
             };
             addReservation(newReservation);
             handleClearDates();
-            alert('Reserva realizada')
+
+            // MODAL RESERVA OK
+            openModal({
+                title: '✅ ¡Reserva Exitosa!',
+                body: `La reserva para ${user.name} desde ${formatDate(newReservation.dateIn)} hasta ${formatDate(newReservation.dateOut)} ha sido completada.`,
+                size: 'md', 
+                position: 'modal-dialog-centered' ,
+            });
         } else {
-            alert("Fechas no permitidas");
+            openModal({
+               title: 'Fechas no permitidas!',
+               body: `?¿?¿?¿`,
+               size: 'md', 
+               position: 'modal-dialog-centered' ,
+           });
         }
 
     }, [ addReservation, user, datePickerState]);

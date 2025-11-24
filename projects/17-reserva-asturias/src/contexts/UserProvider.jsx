@@ -1,37 +1,35 @@
 import PropTypes from 'prop-types';
 import { UserContext } from './UserContext';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 export const UserProvider = ({ children }) => {
     
     
-    const newUser = {
-        id: 22,
-        name: "Xavi",
-    }
+    const usersList = [
+        { id: 0, name: 'Xavi',},
+        { id: 1, name: 'Guille'},
+        { id: 2, name: 'Ricardo'},
+    ];
     
-    const [user, setUser] = useState(newUser);
+    const [user, setUser] = useState(null);
 
 
-    const logIn = () => {
-        setUser(newUser);
+    // LOGIN SIMULADO ****
+    const logIn = (userId) => {
+        const idToFind = Number(userId);
+        const userToLogIn = usersList.find(user => user.id === idToFind);
+        setUser(userToLogIn || null);
     };
+
 
     const logOut = () => {
         setUser(null);
     };
 
-    // useEffect(() => {
-    //     if (user.id == null) {
-    //         console.log('Usuario no logueado');
-    //     }
-    // }, [user]);
-    
-    const value = { user, logIn, logOut };
 
     return (
-        <UserContext.Provider value= {value}>
+        <UserContext.Provider value={{ user, usersList, logIn, logOut }}>
             {children}
         </UserContext.Provider>
     );

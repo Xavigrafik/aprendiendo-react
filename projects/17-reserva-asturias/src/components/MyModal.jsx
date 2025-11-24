@@ -1,3 +1,4 @@
+import '../scss/myModal.scss'
 import { useContext } from 'react'
 
 import { ModalContext } from "../contexts/ModalContext";
@@ -19,7 +20,7 @@ const MyModal = () => {
             aria-labelledby="modalLabel"
             aria-hidden="true"
         >
-            <div className="modal-dialog">
+            <div className={`modal-dialog ${modalContent?.position ? modalContent?.position : ''}`}>
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5" id="modalLabel">

@@ -10,17 +10,6 @@ const MyDatePicker = ({ name, selectedDate, setdates }) => {
     };
 
     const today = new Date().toISOString().split('T')[0];
-    //console.log('today: ', today);
-    
-    // const nextWeek = () => {
-    //     const today = new Date();
-    //     const nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
-        
-    //     return nextWeek.toISOString().split('T')[0]; // Extrae la parte de la fecha en formato YYYY-MM-DD
-    // };
-    
-    // console.log(nextWeek());
-    
 
     return (
         <input 

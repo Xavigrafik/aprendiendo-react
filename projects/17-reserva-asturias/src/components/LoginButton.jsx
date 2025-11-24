@@ -4,11 +4,10 @@ import { UserContext } from "../contexts/UserContext";
 
 function LoginButton() {
 
-    const { logIn } = useContext(UserContext);
+    const { logIn, usersList } = useContext(UserContext);
 
-    function handleClick(e) {
-        e.preventDefault();
-        logIn();
+    function handleLogin(userId) {
+        logIn(userId);
     }
 
     return (
@@ -56,12 +55,27 @@ function LoginButton() {
                                     Check me out
                                 </label>
                             </div>
-                          
-                            <button type="submit" onClick={handleClick} className="btn">
+
+                            <button type="submit" className="btn">
                                 Submit
                             </button>
                         </form>
                     </li>
+
+                    <hr />
+                    <div className='px-4 py-2'>
+                        <p>Selecciona un usuario ficticio:</p>
+                        <ul className="usersList">
+                            {usersList && usersList.map((user) => (
+                                <li key={user.id}>
+                                    <a href="#" onClick={() => handleLogin(user.id)}>
+                                        {user.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
                 </ul>
             </div>
         </>
