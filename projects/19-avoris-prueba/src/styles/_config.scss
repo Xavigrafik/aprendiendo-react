@@ -1,0 +1,49 @@
+$purple: #622F60;
+$orange: #FF8F50;
+$pepe: #ff0000;
+
+$color-primary: $orange;
+$color-secondary:$purple;
+$color-white: #ffffff;
+$color-light: $color-white;
+$color-gray-light: #A0989F;
+
+// ------------------------------------
+//  MIXIN BREAKPOINTS
+// ------------------------------------
+$bp-tablet-sm: 744px;
+$bp-tablet-lg: 1023px;
+$bp-desktop: 1440px;
+
+@mixin media-query($size) {
+    @if $size == tablet-sm {
+        @media (min-width: $bp-tablet-sm) {
+            @content;
+        }
+    } @else if $size == tablet-lg {
+        @media (min-width: $bp-tablet-lg) {
+            @content;
+        }
+    } @else if $size == desktop {
+        @media (min-width: $bp-desktop) {
+            @content;
+        }
+    } @else {
+        @warn "Mixin media-query: Breakpoint '#{$size}' no reconocido.";
+    }
+}
+
+
+
+$spacing-unit: 0.25rem; // 4px
+
+$spacing-xs: $spacing-unit * 1;  // 0.25rem (4px)
+$spacing-sm: $spacing-unit * 2;  // 0.5rem (8px)
+$spacing-md: $spacing-unit * 4;  // 1rem (16px)
+$spacing-lg: $spacing-unit * 6;  // 1.5rem (24px)
+$spacing-xl: $spacing-unit * 8;  // 2rem (32px)
+
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+$radius-full: 60px;

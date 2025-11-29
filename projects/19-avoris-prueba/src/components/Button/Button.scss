@@ -1,0 +1,113 @@
+@import '../../styles/config';
+
+// -------------------------------------
+// BLOQUE: .btn
+// -------------------------------------
+.btn {
+    // Estilos Base (Aplicables a todos los botones)
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none; // Para usarlo en enlaces <a>
+
+    // ---------------------------------
+    // TAMAÑOS (MODIFICADORES DE TAMAÑO)
+    // ---------------------------------
+    
+    // 1. Tamaño Pequeño (sm)
+    &--sm {
+        padding: $spacing-sm $spacing-lg;
+        font-size: 0.85rem;
+        border-radius: $radius-full; 
+    }
+
+    // 2. Tamaño Base (base)
+    &--base {
+        padding: $spacing-lg $spacing-md;
+        font-size: 1rem;
+        border-radius: $radius-full;
+    }
+
+    // 3. Tamaño Grande (lg)
+    &--lg {
+        padding: $spacing-md $spacing-lg;
+        font-size: 1.15rem;
+        border-radius: $radius-full;
+    }
+
+    // ---------------------------------
+    // VARIANTES (MODIFICADORES DE COLOR)
+    // ---------------------------------
+    
+    // --- 1. PRIMARY VARIANT ---
+    &--primary {
+        // DEFAULT STATE (State="default")
+        background-color: $color-primary;
+        color: $color-white;
+        border-color: $color-primary;
+
+        // HOVER STATE
+        &:hover:not(:disabled) {
+            background-color: darken($color-primary, 10%);
+            border-color: darken($color-primary, 10%);
+        }
+
+        // DISABLED STATE
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        // --- ADAPTACIÓN A FONDO OSCURO (onDark="yes") ---
+        &--onDark {
+            background-color: $color-light;
+            color: $color-primary;
+            border-color: $color-light;
+
+            &:hover:not(:disabled) {
+                background-color: $color-white;
+                border-color: $color-white;
+            }
+        }
+    }
+
+    // --- 2. SECONDARY VARIANT ---
+    &--secondary {
+        // DEFAULT STATE
+        background-color: $color-white;
+        color: $color-secondary;
+        border-color: #622F60;
+        
+        // HOVER STATE
+        &:hover:not(:disabled) {
+            border-color: #471F45;
+            color: $color-white;
+        }
+
+        // DISABLED STATE
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            color: $color-gray-light;
+        }
+
+        // --- ADAPTACIÓN A FONDO OSCURO (onDark="yes") ---
+        &--onDark {
+            background-color: transparent;
+            color: $color-white;
+            border-color: $color-white;
+
+            &:hover:not(:disabled) {
+                background-color: rgba($color-white, 0.1);
+            }
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@use '../../styles/config';
+
+// -------------------------------------
+// BLOQUE: .card
+// -------------------------------------
+.card {
+    box-shadow: 0, 4, 8, rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__image {}
+
+    &__body {
+        padding: 1em;
+    }
+
+
+    &__info {
+
+        font-family: "Syne", sans-serif;
+
+        span {}
+    }
+
+
+    &__title {
+        font-size: 18px;
+    }
+
+
+    &__footer {
+        background-color: #FBF6F4;
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__cta {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    &__priceBlock {}
+
+    &__price {
+        font-weight: 100;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-weight: 700;
+            font-size: 2em;
+        }
+    }
+
+    &__details {
+        font-weight: 100;
+        color: #622F60;
+    }
+
+    // POPOVER PRICE
+    & .popover {
+        position: absolute;
+        background-color: #fff;
+        top: 100vh;
+        left: 40vw;
+        border-radius: 24px;
+        overflow: hidden;
+        width: 400px;
+        height: auto;
+        display: none;
+
+        &__header {
+            padding: 1rem;
+            background-color: #FBF6F4;
+            display: flex;
+             .popover__close{
+                margin-left: auto;
+             }
+        }
+
+        &__body {
+            padding: 1rem;
+            border-block: 1px solid #E0D9E0;
+
+            .data-row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 0.5em;
+                span {
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &__info {
+            color: #622F60;
+            font-family: "Syne" sans-serif;
+            margin-bottom: 1em;
+            font-size: 18px;
+        }
+        &__footer {
+            padding: 1rem;
+            background-color: #FBF6F4;
+        }
+
+    }
+
+
+
+}

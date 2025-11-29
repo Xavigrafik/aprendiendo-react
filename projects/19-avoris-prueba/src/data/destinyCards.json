@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "country": "Tailandia",
+        "continent": "Asia",
+        "title": "Descubre Bangkok con Iberojet",
+        "price": "248",
+        "days": "9",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "19.84"
+    },
+    {
+        "id": 2,
+        "country": "Costa Rica",
+        "continent": "América",
+        "title": "Vuela a Costa Rica este verano",
+        "price": "248",
+        "days": "9",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "14.88"
+    },
+    {
+        "id": 3,
+        "country": "Japón",
+        "continent": "Asia",
+        "title": "Aventura en Tokio y Kioto",
+        "price": "890",
+        "days": "14",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "26.70"
+    },
+    {
+        "id": 4,
+        "country": "Sudáfrica",
+        "continent": "África",
+        "title": "Safari en el Parque Kruger",
+        "price": "1250",
+        "days": "12",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "100.00"
+    },
+    {
+        "id": 5,
+        "country": "Vietnam",
+        "continent": "Asia",
+        "title": "Recorrido por la Bahía de Ha Long",
+        "price": "750",
+        "days": "10",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "60.00"
+    },
+    {
+        "id": 6,
+        "country": "Egipto",
+        "continent": "África",
+        "title": "Crucero por el Nilo y Pirámides",
+        "price": "980",
+        "days": "8",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "58.80"
+    },
+    {
+        "id": 7,
+        "country": "India",
+        "continent": "Asia",
+        "title": "El Triángulo de Oro: Delhi, Agra y Jaipur",
+        "price": "620",
+        "days": "7",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "6.20"
+    },
+    {
+        "id": 8,
+        "country": "Marruecos",
+        "continent": "África",
+        "title": "Ruta por el Desierto del Sahara",
+        "price": "450",
+        "days": "5",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "9.00"
+    },
+    {
+        "id": 9,
+        "country": "China",
+        "continent": "Asia",
+        "title": "Descubre la Gran Muralla",
+        "price": "1050",
+        "days": "15",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "10.50"
+    },
+    {
+        "id": 10,
+        "country": "Kenia",
+        "continent": "África",
+        "title": "Avistamiento de la Gran Migración",
+        "price": "1500",
+        "days": "10",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "150.00"
+    },
+    {
+        "id": 11,
+        "country": "Emiratos Árabes Unidos",
+        "continent": "Asia",
+        "title": "Lujo y Modernidad en Dubái",
+        "price": "550",
+        "days": "6",
+        "image": "/src/assets/images/destinations/thailandia.jpg",
+        "tax": "55.00"
+    }
+]

@@ -1,0 +1,21 @@
+@use'../../styles/config';
+
+.hero {
+    min-height: 400px;
+    background-image: url('../../assets/images/heroImage.png');
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+
+    &__title {}
+
+    &__subtitle {}
+
+    &__button {}
+
+}
