@@ -1,0 +1,70 @@
+@use'../../styles/config' as *;
+
+.aside {
+    background-color: #FBF6F4;
+    font-family: "Nunito", serif;
+
+    &__title {
+        font-family: "Syne", serif;
+        padding: $spacing-6 $spacing-8;
+        font-size: 18px;
+        font-weight: 700;
+        border-bottom: 1px solid #E0D9E0;
+    }
+
+    &__body {}
+
+    &__header {
+        background: transparent;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        margin-bottom: 8px;
+        padding: 1rem;
+        font-size: 16px;
+        font-weight: 700;
+        border: 0px;
+
+        &[aria-expanded="true"] {
+
+            color: #B85C28 !important; // <-- Aplica color al texto (forzado)
+
+            >svg {
+                color: #B85C28; // <-- Esto establece el valor para currentColor
+            }
+        }
+
+        &:hover {
+            background: #fcebe4;
+
+        }
+
+    }
+
+    &__item {
+        padding: 1em 1.5em;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    &__section {
+
+        &--list {
+            // border:1px solid green;
+            padding: $spacing-6 $spacing-3;
+        }
+
+        &--open {
+            // border:1px solid blue;
+
+        }
+
+    }
+
+    &__label {
+        font-size: 14px;
+    }
+
+}

@@ -1,5 +1,8 @@
+@use '../../styles/config' as *;
+
 .mainContent {
 
     border:1px solid red;
-    background-color: #d2d3d4;
+    background-color: $white;
 }
+

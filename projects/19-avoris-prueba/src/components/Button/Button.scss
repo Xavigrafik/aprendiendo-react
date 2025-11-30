@@ -1,112 +1,103 @@
-@import '../../styles/config';
+@use '../../styles/config' as *;
 
-// -------------------------------------
-// BLOQUE: .btn
-// -------------------------------------
 .btn {
-    // Estilos Base (Aplicables a todos los botones)
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-weight: 600;
+    font-family: inherit;
+    font-size: 16px;
     line-height: 1.5;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    border: 1px solid transparent;
     transition: all 0.2s ease-in-out;
-    text-decoration: none; // Para usarlo en enlaces <a>
+    text-decoration: none;
+    border:0px solid transparent;
+    border-radius: $radius-full; 
 
     // ---------------------------------
-    // TAMAÑOS (MODIFICADORES DE TAMAÑO)
+    // TAMAÑOS: "sm" | "base" | "lg";
     // ---------------------------------
-    
-    // 1. Tamaño Pequeño (sm)
+
     &--sm {
-        padding: $spacing-sm $spacing-lg;
-        font-size: 0.85rem;
-        border-radius: $radius-full; 
+        padding: $spacing-2 $spacing-6;
     }
 
-    // 2. Tamaño Base (base)
     &--base {
-        padding: $spacing-lg $spacing-md;
-        font-size: 1rem;
-        border-radius: $radius-full;
+        padding: $spacing-3 $spacing-9;
     }
 
-    // 3. Tamaño Grande (lg)
     &--lg {
-        padding: $spacing-md $spacing-lg;
-        font-size: 1.15rem;
-        border-radius: $radius-full;
+        padding: $spacing-4 $spacing-10;
+        font-size: 20px;
     }
 
     // ---------------------------------
-    // VARIANTES (MODIFICADORES DE COLOR)
+    // VARIANTS: "primary" | "secondary"
     // ---------------------------------
     
-    // --- 1. PRIMARY VARIANT ---
     &--primary {
-        // DEFAULT STATE (State="default")
-        background-color: $color-primary;
-        color: $color-white;
-        border-color: $color-primary;
-
-        // HOVER STATE
+        background-color: #622F60;
+        color: $white;
+        
         &:hover:not(:disabled) {
-            background-color: darken($color-primary, 10%);
-            border-color: darken($color-primary, 10%);
+            background-color: #471F45;
+            color: #f2f3f4;
         }
-
-        // DISABLED STATE
+        
         &:disabled {
-            opacity: 0.6;
+            background-color: #A0989F;
+            color: #635A63;
+            
             cursor: not-allowed;
         }
         
-        // --- ADAPTACIÓN A FONDO OSCURO (onDark="yes") ---
-        &--onDark {
-            background-color: $color-light;
-            color: $color-primary;
-            border-color: $color-light;
-
+        //  (onDark="yes")
+        &.btn--onDark {
+            background-color: #FF8F50!important;
+            color: #4E250E;
+            
             &:hover:not(:disabled) {
-                background-color: $color-white;
-                border-color: $color-white;
+                color: #57290F;
+                background-color: #D67843!important;
+            }
+
+            &:disabled {
+                background-color: #817781!important;
+                cursor: not-allowed;
             }
         }
     }
 
-    // --- 2. SECONDARY VARIANT ---
     &--secondary {
-        // DEFAULT STATE
-        background-color: $color-white;
-        color: $color-secondary;
+        background-color: $white;
+        color: #622F60;
         border-color: #622F60;
+        border-width:1px;
         
-        // HOVER STATE
+        
         &:hover:not(:disabled) {
+            color: #471F45;
             border-color: #471F45;
-            color: $color-white;
+            background-color: #F8F7F8;
         }
 
-        // DISABLED STATE
         &:disabled {
-            opacity: 0.6;
             cursor: not-allowed;
-            color: $color-gray-light;
+            color: #635A63;
+            border-color: #817781;
         }
 
-        // --- ADAPTACIÓN A FONDO OSCURO (onDark="yes") ---
-        &--onDark {
+        //  (onDark="yes")
+        &.btn--onDark {
             background-color: transparent;
-            color: $color-white;
-            border-color: $color-white;
+            color: $white;
+            border-color: $white;
 
             &:hover:not(:disabled) {
-                background-color: rgba($color-white, 0.1);
+                background-color: rgba($white, 0.1);
             }
         }
     }

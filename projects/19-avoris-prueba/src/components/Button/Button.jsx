@@ -8,26 +8,27 @@ import './Button.scss';
 // El disabled se maneja con el atributo 'disabled'
 
 const Button = ({ 
-    children, 
+    children,
     variant = 'primary', // Default a 'primary'
     size = 'base',       // Default a 'base'
     onDark = false,      // Default a false
     disabled = false,    // Maneja el estado 'disabled'
     onClick, 
+    className = '',
     ...rest
 }) => {
     
-    let className = 'btn'; 
-    className += ` btn--${variant}`;
-    className += ` btn--${size}`;
-
-    if (onDark) {
-        className += ` btn--onDark`; 
-    }
+   const classList = [
+        'btn', 
+        `btn--${variant}`,
+        `btn--${size}`,
+        onDark && `btn--onDark`,
+        className 
+    ].filter(Boolean).join(' ');
 
     return (
         <button
-            className={className}
+            className={classList}
             onClick={onClick}
             disabled={disabled}
             {...rest}

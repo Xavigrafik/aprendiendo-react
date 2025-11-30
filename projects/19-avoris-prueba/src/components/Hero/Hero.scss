@@ -1,10 +1,12 @@
-@use'../../styles/config';
+@use '../../styles/config' as *;
 
 .hero {
     min-height: 400px;
     background-image: url('../../assets/images/heroImage.png');
     background-position: center;
     background-size: cover;
+    position: relative;
+    padding-inline: 3em;
 
     display: flex;
     align-items: center;
@@ -12,10 +14,76 @@
     flex-direction: column;
     gap: 12px;
 
-    &__title {}
+    &__title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: $white;
+    }
+    
+    &__subtitle {
+        font-family: "Syne", sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 26px;
+        color: $white;
+        margin-bottom: $spacing-10;
 
-    &__subtitle {}
+    }
 
     &__button {}
+
+    .hero__arrows-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        top:50%;
+        width: 100%;
+        position: absolute;
+
+        .hero__arrow {
+            width: 40px;
+            height: 40px;
+            background-color: #ccbccc;
+            border-radius: $radius-sm;
+
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+
+            &:hover {
+                background-color: #622F60;
+            }
+
+            &--prev {
+                margin-right: 10px;
+                left: 0;
+            }
+
+            &--next {
+                right: 0;
+                margin-left: 10px;
+            }
+        }
+    }
+    &__sliderDots{
+        display: flex;
+        gap: 8px;
+        position: absolute;
+        bottom: $spacing-8;
+    }
+    &__dot {
+        width: 10px;
+        height: 10px;
+        background-color: rgba($white, 0.72);
+        border:1px solid $white;
+        border-radius: $radius-full;
+        
+        &--active {
+            background-color: #FF8F50;
+        }
+    }
 
 }
