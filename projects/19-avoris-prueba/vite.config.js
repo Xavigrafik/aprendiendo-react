@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [react()],
     resolve: {
     alias: {
-      '@': '/src', // ✅ Esto mapea el alias '@' a tu carpeta raíz de código 'src'
+      '@': '/src', 
     },
   },
 })

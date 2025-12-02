@@ -2,5 +2,3 @@
 @use 'config';      // Variables: $color-primary, $font-stack
 @use 'base';        // Resets, body, html, tipografía global
 @use 'layout';      // Grid, Columns contenedores de página
-
-@use 'utilities';

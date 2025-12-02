@@ -1,28 +1,75 @@
-@use'../../styles/config' as *;
+@use '../../styles/config' as *;
 
-.cardList {
-    
-    display: grid;
-    align-items: center;
-    justify-content: flex-start;
-    gap:1.5rem;
-    grid-template-columns: repeat(1,1fr);
-    width: 100%;
-    
-    &__title {
+.CardList { 
+
+    &__titleBlock { 
         width: 100%;
-        background-color: lightgreen;
-    }
-    
-    @include media-query(tablet-sm){
-        grid-template-columns: repeat(2,1fr);
-        
-    }
-    @include media-query(tablet-lg){
-        grid-template-columns: repeat(3,1fr);
-        
-    }
-    @include media-query(desktop){}
+        text-align: center;
+        background-color: #ffffff;
+        padding-block: 3.5rem;
+        padding-inline: 1rem;
 
+        & > h3 {
+            font-family: "Syne", sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 0.5rem;
+
+             @include media-query(tablet-sm){
+                font-size: 32px;
+            }
+            
+            @include media-query(tablet-lg){
+                font-size: 34px;
+            }
+            
+            @include media-query(desktop){
+                font-size: 38px;
+                
+            }
+        }
+        & > p {
+            font-weight: 400;
+            font-size: 20px;
+            color: #6B7D8D;
+            @include media-query(tablet-lg){
+                font-size: 22px;
+            }
+        }
+    }
+
+    // COUNTRIES
+    &__group { 
+        margin-bottom: 3rem; 
+    }
+
+    &__group-title {
+        margin-bottom: 1rem;
+        font-family: "Syne", sans-serif;
+        font-size: 22px;
+
+    }
     
+    // CARDS
+    &__grid { 
+        display: grid;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+        
+        grid-template-columns: repeat(1, 1fr); 
+        
+        @include media-query(tablet-sm){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @include media-query(tablet-lg){
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        @include media-query(desktop){
+            
+        }
+    }
 }

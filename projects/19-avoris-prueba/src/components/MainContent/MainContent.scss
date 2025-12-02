@@ -12,7 +12,6 @@
 
 
         .aside-panel {
-            border: 5px solid blue;
             overflow: hidden;
             transition:
                 width ease-in-out 450ms,
@@ -32,7 +31,6 @@
             }
 
             @include media-query(tablet-sm) {
-                // border: 5px solid lightsalmon;
                 z-index: 100;
                 position: absolute;
                 top: 0;
@@ -45,13 +43,11 @@
             }
 
             @include media-query(tablet-lg) {
-                // border: 5px solid green;
                 width: 296px;
                 height: 100%;
             }
 
             @include media-query(desktop) {
-                // border: 5px solid red;
                 position: relative;
                 height: 100%;
                 flex: 0 0 auto;
@@ -80,6 +76,10 @@
             }
 
             .filter-toggle-button {
+
+                display: flex;
+                gap: 10px;
+
                 @include media-query(tablet-sm) {
                     margin-inline: auto;
                 }
@@ -94,9 +94,4 @@
 
     }
 
-    @include media-query(tablet-sm) {}
-
-    @include media-query(tablet-lg) {}
-
-    @include media-query(desktop) {}
 }

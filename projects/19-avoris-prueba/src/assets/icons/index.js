@@ -6,6 +6,7 @@ import CloseIcon from './close.svg';
 import ChevronLeft from './chevron-left.svg';
 import ChevronRight from './chevron-right.svg';
 import PriceTag from './pricetag.svg';
+import FilterIcon from './filter.svg';
 
 export const Icons = {
     mountain: MountainIcon,
@@ -16,4 +17,5 @@ export const Icons = {
     chevronright: ChevronRight,
     chevronleft: ChevronLeft,
     pricetag: PriceTag,
+    filter: FilterIcon,
 };

@@ -4,6 +4,7 @@
     background-color: #FBF6F4;
     font-family: "Nunito", serif;
     border-radius: $radius-lg;
+    min-width: 300px;
 
     &__title {
         font-family: "Syne", serif;
@@ -17,6 +18,12 @@
         flex-direction: row;
         gap: 0.5em;
         width: 100%;
+
+        .btn-close {
+             @include media-query(desktop) {
+                    display: none;
+                }
+        }
     }
 
     &__body {}
@@ -59,7 +66,6 @@
         gap: 0.5rem;
 
         & input[type=checkbox]{
-            // border:10px solid red;
             width: 18px;
             height: 18px;
             margin: 0;
@@ -79,12 +85,10 @@
     &__section {
 
         &--list {
-            // border:1px solid green;
             padding: $spacing-6 $spacing-3;
         }
 
         &--open {
-            // border:1px solid blue;
 
         }
 

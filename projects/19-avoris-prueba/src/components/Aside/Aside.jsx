@@ -124,7 +124,7 @@ const Aside = ({ toggleFilter }) => {
                             id={section.idTarget}
                             className={`accordion-collapse collapse ${section.isOpen ? 'show' : ''}`}
                             aria-labelledby={`heading-${section.idTarget}`}
-                            // data-bs-parent={`#${accordionId}`}
+                            data-bs-parent={`#${accordionId}`}
                         >
                             <div className="accordion-body aside__body">
                                 {section.content}
