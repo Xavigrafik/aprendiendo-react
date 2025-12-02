@@ -1,14 +1,13 @@
 import React from 'react';
 import "./CardList.scss";
 import Card from '../Card/Card';
-import Aside from '../Aside/Aside';
 import DestinyCards from '../../data/destinyCards.json';
 
 const CardList = () => {
 
     const destinyCards = DestinyCards;
+    console.log("Datos cargados:", destinyCards);
     const isDataLoaded = Array.isArray(destinyCards) && destinyCards.length > 0;
-
     return (
         <div className="">
             {/* <h3 className='cardList__title'>Ofertas Destacadas</h3> */}

@@ -1,7 +1,8 @@
-import React from 'react'
+
 import "./MainContent.scss"
 
 const MainContent = ({ children }) => {
+    
   return (
       <div className='mainContent'>{children }</div>
   )

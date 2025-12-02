@@ -1,49 +1,22 @@
-// @use '../styles/config' as *;
-
-// .container {
-//     width: 100%;
-//     margin-left: auto;
-//     margin-right: auto;
-//     outline: 2px dashed $pepe;
-
-//     &--fluid {
-//         max-width: none;
-//         outline: 2px dashed darkviolet;
-//     }
-// }
-
-// /* En viewports de > 744px */
-// @include media-query(tablet-sm) {
-//     .container {
-//         max-width: px;
-//         outline: 2px dashed blue;
-//     }
-// }
+@use '../styles/config' as *;
 
 
-// /* En viewports de > 1023px */
-// @include media-query(tablet-lg) {
-//     .container {
-//         max-width: $bp-tablet-lg;
-//         outline: 2px dashed green;
-//     }
-// }
+.container {
+    @media (min-width: 576px) {
+        max-width: $bp-tablet-sm - 28px!important;
+    }
 
-// /* En viewports de > 1440px */
-// @include media-query(desktop) {
-//     .container {
-//         max-width: 1128px;
-//         outline: 2px dashed hotpink;
-//     }
-
-
-// }
-
-
-
-// .row {
-//     display: flex;
-//     flex-wrap: wrap;
-//     margin-right: calc(-.5 * 1.5rem);
-//     margin-left: calc(-.5 * 1.5rem);
-// }
+    
+    @media (min-width: $bp-tablet-sm) {
+        max-width: 700px!important;
+    }
+    
+    @media (min-width: $bp-tablet-lg) {
+        max-width: 992px!important;
+    }
+    
+    @media (min-width: $bp-desktop) {
+        border:1px solid red;
+        max-width: 1360px!important;
+    }
+}

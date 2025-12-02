@@ -3,13 +3,20 @@
 .aside {
     background-color: #FBF6F4;
     font-family: "Nunito", serif;
+    border-radius: $radius-lg;
 
     &__title {
         font-family: "Syne", serif;
-        padding: $spacing-6 $spacing-8;
+        padding: $spacing-6;
         font-size: 18px;
         font-weight: 700;
         border-bottom: 1px solid #E0D9E0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0.5em;
+        width: 100%;
     }
 
     &__body {}
@@ -22,31 +29,51 @@
         gap: 0.5rem;
         min-height: 48px;
         margin-bottom: 8px;
-        padding: 1rem;
         font-size: 16px;
         font-weight: 700;
         border: 0px;
+    }
 
-        &[aria-expanded="true"] {
+    &__button {
 
-            color: #B85C28 !important; // <-- Aplica color al texto (forzado)
+        gap: $spacing-2;
 
-            >svg {
-                color: #B85C28; // <-- Esto establece el valor para currentColor
+        &:not(.collapsed){
+            color: #B85C28 !important;
+            font-weight: 700;
+
+            & > svg {
+                color: #B85C28;
             }
-        }
 
+        }
         &:hover {
             background: #fcebe4;
-
         }
-
     }
 
     &__item {
         padding: 1em 1.5em;
         display: flex;
+        align-items: center;
         gap: 0.5rem;
+
+        & input[type=checkbox]{
+            // border:10px solid red;
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            border-radius: 2px;
+            cursor: pointer;
+            &:checked {
+                background-color: #FF8F50;
+                border-color: #622F60;
+            }
+        }
+        & label {
+            cursor: pointer;
+            user-select: none;
+        }
     }
 
     &__section {
@@ -67,4 +94,25 @@
         font-size: 14px;
     }
 
+    .accordion {
+        --bs-accordion-bg: transparent;
+        --bs-accordion-active-bg: transparent;
+        --bs-accordion-btn-focus-box-shadow: none;
+        --bs-accordion-active-color: $orange;
+        --bs-accordion-border-radius:0;
+        --bs-accordion-border-color: transparent;
+    }
+
+    
+}
+
+
+
+.tooltip {
+    --bs-tooltip-bg: #ffffff;
+    --bs-tooltip-color: #000000;
+    & .tooltip-inner {
+        box-shadow: $shadow;
+        padding: 6px 10px;
+    }
 }

@@ -52,6 +52,7 @@
         align-items: center;
         gap: 0.5rem;
         padding-inline: 0.75em;
+        cursor: pointer;
 
         &--active {
             border-bottom: 2px solid $orange;

@@ -2,7 +2,101 @@
 
 .mainContent {
 
-    border:1px solid red;
     background-color: $white;
-}
 
+
+    .filter-row {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+
+        .aside-panel {
+            border: 5px solid blue;
+            overflow: hidden;
+            transition:
+                width ease-in-out 450ms,
+                transform ease-in-out 250ms;
+            transform: translateX(0);
+            background-color: #FBF6F4;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 90;
+            width: 100vw;
+            height: 100%;
+
+            &:not(.isOpen) {
+                transform: translateX(-110%);
+                width: 0;
+            }
+
+            @include media-query(tablet-sm) {
+                // border: 5px solid lightsalmon;
+                z-index: 100;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                &:not(.isOpen) {
+                    transform: translateX(0);
+                    width: 0;
+                }
+            }
+
+            @include media-query(tablet-lg) {
+                // border: 5px solid green;
+                width: 296px;
+                height: 100%;
+            }
+
+            @include media-query(desktop) {
+                // border: 5px solid red;
+                position: relative;
+                height: 100%;
+                flex: 0 0 auto;
+                width: 25%;
+
+                &:not(.isOpen) {
+                    transform: translateX(0);
+                    width: 25%;
+                }
+            }
+
+        }
+
+        .content-panel {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            @include media-query(desktop) {
+
+                flex: 0 0 auto;
+                width: 75%;
+
+                &:not(.isOpen) {}
+            }
+
+            .filter-toggle-button {
+                @include media-query(tablet-sm) {
+                    margin-inline: auto;
+                }
+
+                @include media-query(tablet-lg) {}
+
+                @include media-query(desktop) {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    @include media-query(tablet-sm) {}
+
+    @include media-query(tablet-lg) {}
+
+    @include media-query(desktop) {}
+}

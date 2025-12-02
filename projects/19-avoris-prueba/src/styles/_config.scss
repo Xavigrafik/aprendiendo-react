@@ -9,7 +9,7 @@ $color-light: $white;
 $color-gray-light: #A0989F;
 
 // ------------------------------------
-//  MIXIN BREAKPOINTS
+//  MIXIN BREAKPOINTS (CUSTOM)
 // ------------------------------------
 $bp-tablet-sm: 744px;
 $bp-tablet-lg: 1023px;
@@ -34,8 +34,24 @@ $bp-desktop: 1440px;
 }
 
 
+$container-max-widths: (
 
+  sm: 700px,
+  md: 960px, 
+  lg: 1200px,
+  xl: 1320px,
+  xxl: 1540px
+);
 
+/*
+
+@include media-query(tablet-sm) {
+}
+@include media-query(tablet-lg) {
+}
+@include media-query(desktop) {
+}
+*/
 
 // 0.25rem = 4px, --> 1rem = 16px
 $spacing-unit: 0.25rem; 
@@ -57,3 +73,8 @@ $radius-sm: 0.25rem;
 $radius-md: 0.5rem;
 $radius-lg: 1rem;
 $radius-full: 60px;
+
+
+$shadow: 0px 4px 8px rgba(#000000, .2);
+
+

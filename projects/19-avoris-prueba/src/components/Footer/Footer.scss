@@ -1,1 +1,35 @@
-@use'../../styles/config';
+@use '../../styles/config' as *;
+
+.Footer {
+    width: 100%;
+    background-color: #FBF6F4;
+    border-top: 1px solid rgba(#622F60, 0.16);
+
+    
+    &__logo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 180px;
+        padding: 32px;
+
+        @include media-query(desktop){
+            justify-content: center;
+        }
+        
+        & img {
+            height: 32px;
+        }
+    }
+
+    &__bottomBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 52px;
+        text-align: center;
+        background-color: #E0D9E0;
+        color: #622F60;
+        font-size: 14px;
+    }
+}
