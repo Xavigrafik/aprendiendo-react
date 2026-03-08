@@ -1,0 +1,105 @@
+
+:root {
+  /* ==========================================================================
+     COLOR / BACKGROUND
+     ========================================================================== */
+  --color-bg-white-high-alpha:           var(--color-basic-white-high-alpha);
+  --color-bg-white-default:              var(--color-basic-000);
+  --color-bg-white-hover:                var(--color-basic-050);
+  --color-bg-light-default:              var(--color-basic-050);
+  --color-bg-light-hover:                var(--color-basic-100);
+  --color-bg-medium-light-default:       var(--color-basic-100);
+  --color-bg-medium-light-hover:         var(--color-basic-200);
+  --color-bg-medium-dark-default:        var(--color-basic-300);
+  --color-bg-medium-dark-hover:          var(--color-basic-400);
+  --color-bg-dark-default:               var(--color-basic-000);
+  --color-bg-dark-hover:                 var(--color-basic-000);
+  --color-bg-black-default:              var(--color-basic-000);
+  --color-bg-black-hover:                var(--color-basic-000);
+  
+  /* Primary Backgrounds */
+  --color-bg-primary-low-alpha:          var(--color-primary-low-alpha);
+  --color-bg-primary-light-default:      var(--color-primary-50);
+  --color-bg-primary-light-hover:        var(--color-primary-100);
+  --color-bg-primary-medium-default:     var(--color-basic-000);
+  --color-bg-primary-medium-hover:       var(--color-basic-000);
+  --color-bg-primary-dark-default:       var(--color-primary-700);
+  --color-bg-primary-dark-hover:         var(--color-primary-800);
+  
+  /* Secondary Backgrounds */
+  --color-bg-secondary-light-default:    var(--color-secondary-50);
+  --color-bg-secondary-light-hover:      var(--color-secondary-100);
+  --color-bg-secondary-medium-light-default: var(--color-secondary-200);
+  --color-bg-secondary-medium-light-hover:   var(--color-secondary-300);
+  --color-bg-secondary-medium-default:   var(--color-secondary-400);
+  --color-bg-secondary-medium-hover:     var(--color-secondary-500);
+  --color-bg-secondary-dark-default:     var(--color-basic-000);
+  --color-bg-secondary-dark-hover:       var(--color-basic-000);
+
+  /* Disabled States */
+  --color-bg-primary-light-disabled:     var(--color-basic-000);
+  --color-bg-primary-medium-disabled:    var(--color-basic-000);
+  --color-bg-primary-dark-disabled:      var(--color-basic-400);
+  --color-bg-secondary-light-disabled:   var(--color-basic-000);
+  --color-bg-secondary-medium-disabled:  var(--color-basic-500);
+  --color-bg-secondary-dark-disabled:    var(--color-basic-000);
+  --color-bg-input-disabled:             var(--color-basic-100);
+  --color-bg-basic-medium-alpha:         var(--color-basic-medium-alpha);
+
+  /* ==========================================================================
+     COLOR / FOREGROUND (Textos)
+     ========================================================================== */
+  --color-fg-white-default:              var(--color-basic-000);
+  --color-fg-on-white-default:           var(--color-basic-800);
+  --color-fg-on-white-hover:             var(--color-basic-900);
+  --color-fg-light-default:              var(--color-basic-050);
+  --color-fg-on-light-default:           var(--color-basic-800);
+  --color-fg-on-light-hover:             var(--color-basic-900);
+  --color-fg-medium-light-default:       var(--color-basic-500);
+  --color-fg-medium-dark-default:        var(--color-basic-700);
+  --color-fg-on-dark-default:            var(--color-basic-000);
+  --color-fg-on-dark-hover:              var(--color-basic-000);
+  --color-fg-black-default:              var(--color-basic-800);
+  --color-fg-on-black-default:           var(--color-basic-000);
+
+  /* Primary & Secondary Foreground */
+  --color-fg-primary-dark-default:       var(--color-primary-700);
+  --color-fg-primary-dark-hover:         var(--color-primary-800);
+  --color-fg-on-primary-dark-default:    var(--color-basic-000);
+  --color-fg-on-primary-dark-hover:      var(--color-basic-050);
+  --color-fg-on-primary-dark-disabled:   var(--color-basic-600);
+  
+  --color-fg-secondary-medium-default:   var(--color-secondary-400);
+  --color-fg-secondary-dark-default:     var(--color-secondary-600);
+  --color-fg-on-secondary-medium-default: var(--color-secondary-800);
+  
+  /* Specialized Text */
+  --color-text-light-disabled:           var(--color-basic-400);
+  --color-text-dark-disabled:            var(--color-basic-500);
+  --color-link-default:                  var(--color-fg-primary-dark-default);
+  --color-title-default:                 var(--color-fg-primary-dark-default);
+
+  /* ==========================================================================
+     COLOR / BORDER
+     ========================================================================== */
+  --color-border-white-default:          var(--color-basic-000);
+  --color-border-light-default:          var(--color-basic-050);
+  --color-border-medium-default:         var(--color-basic-100);
+  --color-border-dark-default:           var(--color-basic-300);
+  --color-border-dark-hover:             var(--color-basic-400);
+  --color-border-primary-dark-default:   var(--color-primary-700);
+  --color-border-primary-dark-disabled:  var(--color-basic-500);
+  --color-border-secondary-medium-default: var(--color-secondary-400);
+  --color-border-input-disabled:         var(--color-border-primary-dark-disabled);
+
+  /* ==========================================================================
+     COLOR / ICON & DIVISOR
+     ========================================================================== */
+  --color-icon-black-default:            var(--color-basic-800);
+  --color-icon-primary-dark-default:     var(--color-fg-primary-dark-default);
+  --color-icon-secondary-medium-default: var(--color-fg-secondary-medium-default);
+  --color-icon-disabled:                 var(--color-text-dark-disabled);
+  
+  --color-divisor-light:                 var(--color-basic-100);
+  --color-divisor-medium:                var(--color-basic-400);
+}

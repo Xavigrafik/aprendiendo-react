@@ -1,11 +1,9 @@
 const template = document.createElement('template');
-template.innerHTML = `
+template.innerHTML = /*html*/`
   <style>
     :host {
       display: inline-block;
-      /* Variables locales para facilitar el mantenimiento */
-      --white: #ffffff;
-      --radius-full: 9999px;
+      width: auto;
     }
     
     .btn {
@@ -13,10 +11,9 @@ template.innerHTML = `
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-weight: 600;
-      font-family: inherit;
-      font-size: 16px;
-      line-height: 1.5;
+      font-family: var(--font-secondary);
+      font-weight: var(--weight-bold);
+      line-height: var(--lh-tight);
       text-align: center;
       white-space: nowrap;
       vertical-align: middle;
@@ -24,49 +21,71 @@ template.innerHTML = `
       text-decoration: none;
       border: 1px solid transparent;
       border-radius: var(--radius-full);
-      padding: 12px 24px; /* Default base */
+      width: 100%; /* Para que responda al contenedor host */
     }
 
-    /* TAMAÑOS */
-    .btn--sm { padding: 8px 16px; font-size: 14px; }
-    .btn--base { padding: 12px 24px; }
-    .btn--lg { padding: 16px 32px; font-size: 20px; }
+    /* TAMAÑOS  */
+    .btn--sm {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-xs);
+    }
+    .btn--base {
+      padding: var(--space-3) var(--space-10);
+      font-size: var(--text-sm);
+    }
+    .btn--lg {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-base);
+    }
 
-    /* VARIANT: PRIMARY */
+    /* VARIANT: PRIMARY (Usando Component Tokens) */
     .btn--primary {
-      background-color: #622F60;
-      color: var(--white);
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-border);
     }
     .btn--primary:hover:not(:disabled) {
-      background-color: #471F45;
-      color: #f2f3f4;
+      background-color: var(--btn-primary-hover-bg);
+      color: var(--color-fg-on-primary-dark-hover);
     }
     .btn--primary:disabled {
-      background-color: #A0989F;
-      color: #635A63;
+      background-color: var(--btn-primary-disabled-bg);
+      color: var(--color-fg-on-primary-dark-disabled);
       cursor: not-allowed;
+      border-color: transparent;
     }
 
     /* VARIANT: SECONDARY */
     .btn--secondary {
-      background-color: var(--white);
-      color: #622F60;
-      border-color: #622F60;
+      background-color: var(--btn-secondary-bg);
+      color: var(--btn-secondary-text);
+      border-color: var(--btn-secondary-border);
+      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+      }
+      .btn--secondary:hover:not(:disabled) {
+        color: var(--btn-secondary-text-hover);
+        border-color: var(--btn-secondary-text-hover);
+        box-shadow: none;
     }
-    .btn--secondary:hover:not(:disabled) {
-      background-color: #F8F7F8;
-      border-color: #471F45;
-      color: #471F45;
+    .btn--secondary:disabled {
+      background-color: var(--secondary-background-disabled);
+      color: var(--secondary-foreground-disabled);
+      border-color: var(--color-border-primary-dark-disabled);
+      cursor: not-allowed;
     }
 
-    /* ON DARK LOGIC */
+    /* ON DARK */
     .btn--onDark.btn--primary {
-      background-color: #FF8F50;
-      color: #4E250E;
+      background-color: var(--btn-accent-bg);
+      color: var(--btn-accent-text);
+      border-color:var(--btn-accent-bg);
     }
-    .btn--onDark.btn--secondary {
-      color: var(--white);
+    .btn--onDark.btn--primary:hover:not(:disabled) {
+        background-color: var(--btn-accent-hover-bg);
+        color: var(--btn-accent-text);
+        border-color: var(--color-fg-on-dark-default);
     }
+
   </style>
   <button class="btn">
     <slot></slot>

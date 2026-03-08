@@ -1,0 +1,101 @@
+/* ==========================================================================
+   COMPONENT TOKENS
+   Uso: Estos tokens se alimentan de semantic.css
+   ========================================================================== */
+
+/* --- NAVBAR --- */
+:root {
+  --nav-bg:                 var(--color-bg-white-default);
+  --nav-icon-default:       var(--color-fg-primary-dark-default);
+  --nav-icon-hover:         var(--color-fg-primary-dark-hover);
+  --nav-border:             var(--color-border-secondary-medium-default);
+}
+
+/* --- HERO --- */
+:root {
+  --hero-title:             var(--color-fg-on-dark-default);
+  --hero-subtitle:          var(--color-fg-on-dark-default);
+}
+
+/* --- TAB NAVBAR --- */
+:root {
+  --tab-indicator-bg:       var(--color-bg-secondary-medium-default);
+  --tab-indicator-hover:    var(--color-bg-secondary-medium-hover);
+  --tab-text-default:       var(--color-fg-on-white-default);
+  --tab-text-hover:         var(--color-fg-on-white-hover);
+  --tab-icon-default:       var(--color-icon-black-default);
+}
+
+/* --- BUTTONS (Primary, Accent, Secondary) --- */
+:root {
+  /* Primary */
+  --btn-primary-text:       var(--color-fg-on-primary-dark-default);
+  --btn-primary-bg:         var(--color-bg-primary-dark-default);
+  --btn-primary-border:     var(--color-border-primary-dark-default);
+  --btn-primary-hover-bg:   var(--color-bg-primary-dark-hover);
+  --btn-primary-disabled-bg: var(--color-bg-primary-dark-disabled);
+
+  /* ON DARK (Orange) */
+  --btn-accent-text:        var(--color-fg-on-secondary-medium-default);
+  --btn-accent-bg:          var(--color-bg-secondary-medium-default);
+  --btn-accent-hover-bg:    var(--color-bg-secondary-medium-hover);
+  --btn-accent-disabled-border: var(--color-basic-000);
+
+  /* Secondary */
+  --btn-secondary-text:     var(--color-fg-primary-dark-default);
+  --btn-secondary-bg:       var(--color-bg-white-default);
+  --btn-secondary-border:   var(--color-border-primary-dark-default);
+  --btn-secondary-text-hover: var(--color-bg-primary-dark-hover);
+}
+
+/* --- CARD (Tu pieza clave) --- */
+:root {
+  --card-bg:                var(--color-bg-white-default);
+  --card-radius:            var(--radius-xl);
+  --card-title:             var(--color-title-default);
+  --card-text:              var(--color-fg-text-on-light-default);
+  --card-price:             var(--color-fg-on-light-default);
+  --card-breakdown-fg:      var(--color-fg-primary-dark-default);
+  /* Circuit Card Variant */
+  --card-circuit-footer-bg: var(--color-bg-secondary-light-default);
+  --card-shadow:            var(--shadow-base-default);
+}
+
+/* --- FORMS (Inputs & Checkbox) --- */
+:root {
+  /* Text Input */
+  --input-bg:               var(--color-bg-white-default);
+  --input-bg-disabled:      var(--color-bg-input-disabled);
+  --input-border:           var(--color-border-primary-dark-default);
+  --input-border-disabled:  var(--color-border-input-disabled);
+  --input-label:            var(--color-fg-secondary-dark-default);
+  --input-placeholder:      var(--color-fg-medium-light-default);
+  --input-icon:             var(--color-icon-primary-dark-default);
+
+  /* Checkbox */
+  --checkbox-bg:            var(--color-bg-white-default);
+  --checkbox-bg-selected:   var(--color-bg-secondary-medium-default);
+  --checkbox-icon:          var(--color-icon-primary-dark-default);
+  --checkbox-border:        var(--color-border-primary-dark-default);
+}
+
+/* --- TAGS & INDICATORS --- */
+:root {
+  --tag-primary-bg:         var(--color-bg-secondary-medium-default);
+  --tag-secondary-bg:       var(--color-bg-medium-light-default);
+  --tag-text:               var(--color-fg-black-default);
+  
+  --slider-dot-selected:    var(--color-bg-secondary-medium-default);
+  --slider-dot-default:     var(--color-bg-white-high-alpha);
+}
+
+/* --- FOOTER & OVERLAY --- */
+:root {
+  --footer-bg:              var(--color-bg-secondary-light-default);
+  --footer-bottom-bg:       var(--color-bg-medium-light-default);
+  --footer-bottom-fg:       var(--color-fg-primary-dark-default);
+  
+  --overlay-bg:             var(--color-bg-white-default);
+  --overlay-top-bar:        var(--color-bg-secondary-light-default);
+  --overlay-modal-price-bg: var(--color-bg-secondary-light-default);
+}

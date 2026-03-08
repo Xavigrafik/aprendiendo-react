@@ -3,13 +3,9 @@
 @import './tokens/component.css';
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  font-family: var(--font-main);
+  line-height: var(--lh-base);
+  font-weight: var(--weight-normal);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,13 +13,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
 }
 
+html,body{
+    font-family: var(--font-main);
+    line-height: var(--lh-base);
+    font-optical-sizing: auto;
+    font-style: normal;
+}
 body {
   margin: 0;
   display: flex;
@@ -39,9 +43,93 @@ body {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: var(--brand-purple);
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+    box-sizing: border-box;
+}
+
+@media (min-width: 744px) {
+    .container {
+        max-width: var(--container-sm);
+    }
+}
+
+@media (min-width: 1023px) {
+    .container {
+        max-width: var(--container-md);
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* Punto intermedio común */
+    .container {
+        max-width: var(--container-lg);
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: var(--container-xl);
+    }
+}
+
+nav {
+    border: 1px solid green;
+    background-color: #a69a9a;
+}
+
+
+.hero {
+    padding: 1em;
+    background-color: #747bff;
+}
+
+.main-block {
+    display: flex;
+    gap:var(--space-6)
+}
+
+#filter-toggle-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    max-width: fit-content;
+    margin-inline: inherit;
+    background-color: var(--color-secondary-50);
+    color: var(--color-basic-800);
+    border: var(--border-width-1) solid var(--color-basic-100);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+#filter-toggle-button:hover {
+    background-color: var(--color-secondary-100);
+    color: var(--color-basic-900);
+    border-color: var(--color-basic-200);
+}
+@media (min-width: 744px) {
+    #filter-toggle-button {
+        margin-inline: auto;
+    }
+}
+@media (min-width: 1023px) {
+    #filter-toggle-button {
+        margin-inline:0 auto;
+    }
+}
+@media (min-width: 1440px) {
+    #filter-toggle-button {
+        display: none;
+    }
 }

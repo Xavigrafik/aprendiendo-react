@@ -1,13 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>21-avoris-prueba</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./src/main.js"></script>
-  </body>
+      <link rel="icon" href="./src/assets/icons/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <title>Waveless</title>
+</head>
+
+<body>
+    <!-- <o-navbar></o-navbar> -->
+
+    <main class="container">
+        
+        <nav>nav</nav>
+        
+        <section class="hero">HERO</section>
+
+        <section class="cardList">
+            <div className='cardList__titleBlock'>
+                <h3>Vive tus propias aventuras</h3>
+                <p>Para los que les gusta explorar y conocer mundo sin complejos</p>
+            </div>
+        </section>
+        
+        <div class="main-block">
+            
+            <o-aside id="filters"></o-aside>
+
+            <div class="container">
+                <a id="filter-toggle-button"><a-icon name="filter"></a-icon> Ver filtros</a>
+                <o-card-list></o-card-list>
+            </div>
+        </div>
+
+        <o-footer></o-footer>
+            
+        <section style="display: flex; gap: 20px; padding: 40px; align-items: center;">
+            <h3>ICONS</h3>
+            <a-icon name="mountain"></a-icon>
+            <a-icon name="chevron-left"></a-icon>
+            <a-icon name="chevron-right"></a-icon>
+            <a-icon name="chevron-left" size="sm"></a-icon>
+            <a-icon name="chevron-right" size="sm"></a-icon>
+            <a-icon name="globe"></a-icon>
+            <a-icon name="house"></a-icon>
+            <a-icon name="hamburger"></a-icon>
+            <a-icon name="close" size="sm"></a-icon>
+            <a-icon name="close"></a-icon>
+            <a-icon name="pricetag"></a-icon>
+            <a-icon name="filter"></a-icon>
+        </section>
+        <section class="content">
+             <h3>primary</h3>
+                <a-button variant="primary" size="sm">Btn primary sm</a-button>    
+                <a-button variant="primary">Btn primary</a-button>    
+                <a-button variant="primary" size="lg">Btn primary lg</a-button>
+                <h3>primary ondark</h3>
+                <a-button ondark variant="primary" size="sm">Btn primary sm</a-button>    
+                <a-button ondark variant="primary">Btn primary</a-button>    
+                <a-button ondark variant="primary" size="lg">Btn primary lg</a-button>
+                <hr/>
+                <h3>secondary</h3>
+                <a-button variant="secondary" size="sm">Btn secondary sm</a-button>    
+                <a-button variant="secondary">Btn secondary</a-button>    
+                <a-button variant="secondary" size="lg">Btn secondary lg</a-button>
+                <hr/>
+                <a-button disabled>Btn disabled</a-button>    
+        </section>
+        
+    </main>
+
+    <!-- <o-footer></o-footer> -->
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
