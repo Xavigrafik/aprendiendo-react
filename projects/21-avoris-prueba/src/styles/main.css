@@ -2,6 +2,11 @@
 @import './tokens/semantic.css';
 @import './tokens/component.css';
 
+@import url('./blocks/containers.css');
+@import url('./blocks/nav.css');
+@import url('./blocks/hero.css');
+
+
 :root {
   font-family: var(--font-main);
   line-height: var(--lh-base);
@@ -48,56 +53,6 @@ body {
 }
 
 
-.container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--container-gutter);
-    padding-right: var(--container-gutter);
-    box-sizing: border-box;
-}
-
-@media (min-width: 744px) {
-    .container {
-        max-width: var(--container-sm);
-    }
-}
-
-@media (min-width: 1023px) {
-    .container {
-        max-width: var(--container-md);
-    }
-}
-
-@media (min-width: 1200px) {
-
-    /* Punto intermedio común */
-    .container {
-        max-width: var(--container-lg);
-    }
-}
-
-@media (min-width: 1440px) {
-    .container {
-        max-width: var(--container-xl);
-    }
-}
-
-nav {
-    border: 1px solid green;
-    background-color: #a69a9a;
-}
-
-
-.hero {
-    padding: 1em;
-    background-color: #747bff;
-}
-
-.main-block {
-    display: flex;
-    gap:var(--space-6)
-}
 
 #filter-toggle-button {
     display: flex;

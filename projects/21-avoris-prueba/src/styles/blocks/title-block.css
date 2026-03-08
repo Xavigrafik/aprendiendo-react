@@ -1,0 +1,12 @@
+.title-block {
+    
+}
+.title-block  h3 {
+    font-family: var(--font-main);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-3xl);
+}
+.title-block  p{
+    font-family: var(--font-secondary);
+
+}

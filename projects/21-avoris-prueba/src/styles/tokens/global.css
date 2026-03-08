@@ -55,7 +55,6 @@
   --color-secondary-900: #31190c;
 
 
-
   /* --- SPACING SCALE (Base 4px -> rem) --- */
   --space-0: 0;
   --space-1: 0.25rem; /* 4px */
@@ -86,21 +85,35 @@
   --border-width-2: 2px;
 
   /* FONT FAMILY */
-  --font-main: 'Syne', system-ui, sans-serif;
+  --font-main:      "Syne",   system-ui, sans-serif;
   --font-secondary: "Nunito", system-ui, sans-serif;
 
   /* FONT SIZES */
-  --text-xs: 0.75rem;   /* 12px */
-  --text-sm: 0.875rem;  /* 14px */
-  --text-base: 1rem;    /* 16px */
-  --text-lg: 1.125rem;  /* 18px */
-  --text-xl: 1.25rem;   /* 20px */
-  --text-2xl: 1.5rem;   /* 24px */
-  --text-3xl: 2rem;     /* 32px */
+  --text-12: 0.75rem;   /* 12px */
+  --text-16: 1rem;      /* 16px (Base) */
+  --text-20: 1.25rem;   /* 20px */
+  --text-24: 1.5rem;    /* 24px */
+  --text-28: 1.75rem;   /* 28px */
+  --text-32: 2rem;      /* 32px */
+  --text-36: 2.25rem;   /* 36px */
+  --text-40: 2.5rem;    /* 40px */
+  --text-44: 2.75rem;   /* 44px */
+  --text-48: 3rem;      /* 48px */
+
+  /* FONT SIZES SEMANTICOS */
+  --text-xs: var(--text-12);
+  --text-sm: 0.875rem;  
+  --text-base: var(--text-16);
+  --text-lg: 1.125rem;
+  --text-xl: var(--text-20);
+  --text-2xl: var(--text-24);
+  --text-3xl: var(--text-28);
+  --text-4xl: var(--text-32);
 
   /* FONT WEIGHTS */
   --weight-normal: 400;
   --weight-medium: 500;
+  --weight-semibold: 600;
   --weight-bold: 700;
   --weight-extrabold: 900;
 
@@ -111,7 +124,7 @@
 
   /* SHADOWS */
   --shadow-base-default: 0 4px 8px rgba(0,0,0, 0.2);
-
+  --shadow-base-hover: 0 4px 12px rgba(0,0,0, 0.24);
 
   /* BREAKPOINTS */
   --bp-tablet-sm: 744px;
@@ -125,5 +138,5 @@
   --container-xl: 1320px;
   --container-xxl: 1540px;
 
-  --container-gutter: var(--space-4, 16px);
+  --container-gutter: var(--space-4);
 }

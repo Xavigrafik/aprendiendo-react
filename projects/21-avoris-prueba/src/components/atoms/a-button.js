@@ -12,7 +12,7 @@ template.innerHTML = /*html*/`
       justify-content: center;
       cursor: pointer;
       font-family: var(--font-secondary);
-      font-weight: var(--weight-bold);
+      font-weight: var(--weight-semibold);
       line-height: var(--lh-tight);
       text-align: center;
       white-space: nowrap;
@@ -30,7 +30,7 @@ template.innerHTML = /*html*/`
       font-size: var(--text-xs);
     }
     .btn--base {
-      padding: var(--space-3) var(--space-10);
+      padding: var(--space-3) var(--space-6);
       font-size: var(--text-sm);
     }
     .btn--lg {
@@ -41,15 +41,15 @@ template.innerHTML = /*html*/`
     /* VARIANT: PRIMARY (Usando Component Tokens) */
     .btn--primary {
       background-color: var(--btn-primary-bg);
-      color: var(--btn-primary-text);
-      border-color: var(--btn-primary-border);
+      color: var(--btn-primary-fg);
+      border-color: var(--btn-primary-bd);
     }
     .btn--primary:hover:not(:disabled) {
       background-color: var(--btn-primary-hover-bg);
-      color: var(--color-fg-on-primary-dark-hover);
+      color: var(--btn-primary-fg);
     }
     .btn--primary:disabled {
-      background-color: var(--btn-primary-disabled-bg);
+      background-color: var(--btn-primary-disabled);
       color: var(--color-fg-on-primary-dark-disabled);
       cursor: not-allowed;
       border-color: transparent;
@@ -58,13 +58,13 @@ template.innerHTML = /*html*/`
     /* VARIANT: SECONDARY */
     .btn--secondary {
       background-color: var(--btn-secondary-bg);
-      color: var(--btn-secondary-text);
-      border-color: var(--btn-secondary-border);
+      color: var(--btn-secondary-fg);
+      border-color: var(--btn-secondary-bd);
       box-shadow: 0 4px 4px rgba(0,0,0,0.25);
       }
       .btn--secondary:hover:not(:disabled) {
-        color: var(--btn-secondary-text-hover);
-        border-color: var(--btn-secondary-text-hover);
+        color: var(--color-bg-primary-dark-hover);
+        border-color: var(--color-bg-primary-dark-hover);
         box-shadow: none;
     }
     .btn--secondary:disabled {
@@ -83,7 +83,7 @@ template.innerHTML = /*html*/`
     .btn--onDark.btn--primary:hover:not(:disabled) {
         background-color: var(--btn-accent-hover-bg);
         color: var(--btn-accent-text);
-        border-color: var(--color-fg-on-dark-default);
+        border-color: var(--btn-accent-hover-bg);
     }
 
   </style>

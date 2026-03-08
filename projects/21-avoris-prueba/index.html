@@ -17,32 +17,56 @@
 </head>
 
 <body>
-    <!-- <o-navbar></o-navbar> -->
-
-    <main class="container">
+    
+    <div class="container-fluid">
         
         <nav>nav</nav>
+        <!-- <o-navbar></o-navbar> -->
         
-        <section class="hero">HERO</section>
+        <section class="hero">
+            <header class="hero__header">
+                <h2 class="hero__title">Ruta por Australia</h2>
+                <p class="hero__subtitle">Si te va la aventura, no te lo puedes perder</p>
+                <a-button ondark variant="primary" size="lg">Más información</a-button>
+            </header>
 
-        <section class="cardList">
-            <div className='cardList__titleBlock'>
-                <h3>Vive tus propias aventuras</h3>
-                <p>Para los que les gusta explorar y conocer mundo sin complejos</p>
+            <div class="hero__arrows" aria-label="Navegación del slider">
+                <button class="hero__arrow hero__arrow--prev" aria-label="Anterior">
+                    <a-icon name="chevron-left" size="sm"></a-icon>
+                </button>
+                <button class="hero__arrow hero__arrow--next" aria-label="Siguiente">
+                    <a-icon name="chevron-right" size="sm"></a-icon>
+                </button>
+            </div>
+
+            <div class="hero__dots" role="tablist">
+                <button class="hero__dot hero__dot--active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                <button class="hero__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                <button class="hero__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
             </div>
         </section>
-        
-        <div class="main-block">
+
+        <div class="container">
+
+            <section class="title-block">
+                <h3>Vive tus propias aventuras</h3>
+                <p>Para los que les gusta explorar y conocer mundo sin complejos</p>
+            </section>
             
-            <o-aside id="filters"></o-aside>
-
-            <div class="container">
-                <a id="filter-toggle-button"><a-icon name="filter"></a-icon> Ver filtros</a>
-                <o-card-list></o-card-list>
+            <div class="main-block">
+                
+                <o-aside id="filters"></o-aside>
+                
+                <div class="container">
+                    <a id="filter-toggle-button"><a-icon name="filter"></a-icon> Ver filtros</a>
+                    <o-card-list></o-card-list>
+                </div>
             </div>
+            
         </div>
-
+        
         <o-footer></o-footer>
+
             
         <section style="display: flex; gap: 20px; padding: 40px; align-items: center;">
             <h3>ICONS</h3>
@@ -64,6 +88,7 @@
                 <a-button variant="primary" size="sm">Btn primary sm</a-button>    
                 <a-button variant="primary">Btn primary</a-button>    
                 <a-button variant="primary" size="lg">Btn primary lg</a-button>
+                <a-button variant="primary" disabled>Btn primary disabled</a-button>
                 <h3>primary ondark</h3>
                 <a-button ondark variant="primary" size="sm">Btn primary sm</a-button>    
                 <a-button ondark variant="primary">Btn primary</a-button>    
@@ -77,7 +102,7 @@
                 <a-button disabled>Btn disabled</a-button>    
         </section>
         
-    </main>
+    </div>
 
     <!-- <o-footer></o-footer> -->
 

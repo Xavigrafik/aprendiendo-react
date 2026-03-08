@@ -1,0 +1,140 @@
+.hero {
+    /* Layout Base */
+    min-height: 400px;
+    background-image: url('../../assets/images/heroImage.png');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-inline: var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-3, 12px);
+    text-align: center;
+}
+
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.hero__header,
+.hero__title,
+.hero__subtitle,
+.hero__button,
+.hero__arrows,
+.hero__dots {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-weight: var(--weight-bold);
+    font-size: var(--text-3xl);
+    color: var(--hero-title);
+    line-height: var(--lh-tight);
+    margin: 0;
+}
+
+.hero__subtitle {
+    font-family: var(--font-secondary);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    color: var(--hero-subtitle);
+    margin-block: var(--space-3) 80px;
+}
+
+@media (min-width: 744px) {
+    .hero__title {
+        font-size: var(--text-4xl);
+    }
+    .hero__subtitle {
+        font-size: var(--text-2xl);
+    }
+}
+@media (min-width: 1023px) {
+    .hero__title {
+        font-size: var(--text-4xl);
+    }
+    
+}
+@media (min-width: 1440px) {
+    .hero__title {
+        font-size: var(--text-3xl);
+    }
+    .hero__subtitle {
+        font-size: var(--text-2xl);
+    }
+}
+
+
+/* NAVEGACIÓN (FLECHAS) */
+.hero__arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: var(--space-4);
+    right: var(--space-4);
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Evita que el contenedor bloquee clicks en el centro */
+}
+
+.hero__arrow {
+    pointer-events: auto;
+    /* Reactivamos clicks en los botones */
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary-100);
+    border: none;
+    border-radius: var(--radius-sm, 4px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.hero__arrow:hover {
+    background-color: var(--brand-purple);
+}
+
+/* Ajuste de iconos dentro de las flechas */
+.hero__arrow a-icon {
+    color: white;
+}
+
+/* INDICADORES (DOTS) */
+ .hero__dots {
+    display: flex;
+    gap: var(--space-2, 8px);
+    position: absolute;
+    bottom: var(--space-8, 32px);
+    left: 50%;
+    translate: -50%;
+} 
+
+.hero__dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.72);
+    border: 1px solid #ffffff;
+    border-radius: var(--radius-full, 999px);
+    padding: 0;
+    cursor: pointer;
+}
+
+.hero__dot--active {
+    background-color: var(--brand-orange);
+    border-color: #ffffff;
+}

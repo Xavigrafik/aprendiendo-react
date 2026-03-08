@@ -6,7 +6,7 @@ template.innerHTML = `
     :host {
       display: block;
       width: 100%;
-      background-color: var(--color-bg-secondary-light-default, #FBF6F4);
+      background-color: var(--color-bg-secondary-light-default);
       border-top: 1px solid var(--color-primary-low-alpha);
       font-family: var(--font-secondary);
       font-weight: var(--weight-bold);
@@ -35,21 +35,20 @@ template.innerHTML = `
       
     }
 
-    /* Media Query Nativa (reemplaza el mixin de SCSS) */
-    @media (min-width: 1024px) {
+    @media (max-width: 1440px) {
       .footer__logo {
-        justify-content: center;
+        justify-content: flex-start;
       }
     }
   </style>
 
   <footer class="footer">
-    <div class="footer__logo">
-      <img src="${LOGO}" alt="Logo Waveless">
-    </div>
-    <div class="footer__bottom-bar">
-      <span id="copyright"></span>&nbsp;Waveless - Todos los derechos reservados.
-    </div>
+        <div class="footer__logo">
+            <img src="${LOGO}" alt="Logo Waveless">
+        </div>
+        <div class="footer__bottom-bar">
+            <span id="copyright"></span>&nbsp;Waveless - Todos los derechos reservados.
+        </div>
   </footer>
 `;
 

@@ -8,13 +8,14 @@ template.innerHTML = /*html*/`
     .card-container {
         display: flex;
         flex-direction: column;
+        margin-bottom: 56px;
     }
     
     /* MOBILE FIRST */
     .continent-group {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0 var(--space-4);
+        gap: var(--space-6) 0;
     }
 
     /* TABLET */
@@ -44,7 +45,8 @@ template.innerHTML = /*html*/`
         font-size:22px;
         margin:0;
         grid-column: 1/-1;
-        margin-block: var(--space-6) var(--space-3);
+        line-height: var(--lh-tight);
+        margin-block: var(--space-4) 0;
     }
     
     /* DESKTOP */

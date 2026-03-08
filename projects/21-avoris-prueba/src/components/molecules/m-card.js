@@ -1,5 +1,5 @@
 const template = document.createElement('template');
-template.innerHTML = `
+template.innerHTML = /*html*/`
   <style>
     :host {
       display: flex;
@@ -12,15 +12,15 @@ template.innerHTML = `
       height: 100%;
       box-shadow: var(--card-shadow);
     }
-
-    .card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      box-shadow: var(--shadow-card);
-      
+    :host(:hover) {
+        box-shadow: var(--card-shadow-hover);
     }
 
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
     .card__header {
       position: relative;
       aspect-ratio: 16 / 9;
@@ -132,6 +132,22 @@ template.innerHTML = `
     .card__details > a-icon[name="chevron-left"]  {
         transform: rotate(-90deg);
       }
+      
+      /* hacia abajo */
+      @media (max-width:744px) {
+        .card__footer {
+            flex-direction: column;
+        }
+        .card__price-section{
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: var(--space-3);
+        }
+        a-button{
+            width:100%;
+        }
+      }
   </style>
 
   <article class="card">
@@ -149,11 +165,13 @@ template.innerHTML = `
       </div>
       <div class="card__footer">
         <div class="card__price-section">
+        <div class="AA">
             <span class="card__price-label">Desde</span>
             <div class="card__price-value">
-            <span class="card__amount"></span>
-            <span class="card__currency">€</span>
+                <span class="card__amount"></span>
+                <span class="card__currency">€</span>
             </div>
+        </div>
             <button class="card__details">Ver desglose <a-icon name="chevron-left" size="sm"></a-icon></button>
         </div>
         <a-button variant="secondary" size="base">Reservar</a-button>
