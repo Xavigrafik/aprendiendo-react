@@ -19,14 +19,14 @@ template.innerHTML = /*html*/`
     }
 
     /* TABLET */
-    @media (min-width: 744px) {
+    @media (width >= 743.99px) {
         .continent-group {
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-4) var(--space-5);
         }
     }
     /* TABLET LG */
-    @media (min-width: 1023px) {
+    @media (width >= 1022.99px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-4) var(--space-5);
@@ -34,7 +34,7 @@ template.innerHTML = /*html*/`
     }
 
     /* DESKTOP */
-    @media (min-width: 1440px) {
+    @media (width >= 1439.99px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-0) var(--space-5);
@@ -43,14 +43,14 @@ template.innerHTML = /*html*/`
 
     .continent-group h2 {
         font-size:22px;
-        margin:0;
         grid-column: 1/-1;
         line-height: var(--lh-tight);
-        margin-block: var(--space-4) 0;
+        margin:0;
+        margin-block: var(--space-4) var(--space-3);
     }
     
     /* DESKTOP */
-    @media (min-width: 1440px) {
+    @media (width >= 1439.99px) {
         .continent-group h2 {
         }
     }
@@ -92,7 +92,44 @@ export class OCardList extends HTMLElement {
       this._container.innerHTML = `<p>Error al cargar los datos.</p>`;
       console.error(error);
     }
-  }
+    }
+    
+    applyFilters(countries, categories, priceRange) {
+        const cards = this.shadowRoot.querySelectorAll('m-card');
+        
+        cards.forEach(card => {
+            const data = card._itemData;
+            if (!data) return;
+
+            
+            const cardCategory = data.tag?.toLowerCase().trim() || "";
+            const cardCountry = data.country?.toLowerCase().trim() || ""; 
+            const cardPrice = parseFloat(data.price) || 0;
+
+            
+            const matchesCategory = categories.length === 0 || categories.includes(cardCategory);
+            const matchesCountry = countries.length === 0 || countries.includes(cardCountry);
+            const matchesPrice = cardPrice >= priceRange.min && cardPrice <= priceRange.max;
+
+            
+            if (matchesCategory && matchesCountry && matchesPrice) {
+                card.style.display = ""; 
+                card.style.opacity = "1";
+            } else {
+                card.style.display = "none";
+                card.style.opacity = "0";
+            }
+        });
+
+  // 4. Limpieza de contenedores vacíos (Continentes)
+  this.shadowRoot.querySelectorAll('.continent-group').forEach(group => {
+    const visibleCards = Array.from(group.querySelectorAll('m-card'))
+                              .filter(c => c.style.display !== 'none');
+    
+    // Si no hay cards, ocultamos todo el grupo (incluido el título h2)
+    group.style.display = visibleCards.length > 0 ? "" : "none";
+  });
+}
 
     render(items) {
         this._container.innerHTML = '';

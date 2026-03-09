@@ -8,7 +8,7 @@
         "days": "9",
         "image": "/src/assets/images/destinations/thailandia.jpg",
         "tax": "19.84",
-        "tag": "quads"
+        "tag": "Quads"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "days": "9",
         "image": "/src/assets/images/destinations/costarica.png",
         "tax": "14.88",
-        "tag": "parapente"
+        "tag": "Explora"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "days": "12",
         "image": "/src/assets/images/destinations/marruecos.png",
         "tax": "100.00",
-        "tag": "hoteles"
+        "tag": "Parapente"
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "days": "14",
         "image": "/src/assets/images/destinations/thailandia.jpg",
         "tax": "26.70",
-        "tag": "cabañas"
+        "tag": "Rafting"
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "days": "9",
         "image": "/src/assets/images/destinations/costarica.png",
         "tax": "14.88",
-        "tag": "parapente"
+        "tag": "Buceo"
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "days": "8",
         "image": "/src/assets/images/destinations/marruecos.png",
         "tax": "58.80",
-        "tag": "parapente"
+        "tag": "Quads"
     },
     {
         "id": 7,
@@ -74,7 +74,7 @@
         "days": "7",
         "image": "/src/assets/images/destinations/thailandia.jpg",
         "tax": "6.20",
-        "tag": "cabañas"
+        "tag": "Buceo"
     },
     {
         "id": 8,
@@ -85,7 +85,7 @@
         "days": "9",
         "image": "/src/assets/images/destinations/costarica.png",
         "tax": "14.88",
-        "tag": "parapente"
+        "tag": "Parapente"
     },
     {
         "id": 9,
@@ -96,6 +96,6 @@
         "days": "5",
         "image": "/src/assets/images/destinations/marruecos.png",
         "tax": "9.00",
-        "tag": "hoteles"
+        "tag": "Parapente"
     }
 ]

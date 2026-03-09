@@ -2,9 +2,11 @@
 @import './tokens/semantic.css';
 @import './tokens/component.css';
 
+@import url('./blocks/reset.css');
 @import url('./blocks/containers.css');
 @import url('./blocks/nav.css');
 @import url('./blocks/hero.css');
+@import url('./blocks/title-block.css');
 
 
 :root {
@@ -73,17 +75,17 @@ body {
     color: var(--color-basic-900);
     border-color: var(--color-basic-200);
 }
-@media (min-width: 744px) {
+@media (width >= 743.99px) {
     #filter-toggle-button {
         margin-inline: auto;
     }
 }
-@media (min-width: 1023px) {
+@media (width >= 1022.99px) {
     #filter-toggle-button {
         margin-inline:0 auto;
     }
 }
-@media (min-width: 1440px) {
+@media (width >= 1439.99px) {
     #filter-toggle-button {
         display: none;
     }

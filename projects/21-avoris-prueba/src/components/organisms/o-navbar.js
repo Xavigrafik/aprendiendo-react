@@ -1,0 +1,158 @@
+const logoUrl = new URL('./../../assets/Waveless-Color.svg', import.meta.url).href;
+
+const template = document.createElement('template');
+template.innerHTML = /*html*/`
+  <style>
+    :host {
+      display: block;
+      width: 100%;
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-bd);
+      font-family: var(--font-main, sans-serif);
+      font-weight: 600;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      padding-inline: var(--space-8);
+    }
+
+    .navbar__logo {
+        margin-right: var(--space-4);
+    }
+    .navbar__logo img {
+      max-width: 145px;
+      display: block;
+    }
+
+    /* Desktop/Tablet Collapse */
+    .navbar__collapse {
+      display: none;
+      height: 100%;
+      width: 100%;
+    }
+
+    .navbar__list {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      gap: var(--space-4, 16px);
+      height: 100%;
+      max-width: 736px;
+    }
+
+    .navbar__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2, 8px);
+      padding: 0 var(--space-3, 12px);
+      cursor: pointer;
+      color: var(--nav-icon-default);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .navbar__item:hover {
+      color: var(--nav-icon-hover);
+    }
+
+    .navbar__item--active {
+        border-bottom: 2px solid var(--brand-orange);
+        color: var(--color-fg-primary-dark-default);
+    }
+    
+    
+    .navbar__item--active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid var(--color-bd-secondary-medium-default);
+    }
+
+    .navbar__item--active:hover {
+        border-bottom-color: var(--color-fg-secondary-dark-default);
+    }
+    
+    .navbar__item--active:hover::after {
+        border-bottom-color: var(--color-fg-secondary-dark-default);
+    }
+    
+    .navbar__hamburger {
+      display: flex;
+      cursor: pointer;
+    }
+    @media (width >= 1022.99px) {
+        .navbar__actions{
+            display: flex;
+        }
+    }
+
+    @media (width >= 743.99px) {
+      .navbar__actions{
+          display: flex;
+      }
+      .navbar__hamburger {
+        display: none;
+      }
+      .navbar__collapse {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8, 32px);
+      }
+    }
+  </style>
+
+  <nav class="navbar container">
+    <div class="navbar__logo">
+      <slot name="logo">
+        <img src="${logoUrl}" alt="Logo">
+      </slot>
+    </div>
+
+    <div class="navbar__collapse">
+      <ul class="navbar__list">
+        <li class="navbar__item navbar__item--active">
+          <a-icon name="mountain"></a-icon>
+          Aventura
+        </li>
+        <li class="navbar__item">
+          <a-icon name="globe"></a-icon>
+          Destinos
+        </li>
+        <li class="navbar__item">
+          <a-icon name="house"></a-icon>
+          Alojamiento
+        </li>
+        <li class="navbar__item">Sobre nosotros</li>
+      </ul>
+      
+      <div class="navbar__actions">
+        <a-button>Reserva</a-button>
+      </div>
+    </div>
+
+    <div class="navbar__hamburger">
+      <a-icon name="hamburger" size="lg"></a-icon>
+    </div>
+  </nav>
+`;
+
+export class ONavbar extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+}
+
+if (!customElements.get('o-navbar')) {
+    customElements.define('o-navbar', ONavbar);
+}

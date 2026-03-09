@@ -57,6 +57,7 @@
   --filter-name:                           var(--color-fg-on-light-default);
   --filter-name-open:                      var(--color-fg-secondary-dark-default);
   --filter-icon-open:                      var(--color-icon-secondary-dark-default);
+  --filter-bg:                             var(--color-bg-secondary-light-default);
 
   /* --- FORMS --- */
   /* Text Input */
@@ -65,6 +66,7 @@
   --input-bd-hover:                        var(--color-bd-primary-dark-hover);
   --input-label:                           var(--color-fg-secondary-dark-default);
   --input-placeholder:                     var(--color-fg-medium-light-default);
+  --input-placeholder-hover:               var(--color-fg-on-primary-dark-disabled);
 
   /* Checkbox */
   --checkbox-bg:                           var(--color-bg-white-default);

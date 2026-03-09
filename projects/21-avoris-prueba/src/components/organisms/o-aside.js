@@ -1,145 +1,377 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
-  <style>
+<style>
     :host {
-        display: none !important;
-        min-width: 300px;
-        font-family: var(--font-main, "Nunito", serif);
-        margin-top: 69px;
-    }
-    
-    /* Desktop: Se muestra */
-    @media (min-width: 1440px) {
-        :host {
-            display: block !important;
-        }
+      display: block;
     }
 
+    /* --- LAYOUT ASIDE (Drawer & Desktop) --- */
     .aside {
-        background-color: var(--color-bg-secondary-light-default, #FBF6F4);
-        border-radius: var(--radius-lg, 16px);
-        overflow: hidden;
-        border: 1px solid var(--color-border-medium-default, #E0D9E0);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 264px;
+        height: 100vh;
+        background-color: white;
+        z-index: 1000;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
     }
 
+    :host([open]) .aside {
+      right: 0;
+    }
 
-    /* TÍTULO Y HEADER */
-    .aside__title {
-        font-family: var(--font-title);
-        padding: var(--space-6, 24px);
-        font-size: 18px;
-        font-weight: 700;
-        border-bottom: 1px solid var(--color-border-medium-default, #E0D9E0);
+    @media (width >= 1439.99px) {
+        .aside {
+            position: static;
+            height: auto;
+            width: 100%;
+            max-width: 264px;
+            background-color: var(--filter-bg, #f4f4f4);
+            border-radius: 20px;
+            box-shadow: none;
+            margin-top: 55px;
+        }
+        .aside__header .btn-close { display: none; }
+    }
+
+    /* --- ESTRUCTURA INTERNA --- */
+    .aside__header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .aside__content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .filter-section {
+      margin-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* --- TÍTULOS Y ESTADOS --- */
+    .filter-title {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: var(--space-2, 8px);
+        color: var(--color-fg-primary-dark, #4A3026);
+        font-weight: 600;
+        height: 48px;
+        cursor: pointer;
+        transition: color 0.3s ease;
     }
 
-    .aside__title .btn-close {
+    .filter-title div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .filter-title a-icon[name="chevron-right"] {
+        transition: transform 0.3s ease;
+    }
+
+    /* Estado Abierto: Color y Rotación */
+    .filter-section[data-open="true"] .filter-title {
+        color: var(--color-secondary-600, #FF8F50);
+    }
+
+    .filter-section[data-open="true"] .filter-title a-icon[name="chevron-right"] {
+        transform: rotate(90deg);
+    }
+
+    /* --- ANIMACIÓN DE COLAPSO (Unificada) --- */
+    .filter-options {
         display: flex;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        padding: 0;
-        color: var(--color-fg-primary-dark-default, #622F60);
+        flex-direction: column;
+        gap: 12px;
+        padding-left: 36px;
+        overflow: hidden;
+        /* Estado cerrado */
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-out, opacity 0.2s, padding 0.3s, margin 0.3s;
+        padding-bottom: 0;
+        margin-top: 0;
     }
 
-    @media (min-width: 1440px) {
-        .aside__title .btn-close {
-            display: none;
-        }
+    .filter-section[data-open="true"] .filter-options {
+        max-height: 1000px;
+        opacity: 1;
+        padding-bottom: 16px;
+        margin-top: 8px;
+        overflow: visible;
     }
 
-    /* SECCIONES Y BOTONES (SIMULANDO ACORDEÓN) */
-    .aside__header {
-        background: transparent;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        min-height: 48px;
-        font-size: 16px;
-        font-weight: 700;
-        border: 0;
-        padding: var(--space-3, 12px) var(--space-6, 24px);
-        cursor: pointer;
-        text-align: left;
-        color: var(--color-fg-primary-dark-default, #622F60);
-        transition: background 0.2s ease;
+    /* --- CHECKBOXES --- */
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .aside__header:hover {
-        background-color: #fcebe4;
+    .checkbox-item input[type="checkbox"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      border: 1px solid #622F60;
+      border-radius: 2px;
+      background-color: white;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
     }
 
-    /* ESTADO ABIERTO / ACTIVO */
-    .aside__header.active {
-        color: #B85C28; /* Tu naranja de marca */
+    .checkbox-item input[type="checkbox"]:checked {
+      background-color: #FF8F50;
     }
 
-    /* ITEMS Y CHECKBOXES */
-    .aside__section--list {
-        padding: var(--space-2, 8px) 0;
+    .checkbox-item input[type="checkbox"]:checked::before {
+      content: "";
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid #622F60;
+      border-bottom: 2px solid #622F60;
+      transform: rotate(-45deg) translate(1px, -1px);
     }
 
-    .aside__item {
-        padding: 0.75rem var(--space-6, 24px);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: background 0.2s ease;
+    /* --- TOOLTIP (Fix para overflow:hidden) --- */
+    .checkbox-item a-icon[data-info] {
+        position: relative;
+        display: inline-flex;
     }
-
-    .aside__item:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-    }
-
-    .aside__item input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        margin: 0;
-        cursor: pointer;
-        accent-color: #FF8F50; /* Color nativo para el check */
-    }
-
-    .aside__item label {
-        cursor: pointer;
-        user-select: none;
-        font-size: 14px;
-        color: var(--color-fg-primary-dark-default, #622F60);
-    }
-
-    /* TOOLTIP (SIMPLIFICADO) */
-    .aside-tooltip {
-        background: #ffffff;
-        color: #000000;
-        box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.1));
+    
+    .checkbox-item a-icon[data-info]:hover::after {
+        content: attr(data-info);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #333;
+        background-color: #fff;
         padding: 6px 10px;
-        border-radius: var(--radius-sm, 4px);
+        border-radius: 4px;
         font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        pointer-events: none;
     }
-  </style>
 
-  <aside class="aside">
-  <div class="aside__title">
-    <h4 >Filtrar mi búsqueda</h4>
+    .checkbox-item a-icon[data-info]:hover::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #fff;
+        z-index: 1000;
+    }
+
+    .show-more {
+      font-family: var(--font-secondary);
+      color: #622F60;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+</style>
+
+<aside class="aside">
+    <div class="aside__header">
+      <h2 style="font-size: 18px; margin: 0;">Filtrar mi búsqueda</h2>
+      <a-icon name="close" size="sm" class="btn-close" id="close-btn" style="cursor:pointer"></a-icon>
     </div>
+
     <div class="aside__content">
-      <slot></slot>
-      aside content
+      
+    <div class="filter-section" data-open="true">
+        <div class="filter-title">
+            <div><a-icon name="globe"></a-icon> Destinos</div>
+            <a-icon name="chevron-right"></a-icon>
+        </div>
+        <div class="filter-options">
+            <label class="checkbox-item">
+            <input type="checkbox"> Tailandia
+            <a-icon name="info" size="sm" data-info="Templos, playas y selva tropical"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> Costa Rica
+            <a-icon name="info" size="sm" data-info="Pura vida: biodiversidad y volcanes"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> Sudáfrica
+            <a-icon name="info" size="sm" data-info="Safaris y paisajes de costa impresionantes"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> Japón
+            <a-icon name="info" size="sm" data-info="Tradición milenaria y tecnología punta"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> Egipto
+            <a-icon name="info" size="sm" data-info="Cuna de civilizaciones y pirámides"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> India
+            <a-icon name="info" size="sm" data-info="Espiritualidad, colores y cultura vibrante"></a-icon>
+            </label>
+            
+            <label class="checkbox-item">
+            <input type="checkbox"> Marruecos
+            <a-icon name="info" size="sm" data-info="Zocos, desierto y arquitectura bereber"></a-icon>
+            </label>
+            
+            <span class="show-more">Ver más destinos</span>
+        </div>
+        </div>
+
+      <div class="filter-section" data-open="true">
+        <div class="filter-title">
+          <div><a-icon name="mountain"></a-icon> Aventura</div>
+          <a-icon name="chevron-right"></a-icon>
+        </div>
+
+        <div class="filter-options">
+            <label class="checkbox-item">
+                <input type="checkbox"> Quads
+                <a-icon name="info" size="sm" data-info="Ruta en 4x4 por terrenos naturales"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Parapente
+                <a-icon name="info" size="sm" data-info="Vuelo biplaza con monitor titulado"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Rafting
+                <a-icon name="info" size="sm" data-info="Descenso de ríos en balsa neumática"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Explora
+                <a-icon name="info" size="sm" data-info="Trekking guiado por zonas vírgenes"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Buceo
+                <a-icon name="info" size="sm" data-info="Inmersión con equipo autónomo y guía"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Paracaídas
+                <a-icon name="info" size="sm" data-info="Salto tándem a 4.000 metros de altura"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Snowboard
+                <a-icon name="info" size="sm" data-info="Descenso en pistas de alta montaña"></a-icon>
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox"> Surf
+                <a-icon name="info" size="sm" data-info="Clases y alquiler de tabla en costa"></a-icon>
+            </label>
+            <span class="show-more">Ver 21 más</span>
+        </div>
+      </div>
+
+      <div class="filter-section" data-open="false">
+        <div class="filter-title">
+          <div><a-icon name="house"></a-icon> Alojamiento</div>
+          <a-icon name="chevron-right"></a-icon>
+        </div>
+        <div class="filter-options">
+            <span>Próximamente...</span>
+        </div>
+      </div>
+
+      <div class="filter-section" data-open="true">
+        <div class="filter-title">
+          <div><a-icon name="pricetag"></a-icon> Precio</div>
+          <a-icon name="chevron-right"></a-icon>
+        </div>
+        <div class="filter-options">
+            <a-input placeholder="Mínimo"></a-input>
+            <a-input placeholder="Máximo"></a-input>
+        </div>
+      </div>
     </div>
-  </aside>
+</aside>
 `;
 
 export class OAside extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    const closeBtn = this.shadowRoot.getElementById('close-btn');
+    closeBtn?.addEventListener('click', () => this.removeAttribute('open'));
+
+    // --- LÓGICA DE ABRIR/CERRAR SECCIONES ---
+    this.shadowRoot.addEventListener('click', (e) => {
+        const title = e.composedPath().find(el => el.classList?.contains('filter-title'));
+        
+        if (title) {
+            const section = title.closest('.filter-section');
+            const isOpen = section.getAttribute('data-open') === 'true';
+            section.setAttribute('data-open', !isOpen);
+        }
+    });
+
+    // --- FILTROS ---
+    this.shadowRoot.addEventListener('change', () => this._emitFilters());
+    this.shadowRoot.querySelectorAll('a-input').forEach(input => {
+        input.addEventListener('input', () => this._emitFilters());
+    });
+}
+
+    _emitFilters() {
+        const checkedCountries = Array.from(
+            this.shadowRoot.querySelectorAll('.filter-section:nth-of-type(1) input[type="checkbox"]:checked')
+        ).map(cb => cb.parentElement.textContent.replace('info', '').trim().toLowerCase());
+
+        const checkedAdventures = Array.from(
+            this.shadowRoot.querySelectorAll('.filter-section:nth-of-type(2) input[type="checkbox"]:checked')
+        ).map(cb => cb.parentElement.textContent.replace('info', '').trim().toLowerCase());
+
+        const minInput = this.shadowRoot.querySelector('a-input[placeholder="Mínimo"]');
+        const maxInput = this.shadowRoot.querySelector('a-input[placeholder="Máximo"]');
+
+        this.dispatchEvent(new CustomEvent('filter-change', {
+            detail: {
+                countries: checkedCountries,
+                categories: checkedAdventures,
+                priceRange: { 
+                    min: parseFloat(minInput?.value) || 0, 
+                    max: parseFloat(maxInput?.value) || Infinity 
+                }
+            },
+            bubbles: true,
+            composed: true 
+        }));
     }
 }
 
 if (!customElements.get('o-aside')) {
-    customElements.define('o-aside', OAside);
+  customElements.define('o-aside', OAside);
 }

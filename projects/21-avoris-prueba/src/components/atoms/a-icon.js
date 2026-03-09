@@ -10,6 +10,10 @@ template.innerHTML = `
       color: inherit;
     }
 
+    :host([size="lg"]) {
+      width: var(--space-8);
+      height: var(--space-8);
+    }
     :host([size="sm"]) {
       width: var(--space-4);
       height: var(--space-4);

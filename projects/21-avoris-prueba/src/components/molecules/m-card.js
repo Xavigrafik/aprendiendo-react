@@ -37,8 +37,8 @@ template.innerHTML = /*html*/`
       position: absolute;
       top: var(--space-4);
       right: var(--space-4);
-      background-color: var(--tag-primary-bg);
-      color: var(--tag-text);
+      background-color: var(--btn-accent-bg);
+      color: var(--color-fg-black-default);
       padding: var(--space-1) var(--space-3);
       border-radius: var(--radius-full);
       font-size: var(--text-xs);
@@ -83,12 +83,14 @@ template.innerHTML = /*html*/`
       font-weight: var(--weight-bold);
     }
 
+
     .card__price-section {
-      margin-top: auto;
-      padding-top: var(--space-4);
       display: flex;
       flex-direction: column;
       color: var(--card-price);
+       flex-direction: row-reverse;
+       justify-content: space-between;
+       width: 100%;
     }
 
     .card__price-label {
@@ -110,11 +112,17 @@ template.innerHTML = /*html*/`
     }
 
     .card__footer {
-      padding: var(--space-4);
-      background-color: var(--card-circuit-footer-bg);
+      padding: var(--space-3) var(--space-4) var(--space-4) var(--space-4);
+      background-color: var(--color-bg-secondary-light-default);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
+      gap: var(--space-3) var(--space-5);
+      
+    }
+    .card__footer > a-button{
+        width:100%;
     }
 
     .card__details {
@@ -133,19 +141,19 @@ template.innerHTML = /*html*/`
         transform: rotate(-90deg);
       }
       
-      /* hacia abajo */
-      @media (max-width:744px) {
+      @media (width >= 743.99px) {
         .card__footer {
+            flex-direction:row;
+            align-items:end;
+        }
+        .card__price-section {
             flex-direction: column;
-        }
-        .card__price-section{
-            flex-direction: row-reverse;
             justify-content: space-between;
-            width: 100%;
-            margin-bottom: var(--space-3);
+            flex: 1 1 320px;
         }
-        a-button{
-            width:100%;
+        .card__details {
+            text-align: left;
+            min-width: 99px;
         }
       }
   </style>
@@ -165,7 +173,7 @@ template.innerHTML = /*html*/`
       </div>
       <div class="card__footer">
         <div class="card__price-section">
-        <div class="AA">
+        <div class="card__price">
             <span class="card__price-label">Desde</span>
             <div class="card__price-value">
                 <span class="card__amount"></span>
@@ -174,7 +182,7 @@ template.innerHTML = /*html*/`
         </div>
             <button class="card__details">Ver desglose <a-icon name="chevron-left" size="sm"></a-icon></button>
         </div>
-        <a-button variant="secondary" size="base">Reservar</a-button>
+        <a-button variant="secondary" size="sm">Reservar</a-button>
     </div>
   </article>
 `;
@@ -188,15 +196,16 @@ export class MCard extends HTMLElement {
 
   set data(item) {
     if (!item) return;
-
+      this._itemData = item;
+      
     const shadow = this.shadowRoot;
-    
     shadow.querySelector('.card__image').src = item.image;
     shadow.querySelector('.card__image').alt = item.title;
     shadow.querySelector('.subtitle__location').textContent = `${item.country}, ${item.continent}`;
     shadow.querySelector('.subtitle__days').textContent = `${item.days} días`;
     shadow.querySelector('.card__title').textContent = item.title;
     shadow.querySelector('.card__amount').textContent = item.price;
+    shadow.querySelector('.card__tag').textContent = item.tag;
     
     const tagEl = shadow.querySelector('.card__tag');
     if (item.tag) {

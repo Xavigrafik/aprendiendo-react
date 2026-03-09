@@ -7,6 +7,7 @@ import ChevronLeft from './chevron-left.svg?raw';
 import ChevronRight from './chevron-right.svg?raw';
 import PriceTag from './pricetag.svg?raw';
 import FilterIcon from './filter.svg?raw';
+import InfoIcon from './info.svg?raw';
 
 export const Icons = {
     mountain: MountainIcon,
@@ -18,6 +19,7 @@ export const Icons = {
     "chevron-left": ChevronLeft,
     pricetag: PriceTag,
     filter: FilterIcon,
+    info: InfoIcon,
 };
 
 
