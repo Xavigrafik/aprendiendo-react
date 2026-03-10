@@ -50,6 +50,9 @@ template.innerHTML = /*html*/`
         margin-block: var(--space-6) var(--space-4);
         color: var(--color-gray-900);
     }
+    .continent-group:first-of-type h2 {
+        margin-top: 0;
+    }
     
     .loader {
       text-align: center;

@@ -1,6 +1,6 @@
 .title-block {
     text-align: center;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-12);
     margin-top: var(--space-8);
     line-height: var(--lh-tight);
 }
@@ -22,9 +22,6 @@
 }
 
 @media (width >= 743px) {
-    .title-block {
-        margin-bottom: var(--space-12);
-    }
     .title-block__heading {
         font-size: var(--text-4xl);
         margin-bottom: var(--space-2);
@@ -45,6 +42,10 @@
 }
 
 @media (width >= 1439px) {
+    
+    .title-block {
+        margin-bottom: 72px;
+    }
     .title-block__heading {
         font-family: var(--font-main);
         font-size: var(--text-36);
