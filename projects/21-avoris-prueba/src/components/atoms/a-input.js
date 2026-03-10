@@ -35,7 +35,6 @@ template.innerHTML = /*html*/`
     /* Input */
     input {
         height: 100%;
-        flex: 1;
         border: none;
         background: transparent;
         outline: none;

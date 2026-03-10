@@ -56,7 +56,7 @@ template.innerHTML = /*html*/`
 
     .card__subtitle {
         display:flex;
-        align-items: center;
+        align-items: flex-start;
         gap: var(--space-1);
         font-size: var(--text-sm);
         font-family:var(--font-main);
@@ -65,7 +65,6 @@ template.innerHTML = /*html*/`
     .subtitle__location {
         color: var(--card-title);
         font-weight: var(--weight-bold);
-        margin-bottom: $spacing-5;
     }
     .subtitle__days {
         font-size: var(--text-sm);
@@ -200,13 +199,16 @@ export class MCard extends HTMLElement {
 
         const shadow = this.shadowRoot;
         shadow.querySelector('.card__image').src = item.image;
-        shadow.querySelector('.card__image').alt = item.title;
+        shadow.querySelector('.card__image').alt = `Vista de ${item.country}`;  
         shadow.querySelector('.subtitle__location').textContent = `${item.country}, ${item.continent}`;
         shadow.querySelector('.subtitle__days').textContent = `${item.days} días`;
         shadow.querySelector('.card__title').textContent = item.title;
         shadow.querySelector('.card__amount').textContent = item.price;
         shadow.querySelector('.card__tag').textContent = item.tag;
-
+        const detailsBtn = shadow.querySelector('.card__details');
+        if (detailsBtn) {
+            detailsBtn.setAttribute('aria-label', `Ver desglose de ${item.title}`);
+        }
         /* ABRE MODAL */
         shadow.querySelector('.card__details').onclick = () => {
             this.dispatchEvent(new CustomEvent('open-modal', {

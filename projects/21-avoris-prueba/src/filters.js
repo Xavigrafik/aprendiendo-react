@@ -24,36 +24,36 @@ export function initFilters() {
         cardList.applyFilters(countries, categories, priceRange);
     });
 
-    // MODAL PRECIOS
-    const globalModal = document.querySelector('o-modal');
+}
 
-    document.addEventListener('open-price-details', (e) => {
-        const { item, prices } = e.detail;
-        
-        const content = `
-            <div slot="header">Desglose de precios</div>
-            <div slot="body">
-                <p>${item.country}, ${item.continent} - ${item.days} días</p>
-                <div style="display:flex; justify-content:space-between">
-                    <span>Base:</span> <span>${prices.base} €</span>
-                </div>
-                <div style="display:flex; justify-content:space-between">
-                    <span>Impuestos:</span> <span>${prices.tax} €</span>
-                </div>
-            </div>
-            <div slot="footer" style="margin-top:15px; font-weight:bold; border-top:1px solid #eee; padding-top:10px">
-                Total: ${prices.final} €
-            </div>
-        `;
-        
-        globalModal.open(content);
-    });
+// DEBOUNCER
+function debounce(func, delay = 100) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
 }
 
 // POSICIONA EL ASIDE 
 export function positionAside() {
-    if (window.innerWidth < 1440) {
+    const nav = document.getElementById('main-nav');
+    const hero = document.getElementById('main-hero');
+    const aside = document.getElementById('filters');
+
+    // Solo ejecutamos si estamos en desktop (>= 1440px)
+    if (window.innerWidth >= 1440 && nav && hero && aside) {
         const offsetTop = nav.clientHeight + hero.clientHeight;
         aside.style.top = `${offsetTop}px`;
+        aside.style.position = 'sticky';
+    } else if (aside) {
+        // Limpiamos los estilos si bajamos de resolución
+        aside.style.top = '';
+        aside.style.position = '';
     }
 }
+
+const handleResize = debounce(positionAside);
+window.addEventListener('resize', handleResize);
+
+window.addEventListener('DOMContentLoaded', positionAside);

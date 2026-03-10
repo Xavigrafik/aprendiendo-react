@@ -62,6 +62,14 @@ template.innerHTML = /*html*/`
       color: var(--nav-icon-hover);
     }
 
+    .navbar__item a {
+        text-decoration: none;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        color: var(--nav-icon-default);
+    }
+
     .navbar__item--active {
         border-bottom: 2px solid var(--brand-orange);
         color: var(--color-fg-primary-dark-default);
@@ -136,6 +144,7 @@ template.innerHTML = /*html*/`
   </style>
 
   <nav class="navbar container">
+
     <div class="navbar__logo">
       <slot name="logo">
         <img src="${logoUrl}" alt="Logo">
@@ -143,29 +152,35 @@ template.innerHTML = /*html*/`
     </div>
 
     <div class="navbar__collapse">
-      <ul class="navbar__list">
-        <li class="navbar__item navbar__item--active">
-          <a-icon name="mountain"></a-icon>
-          Aventura
-        </li>
-        <li class="navbar__item">
-          <a-icon name="globe"></a-icon>
-          Destinos
-        </li>
-        <li class="navbar__item">
-          <a-icon name="house"></a-icon>
-          Alojamiento
-        </li>
-        <li class="navbar__item">Sobre nosotros</li>
-      </ul>
-      
-      <div class="navbar__actions">
-        <a-button>Reserva</a-button>
-      </div>
+        <ul class="navbar__list"
+                aria-label="Main navigation">
+            <li class="navbar__item navbar__item--active">
+                <a href="#!">
+                <a-icon aria-hidden="true" name="mountain"></a-icon> Aventura
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#!">
+                <a-icon aria-hidden="true" name="globe"></a-icon> Destinos
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#!">
+                <a-icon aria-hidden="true" name="house"></a-icon> Alojamiento
+                </a>
+            </li>
+            <li class="navbar__item">
+                <a href="#!">Sobre nosotros</a>
+            </li>
+        </ul>
+
+        <div class="navbar__actions">
+            <a-button>Reserva</a-button>
+        </div>
     </div>
 
     <div class="navbar__hamburger">
-      <a-icon name="hamburger" size="lg"></a-icon>
+        <a-icon aria-hidden="true" name="hamburger" size="lg"></a-icon>
     </div>
   </nav>
 `;

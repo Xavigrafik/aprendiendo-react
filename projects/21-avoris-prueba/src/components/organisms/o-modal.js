@@ -121,10 +121,7 @@ export class OModal extends HTMLElement {
                 font-family: var(--font-main, sans-serif);
             }
             :host([open]) { display: flex; }
-
-            body:has(o-modal[open]) {
-                overflow: hidden;
-            }
+            
             .modal-container {
                 background: white;
                 border-radius: var(--radius-lg);

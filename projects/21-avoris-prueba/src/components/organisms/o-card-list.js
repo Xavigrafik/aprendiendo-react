@@ -1,3 +1,5 @@
+import destinationsData from './../../data/destinations.json';
+
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
   <style>
@@ -11,15 +13,15 @@ template.innerHTML = /*html*/`
         margin-bottom: 56px;
     }
     
-    /* MOBILE FIRST */
     .continent-group {
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--space-6) 0;
+        margin-bottom: var(--space-10);
     }
 
     /* TABLET */
-    @media (width >= 743px) {
+    @media (width >= 744px) {
         .continent-group {
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-4) var(--space-5);
@@ -34,32 +36,33 @@ template.innerHTML = /*html*/`
     }
 
     /* DESKTOP */
-    @media (width >= 1439px) {
+    @media (width >= 1440px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-0) var(--space-5);
+            gap: var(--space-5);
         }
     }
 
     .continent-group h2 {
-        font-size:22px;
-        grid-column: 1/-1;
-        line-height: var(--lh-tight);
-        margin:0;
-        margin-block: var(--space-4) var(--space-3);
+        font-size: 24px;
+        grid-column: 1 / -1;
+        font-family: var(--font-secondary);
+        margin: 0;
+        margin-block: var(--space-6) var(--space-4);
+        color: var(--color-gray-900);
     }
-    
-    /* DESKTOP */
-    @media (width >= 1439px) {
-        .continent-group h2 {
-        }
-    }
-
     
     .loader {
       text-align: center;
       padding: var(--space-10);
       color: var(--color-gray-400);
+    }
+
+    .no-results {
+        text-align: center;
+        padding: var(--space-10);
+        grid-column: 1 / -1;
+        font-size: 18px;
     }
   </style>
   <div class="card-container" id="card-container">
@@ -68,83 +71,71 @@ template.innerHTML = /*html*/`
 `;
 
 export class OCardList extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this._container = this.shadowRoot.querySelector('#card-container');
-  }
-
-  // Se ejecuta automáticamente al insertarse en el HTML
-  async connectedCallback() {
-    await this.fetchDestinations();
-  }
-
-  async fetchDestinations() {
-      try {
-        // DATA DESTINOS
-      const response = await fetch('/src/data/destinations.json'); 
-      const data = await response.json();
-      
-      
-      this.render(data);
-    } catch (error) {
-      this._container.innerHTML = `<p>Error al cargar los datos.</p>`;
-      console.error(error);
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        this._container = this.shadowRoot.getElementById('card-container');
+        this._destinations = destinationsData;
     }
+
+    connectedCallback() {
+        // Renderizamos directamente usando los datos importados
+        this.render(this._destinations);
     }
-    
+
     applyFilters(countries, categories, priceRange) {
         const cards = this.shadowRoot.querySelectorAll('m-card');
-        
+        let hasVisibleCards = false;
+
         cards.forEach(card => {
             const data = card._itemData;
             if (!data) return;
 
-            
             const cardCategory = data.tag?.toLowerCase().trim() || "";
             const cardCountry = data.country?.toLowerCase().trim() || ""; 
             const cardPrice = parseFloat(data.price) || 0;
 
-            
             const matchesCategory = categories.length === 0 || categories.includes(cardCategory);
             const matchesCountry = countries.length === 0 || countries.includes(cardCountry);
             const matchesPrice = cardPrice >= priceRange.min && cardPrice <= priceRange.max;
 
-            
             if (matchesCategory && matchesCountry && matchesPrice) {
                 card.style.display = ""; 
-                card.style.opacity = "1";
+                hasVisibleCards = true;
             } else {
                 card.style.display = "none";
-                card.style.opacity = "0";
             }
         });
 
-  // 4. Limpieza de contenedores vacíos (Continentes)
-  this.shadowRoot.querySelectorAll('.continent-group').forEach(group => {
-    const visibleCards = Array.from(group.querySelectorAll('m-card'))
-                              .filter(c => c.style.display !== 'none');
-    
-    // Si no hay cards, ocultamos todo el grupo (incluido el título h2)
-    group.style.display = visibleCards.length > 0 ? "" : "none";
-  });
-}
+        // Ocultar grupos de continentes vacíos
+        this.shadowRoot.querySelectorAll('.continent-group').forEach(group => {
+            const visibleInGroup = Array.from(group.querySelectorAll('m-card'))
+                                       .filter(c => c.style.display !== 'none');
+            group.style.display = visibleInGroup.length > 0 ? "" : "none";
+        });
+    }
 
     render(items) {
+        if (!this._container) return;
         this._container.innerHTML = '';
 
+        if (!items || items.length === 0) {
+            this._container.innerHTML = '<p class="no-results">No se encontraron destinos.</p>';
+            return;
+        }
+
+        // Agrupar por continente
         const grouped = items.reduce((acc, item) => {
             if (!acc[item.continent]) {
-            acc[item.continent] = [];
+                acc[item.continent] = [];
             }
-
             acc[item.continent].push(item);
             return acc;
         }, {});
 
+        // Crear secciones por continente
         Object.entries(grouped).forEach(([continent, destinations]) => {
-
             const groupDiv = document.createElement('div');
             groupDiv.classList.add('continent-group');
 
@@ -153,17 +144,16 @@ export class OCardList extends HTMLElement {
             groupDiv.appendChild(title);
 
             destinations.forEach(item => {
-            const card = document.createElement('m-card');
-            card.data = item;
-            groupDiv.appendChild(card);
+                const card = document.createElement('m-card');
+                card.data = item; // Aquí se activa el setter de m-card
+                groupDiv.appendChild(card);
             });
 
             this._container.appendChild(groupDiv);
         });
     }
-
-    }
+}
 
 if (!customElements.get('o-card-list')) {
-  customElements.define('o-card-list', OCardList);
+    customElements.define('o-card-list', OCardList);
 }
