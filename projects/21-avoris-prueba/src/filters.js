@@ -54,5 +54,3 @@ export function positionAside() {
 
 const handleResize = debounce(positionAside);
 window.addEventListener('resize', handleResize);
-
-window.addEventListener('DOMContentLoaded', positionAside);

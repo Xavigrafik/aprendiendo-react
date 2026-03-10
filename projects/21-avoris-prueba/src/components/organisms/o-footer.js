@@ -64,5 +64,6 @@ export class OFooter extends HTMLElement {
     this.shadowRoot.querySelector('#copyright').textContent = `©${year}`;
   }
 }
-
-customElements.define('o-footer', OFooter);
+if (!customElements.get('o-footer')) {
+    customElements.define('o-footer', OFooter);
+}

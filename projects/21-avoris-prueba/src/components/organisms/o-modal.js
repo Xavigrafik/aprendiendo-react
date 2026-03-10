@@ -127,14 +127,14 @@ export class OModal extends HTMLElement {
                 border-radius: var(--radius-lg);
                 width: 90%;
                 max-width: 400px;
-                overflow: hidden; 
+                overflow: hidden;
                 box-shadow: var(--card-shadow);
                 position: relative;
             }
 
             /* Secciones con fondo crema */
             .modal-header, .modal-footer {
-                background-color: #fdfaf7; /* Ese tono hueso de la imagen */
+                background-color: var(--color-bg-secondary-light-default);
                 padding: var(--space-4);
             }
 
@@ -142,7 +142,7 @@ export class OModal extends HTMLElement {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 1px solid #f0ece8;
+                border-bottom: 1px solid var(--color-divisor-light);
             }
 
             .modal-body {
@@ -151,7 +151,7 @@ export class OModal extends HTMLElement {
             }
 
             .modal-footer {
-                border-top: 1px solid #f0ece8;
+                border-top: 1px solid var(--color-divisor-light);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -161,7 +161,7 @@ export class OModal extends HTMLElement {
             .close-icon {
                 cursor: pointer;
                 font-size: 20px;
-                color: #333;
+                color: color: var(--color-fg-black-default);
             }
 
             ::slotted(.modal-title) {
@@ -178,12 +178,6 @@ export class OModal extends HTMLElement {
 
             ::slotted(.price-row) {
                 
-            }
-
-            ::slotted(.modal-body-content) .price, 
-            ::slotted(.price) {
-                font-weight: 700;
-                color: #000;
             }
 
             ::slotted([slot="footer"]) {
@@ -212,4 +206,6 @@ export class OModal extends HTMLElement {
         this.shadowRoot.getElementById('close-x').onclick = () => this.close();
     }
 }
-customElements.define('o-modal', OModal);
+if (!customElements.get('o-modal')) {
+    customElements.define('o-modal', OModal);
+}

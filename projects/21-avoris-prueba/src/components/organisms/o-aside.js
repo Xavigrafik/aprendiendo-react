@@ -117,7 +117,7 @@ template.innerHTML = /*html*/`
 
     /* Estado Abierto: Color y Rotación */
     .filter-section[data-open="true"] .filter-title {
-        color: var(--color-secondary-600, #FF8F50);
+        color: var(--color-secondary-600);
     }
 
     .filter-section[data-open="true"] .filter-title a-icon[name="chevron-right"] {
@@ -134,7 +134,9 @@ template.innerHTML = /*html*/`
         /* Estado cerrado */
         max-height: 0;
         opacity: 0;
-        transition: max-height 0.3s ease-out, opacity 0.2s, padding 0.3s, margin 0.3s;
+        transition: max-height 0.3s ease-out,
+                    opacity 0.2s,
+                    padding 0.3s, margin 0.3s;
         padding-bottom: 0;
         margin-top: 0;
     }
@@ -149,23 +151,23 @@ template.innerHTML = /*html*/`
 
     /* --- CHECKBOXES --- */
     .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-secondary);
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
-      cursor: pointer;
-      user-select: none;
-    }
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-secondary);
+        font-size: 14px;
+        font-weight: 600;
+        color: color: var(--color-fg-black-default);
+        cursor: pointer;
+        user-select: none;
+        }
 
     .checkbox-item input[type="checkbox"] {
       appearance: none;
       width: 18px;
       height: 18px;
       margin: 0;
-      border: 1px solid #622F60;
+      border: 1px solid var(--brand-purple);
       border-radius: 2px;
       background-color: white;
       display: grid;
@@ -174,15 +176,15 @@ template.innerHTML = /*html*/`
     }
 
     .checkbox-item input[type="checkbox"]:checked {
-      background-color: #FF8F50;
+      background-color: var(--brand-orange);
     }
 
     .checkbox-item input[type="checkbox"]:checked::before {
       content: "";
       width: 8px;
       height: 4px;
-      border-left: 2px solid #622F60;
-      border-bottom: 2px solid #622F60;
+      border-left: 2px solid var(--brand-purple);
+      border-bottom: 2px solid var(--brand-purple);
       transform: rotate(-45deg) translate(1px, -1px);
     }
 
@@ -198,7 +200,7 @@ template.innerHTML = /*html*/`
         bottom: 125%;
         left: 50%;
         transform: translateX(-50%);
-        color: #333;
+        color: color: var(--color-fg-black-default);
         background-color: #fff;
         padding: 6px 10px;
         border-radius: 4px;
@@ -222,7 +224,7 @@ template.innerHTML = /*html*/`
 
     .show-more {
       font-family: var(--font-secondary);
-      color: #622F60;
+      color: var(--brand-purple);
       font-size: 14px;
       font-weight: 600;
       text-decoration: underline;
