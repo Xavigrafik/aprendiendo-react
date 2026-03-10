@@ -7,17 +7,28 @@ template.innerHTML = /*html*/`
         left: 0;
         width: 100%;
         z-index: 100;
+        top: var(--aside-top, 0px);
     }
-    @media (width >= 1022px) {
+
+    @media (width >= 1439px) {
         :host {
-        }
-    }
-    @media (width >= 1443px) {
-        :host {
-            width: auto;
             position: static;
+            width: 264px;
+            flex-shrink: 0;
+            align-self: flex-start;
+            /*display: block;*/
+            z-index: auto;
+            top: auto;
         }
-    }
+        .aside {
+            position: static;
+            transform: none;
+            visibility: visible;
+            pointer-events: auto;
+            box-shadow: none;
+            width: 100%;
+        }
+}
 
     
     /* --- LAYOUT ASIDE (Drawer & Desktop) --- */
@@ -36,7 +47,7 @@ template.innerHTML = /*html*/`
         transform: translateX(-110%);
         visibility: hidden;
         pointer-events: none;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
     }
 
     :host([open]) .aside {
@@ -48,14 +59,14 @@ template.innerHTML = /*html*/`
 
     @media (width >= 1439px) {
         .aside {
-            position: static;
+            position: relative;
             height: auto;
             width: 100%;
+            top: 96px;
             max-width: 264px;
             background-color: var(--filter-bg, #f4f4f4);
             border-radius: 20px;
             box-shadow: none;
-            margin-top: 55px;
             transform: none;
             visibility: visible;
             pointer-events: auto;
@@ -70,7 +81,7 @@ template.innerHTML = /*html*/`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--color-divisor-light);
     }
 
     .aside__content {
@@ -80,7 +91,6 @@ template.innerHTML = /*html*/`
 
     .filter-section {
       margin-bottom: 8px;
-      border-bottom: 1px solid #f0f0f0;
     }
 
     /* --- TÍTULOS Y ESTADOS --- */
@@ -88,7 +98,7 @@ template.innerHTML = /*html*/`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: var(--color-fg-primary-dark, #4A3026);
+        color: var(--color-fg-primary-dark);
         font-weight: 600;
         height: 48px;
         cursor: pointer;

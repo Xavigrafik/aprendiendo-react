@@ -1,7 +1,6 @@
-
-const aside = document.querySelector('o-aside');
-const nav = document.querySelector('o-navbar');
-const hero = document.querySelector('.hero');
+const nav = document.getElementById('main-nav');
+const hero = document.getElementById('main-hero');
+const aside = document.getElementById('filters');
 
 export function initFilters() {
     const cardList = document.querySelector('o-card-list');
@@ -37,19 +36,19 @@ function debounce(func, delay = 100) {
 
 // POSICIONA EL ASIDE 
 export function positionAside() {
-    const nav = document.getElementById('main-nav');
-    const hero = document.getElementById('main-hero');
-    const aside = document.getElementById('filters');
+    if (!aside) return;
 
-    // Solo ejecutamos si estamos en desktop (>= 1440px)
-    if (window.innerWidth >= 1440 && nav && hero && aside) {
-        const offsetTop = nav.clientHeight + hero.clientHeight;
-        aside.style.top = `${offsetTop}px`;
-        aside.style.position = 'sticky';
-    } else if (aside) {
-        // Limpiamos los estilos si bajamos de resolución
+    if (window.innerWidth >= 1439) {
         aside.style.top = '';
         aside.style.position = '';
+    } else if (nav && hero) {
+         const mainBlock = document.querySelector('.main-block');
+        const heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
+        const mainBlockTop = mainBlock.getBoundingClientRect().top + window.scrollY;
+        
+        const offsetTop = heroBottom - mainBlockTop;
+        aside.style.top = `${offsetTop}px`;
+        aside.style.position = 'absolute';
     }
 }
 

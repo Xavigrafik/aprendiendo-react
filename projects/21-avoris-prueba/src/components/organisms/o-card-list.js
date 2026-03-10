@@ -17,7 +17,6 @@ template.innerHTML = /*html*/`
         display: grid;
         grid-template-columns: 1fr;
         gap: var(--space-6) 0;
-        margin-bottom: var(--space-10);
     }
 
     /* TABLET */
@@ -36,7 +35,7 @@ template.innerHTML = /*html*/`
     }
 
     /* DESKTOP */
-    @media (width >= 1440px) {
+    @media (width >= 1439px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-5);

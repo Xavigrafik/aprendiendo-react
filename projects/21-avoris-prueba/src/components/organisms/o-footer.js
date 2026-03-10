@@ -1,7 +1,7 @@
 import LOGO from '../../assets/Waveless-Color.svg';
 
 const template = document.createElement('template');
-template.innerHTML = `
+template.innerHTML = /*html*/`
   <style>
     :host {
       display: block;
@@ -35,7 +35,7 @@ template.innerHTML = `
       
     }
 
-    @media (max-width: 1440px) {
+    @media (width >= 1439px) {
       .footer__logo {
         justify-content: flex-start;
       }
