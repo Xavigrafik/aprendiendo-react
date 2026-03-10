@@ -19,14 +19,14 @@ template.innerHTML = /*html*/`
     }
 
     /* TABLET */
-    @media (width >= 743.99px) {
+    @media (width >= 743px) {
         .continent-group {
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-4) var(--space-5);
         }
     }
     /* TABLET LG */
-    @media (width >= 1022.99px) {
+    @media (width >= 1021px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-4) var(--space-5);
@@ -34,7 +34,7 @@ template.innerHTML = /*html*/`
     }
 
     /* DESKTOP */
-    @media (width >= 1439.99px) {
+    @media (width >= 1439px) {
         .continent-group {
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-0) var(--space-5);
@@ -50,7 +50,7 @@ template.innerHTML = /*html*/`
     }
     
     /* DESKTOP */
-    @media (width >= 1439.99px) {
+    @media (width >= 1439px) {
         .continent-group h2 {
         }
     }

@@ -2,30 +2,51 @@ const template = document.createElement('template');
 template.innerHTML = /*html*/`
 <style>
     :host {
-      display: block;
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+    }
+    @media (width >= 1022px) {
+        :host {
+        }
+    }
+    @media (width >= 1443px) {
+        :host {
+            width: auto;
+            position: static;
+        }
     }
 
+    
     /* --- LAYOUT ASIDE (Drawer & Desktop) --- */
     .aside {
-        position: fixed;
+        position: absolute;
         top: 0;
-        right: -100%;
-        width: 100%;
-        max-width: 264px;
-        height: 100vh;
+        left: 0;
+        width: 264px;
+        height: auto;
         background-color: white;
         z-index: 1000;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        flex-direction: column;
-        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+        box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+        background-color:var(--filter-bg);
+        
+        /* OCULTO*/
+        transform: translateX(-110%);
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
     }
 
     :host([open]) .aside {
-      right: 0;
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+        overflow: visible;
     }
 
-    @media (width >= 1439.99px) {
+    @media (width >= 1439px) {
         .aside {
             position: static;
             height: auto;
@@ -35,6 +56,10 @@ template.innerHTML = /*html*/`
             border-radius: 20px;
             box-shadow: none;
             margin-top: 55px;
+            transform: none;
+            visibility: visible;
+            pointer-events: auto;
+            
         }
         .aside__header .btn-close { display: none; }
     }
@@ -204,7 +229,7 @@ template.innerHTML = /*html*/`
 
     <div class="aside__content">
       
-    <div class="filter-section" data-open="true">
+    <div class="filter-section" data-open="false">
         <div class="filter-title">
             <div><a-icon name="globe"></a-icon> Destinos</div>
             <a-icon name="chevron-right"></a-icon>
@@ -317,33 +342,35 @@ template.innerHTML = /*html*/`
 `;
 
 export class OAside extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
 
-  connectedCallback() {
-    const closeBtn = this.shadowRoot.getElementById('close-btn');
-    closeBtn?.addEventListener('click', () => this.removeAttribute('open'));
+    connectedCallback() {
+        const closeBtn = this.shadowRoot.getElementById('close-btn');
+        closeBtn?.addEventListener('click', () => {
+            this.removeAttribute('open');
+        });
 
-    // --- LÓGICA DE ABRIR/CERRAR SECCIONES ---
-    this.shadowRoot.addEventListener('click', (e) => {
-        const title = e.composedPath().find(el => el.classList?.contains('filter-title'));
-        
-        if (title) {
-            const section = title.closest('.filter-section');
-            const isOpen = section.getAttribute('data-open') === 'true';
-            section.setAttribute('data-open', !isOpen);
-        }
-    });
+        // --- ABRIR/CERRAR SECCIONES ---
+        this.shadowRoot.addEventListener('click', (e) => {
+            const title = e.composedPath().find(el => el.classList?.contains('filter-title'));
 
-    // --- FILTROS ---
-    this.shadowRoot.addEventListener('change', () => this._emitFilters());
-    this.shadowRoot.querySelectorAll('a-input').forEach(input => {
-        input.addEventListener('input', () => this._emitFilters());
-    });
-}
+            if (title) {
+                const section = title.closest('.filter-section');
+                const isOpen = section.getAttribute('data-open') === 'true';
+                section.setAttribute('data-open', !isOpen);
+            }
+        });
+
+        // --- FILTROS ---
+        this.shadowRoot.addEventListener('change', () => this._emitFilters());
+        this.shadowRoot.querySelectorAll('a-input').forEach(input => {
+            input.addEventListener('input', () => this._emitFilters());
+        });
+    }
 
     _emitFilters() {
         const checkedCountries = Array.from(
@@ -361,17 +388,17 @@ export class OAside extends HTMLElement {
             detail: {
                 countries: checkedCountries,
                 categories: checkedAdventures,
-                priceRange: { 
-                    min: parseFloat(minInput?.value) || 0, 
-                    max: parseFloat(maxInput?.value) || Infinity 
+                priceRange: {
+                    min: parseFloat(minInput?.value) || 0,
+                    max: parseFloat(maxInput?.value) || Infinity
                 }
             },
             bubbles: true,
-            composed: true 
+            composed: true
         }));
     }
 }
 
 if (!customElements.get('o-aside')) {
-  customElements.define('o-aside', OAside);
+    customElements.define('o-aside', OAside);
 }

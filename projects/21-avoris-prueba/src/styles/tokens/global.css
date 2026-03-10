@@ -134,11 +134,9 @@
   --bp-desktop: 1440px;
 
   /* CONTAINER MAX-WIDTHS */
-  --container-sm: 587px; /* */
-  --container-md: 1270px; /* */
-  --container-lg: 1160px; /* */
+  --container-sm: 840px;
+  --container-lg: 1128px;
   --container-xl: 1320px;
-  --container-xxl: 1540px;
 
   --container-gutter: var(--space-4);
 }

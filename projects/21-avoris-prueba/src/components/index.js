@@ -13,4 +13,5 @@ import './organisms/o-navbar.js';
 import './organisms/o-aside.js';
 import './organisms/o-footer.js';
 import './organisms/o-card-list.js';
+import './organisms/o-modal.js';
 

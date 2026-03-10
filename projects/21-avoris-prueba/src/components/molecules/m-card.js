@@ -141,7 +141,7 @@ template.innerHTML = /*html*/`
         transform: rotate(-90deg);
       }
       
-      @media (width >= 743.99px) {
+      @media (width >= 743px) {
         .card__footer {
             flex-direction:row;
             align-items:end;
@@ -188,35 +188,44 @@ template.innerHTML = /*html*/`
 `;
 
 export class MCard extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
-
-  set data(item) {
-    if (!item) return;
-      this._itemData = item;
-      
-    const shadow = this.shadowRoot;
-    shadow.querySelector('.card__image').src = item.image;
-    shadow.querySelector('.card__image').alt = item.title;
-    shadow.querySelector('.subtitle__location').textContent = `${item.country}, ${item.continent}`;
-    shadow.querySelector('.subtitle__days').textContent = `${item.days} días`;
-    shadow.querySelector('.card__title').textContent = item.title;
-    shadow.querySelector('.card__amount').textContent = item.price;
-    shadow.querySelector('.card__tag').textContent = item.tag;
-    
-    const tagEl = shadow.querySelector('.card__tag');
-    if (item.tag) {
-      tagEl.textContent = item.tag;
-      tagEl.style.display = 'block';
-    } else {
-      tagEl.style.display = 'none';
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
-  }
+
+    set data(item) {
+        if (!item) return;
+        this._itemData = item;
+
+        const shadow = this.shadowRoot;
+        shadow.querySelector('.card__image').src = item.image;
+        shadow.querySelector('.card__image').alt = item.title;
+        shadow.querySelector('.subtitle__location').textContent = `${item.country}, ${item.continent}`;
+        shadow.querySelector('.subtitle__days').textContent = `${item.days} días`;
+        shadow.querySelector('.card__title').textContent = item.title;
+        shadow.querySelector('.card__amount').textContent = item.price;
+        shadow.querySelector('.card__tag').textContent = item.tag;
+
+        /* ABRE MODAL */
+        shadow.querySelector('.card__details').onclick = () => {
+            this.dispatchEvent(new CustomEvent('open-modal', {
+                detail: item,
+                bubbles: true,
+                composed: true
+            }));
+        };
+
+        const tagEl = shadow.querySelector('.card__tag');
+        if (item.tag) {
+            tagEl.textContent = item.tag;
+            tagEl.style.display = 'block';
+        } else {
+            tagEl.style.display = 'none';
+        }
+    }
 }
 
 if (!customElements.get('m-card')) {
-  customElements.define('m-card', MCard);
+    customElements.define('m-card', MCard);
 }

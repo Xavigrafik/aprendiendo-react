@@ -42,7 +42,9 @@ template.innerHTML = /*html*/`
       display: flex;
       gap: var(--space-4, 16px);
       height: 100%;
-      max-width: 736px;
+      height: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
     }
 
     .navbar__item {
@@ -84,18 +86,41 @@ template.innerHTML = /*html*/`
     .navbar__item--active:hover::after {
         border-bottom-color: var(--color-fg-secondary-dark-default);
     }
+
+    /* REDUCIDO PROVISIONAL */
+    /* @todo: revisar posibilidades de  */
+    @media (743px <= width <= 969px) {
+        .navbar {
+            padding-inline: 12px;
+        }
+        .navbar__logo img {
+            max-width: 120px;
+        }
+        .navbar__collapse{
+            gap: 0 10px !important;
+        }
+        .navbar__list {
+            justify-content: center;
+        }
+        .navbar__item {
+            padding: 3px;
+        }
+        .navbar__item a-icon {
+            display:none;
+        }
+    }
     
     .navbar__hamburger {
       display: flex;
       cursor: pointer;
     }
-    @media (width >= 1022.99px) {
+    @media (width >= 1022px) {
         .navbar__actions{
             display: flex;
         }
     }
 
-    @media (width >= 743.99px) {
+    @media (width >= 743px) {
       .navbar__actions{
           display: flex;
       }

@@ -34,15 +34,18 @@ template.innerHTML = /*html*/`
 
     /* Input */
     input {
-      height: 100%;
-      flex: 1;
-      border: none;
-      background: transparent;
-      outline: none;
-      font-family: var(--font-main, sans-serif);
-      font-size: 16px;
-      color: var(--color-fg-on-white-default);
-      padding: 0;
+        height: 100%;
+        flex: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-family: var(--font-main, sans-serif);
+        font-size: 16px;
+        color: var(--color-fg-on-white-default);
+        padding: 0;
+        width: auto;
+        flex: 1 1 auto;
+        max-width: 80%;
     }
 
     input::placeholder {
