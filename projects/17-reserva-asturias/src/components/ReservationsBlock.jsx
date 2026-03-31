@@ -36,12 +36,17 @@ const ReservationsBlock = () => {
                 <div className="row">
                     <div className="col">
                         <button id="filterReservations" onClick={handleFilterToggle} >
-                            {isFilteredByUser ? (
-                                <span className="material-symbols-sharp"> toggle_on </span>
-                            ) : (
+                            {!isFilteredByUser ? (
+                                <>
                                 <span className="material-symbols-sharp"> toggle_off </span>
+                                <div>Show MY reservations</div>
+                                </>
+                            ) : (
+                                <>
+                                <span className="material-symbols-sharp"> toggle_on </span>
+                                <div>Show all reservations</div>
+                                </>
                             )}
-                            <div>{!isFilteredByUser ? 'Show MY reservations' : 'Show ALL reservations'}</div>
                         </button>
                     </div>
                 </div>

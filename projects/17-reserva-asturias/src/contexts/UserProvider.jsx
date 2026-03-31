@@ -7,9 +7,9 @@ export const UserProvider = ({ children }) => {
     
     
     const usersList = [
-        { id: 0, name: 'Xavi',},
-        { id: 1, name: 'Guille'},
-        { id: 2, name: 'Ricardo'},
+        { id: 0, name: 'Xavi', lastname: "Barrios",},
+        { id: 1, name: 'Guille' , lastname: "pepe"},
+        { id: 2, name: 'Ricardo' , lastname: "Torres"},
     ];
     
     const [user, setUser] = useState(null);

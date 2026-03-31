@@ -69,7 +69,7 @@ function LoginButton() {
                             {usersList && usersList.map((user) => (
                                 <li key={user.id}>
                                     <a href="#" onClick={() => handleLogin(user.id)}>
-                                        {user.name}
+                                        {user.name} {user.lastname}
                                     </a>
                                 </li>
                             ))}

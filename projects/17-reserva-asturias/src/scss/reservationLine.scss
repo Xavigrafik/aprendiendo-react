@@ -125,9 +125,10 @@
 }
 
 #filterReservations {
-	background-color: #fff;
+	background-color: transparent;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 0.9em;
+    border-radius: 999px;
 }

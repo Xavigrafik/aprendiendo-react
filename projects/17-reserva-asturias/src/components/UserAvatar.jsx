@@ -3,12 +3,13 @@ import { UserContext } from "../contexts/UserContext";
 
 function AvatarImg() {
     const { user } = useContext(UserContext);
+    const avatartCode = "https://ui-avatars.com/api/?name=" + user.name + "+" + user.lastname
     return (
         <span className="avatar">
             <span className="img">
-                <img src="/dog/50/50" className="img-fluid" alt="Avatar" />
+                <img src={avatartCode} className="img-fluid" alt="Avatar" />
             </span>
-            <span>{user.name}</span>
+            <span>{user.name} {user.lastname}</span>
         </span>
     );
 }
